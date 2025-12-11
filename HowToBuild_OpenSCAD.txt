@@ -15,17 +15,27 @@ In case of missing packages: install them.
 # Merge the patched OpenSCAD code into the cloned openscad directory:
 # https://www.funkysi1701.com/posts/2025/merge-two-projects-into-one/
 
-git remote add OpenSCAD https://github.com/zekitez/OpenSCAD.git
-git fetch OpenSCAD
-git merge OpenSCAD/develop --allow-unrelated-histories --no-ff --no-commit
-git reset HEAD README.md
-git checkout -- README.md
+#git remote add OpenSCAD https://github.com/zekitez/OpenSCAD.git
+#git fetch OpenSCAD
+#git merge OpenSCAD/develop --allow-unrelated-histories --no-ff --no-commit
+#git reset HEAD README.md
+#git check
 
 # Fix merge conflicts and you are done.
 # The next 2 lines are needed if you want to push the change to a new branche.
 # git checkout -b feature/merge-OpenSCAD-into-openscad
 # git push origin feature/merge-OpenSCAD-into-openscad
+#########################################
 
+wget https://github.com/zekitez/OpenSCAD/archive/refs/heads/main.zip
+unzip main.zip
+
+# Dangerous but...
+cp -rpP OpenSCAD-main/src/* ./src/.
+cp -rpP OpenSCAD-main/sripts/* ./scripts/
+cp -rpP OpenSCAD-main/locale/* ./locale/
+
+chmod +x ./scripts/*
 
 #########################################
 #  Build step for Linux on Linux in the cloned openscad directory:
@@ -42,25 +52,34 @@ cmake --build build -t clean
 # Once only with a new build directory or to change options  do:
 cmake -B build -DEXPERIMENTAL=ON -DENABLE_PYTHON=ON -DSNAPSHOT=ON    # See my Log_cmake_-B_build_-D.txt
 
+# Generates a version which has 66328336 bytes.
+# 64780 -rwxrwxr-x  1 db811 db811  66328336 Dec 11 14:04 openscad
+# For a smaller version see below with the RELEASE flag.
+
 # Use 8 cores to make, depends on the CPU cores, 
 # Use without the -jn option (slow), or with n = 4 or 6 or ..(faster). See my Log_make_-j8.txt.
 cd build
 make -j8
 
-cd ..
-# Optional, install it on this computer with: 
-# cmake --install build
-# or run from the cloned openscad directory with:
-
+# Run from the build directory with:
 ./openscad
+
+cd ..
+# Optional, install it on this computer with in /usr/bin : 
+# sudo cmake --install build
 
 ######################################################
 # To generate a Linux installer OpenSCAD.tar.gz in the directory where you cloned OpenSCAD (in the openscad directory)
+# Installs in /usr/local .
 
 # The used release-common.sh is a patched version of the original script, see "Building an installer for linux-gnu fails #6424" on GitHub !!
+. ./scripts/establish_version.sh
+export OPENSCAD_VERSION=$(openscad_version)
+export OPENSCAD_COMMIT=$(openscad_commit)
 
+# Runs on Ubuntu but fails on Mint.
 export DEPLOYDIR=./build
-./scripts/release-common.sh snapshot    # See LOG_release_common.txt
+./scripts/release-common.sh snapshot    # See LOG_release_common.txt . 
 
 ####################################################
 # To build an AppDir for an Linux AppImage on Linux from within an empty directory (in the openscad directory):
@@ -76,23 +95,30 @@ git pull
 cmake -B build \
   -DCMAKE_INSTALL_PREFIX=/usr \
   -DCMAKE_BUILD_TYPE=Release \    # This option causes compilation with warnings.
-  -DUSE_BUILTIN_OPENCSG=ON \
+#  -DUSE_BUILTIN_OPENCSG=ON \     # Not found
   -DMANIFOLD_PYBIND=OFF \
   -DMANIFOLD_TEST=OFF \
   -DENABLE_PYTHON=ON \
-#  -DPYTHON_VERSION=3.12 \
-  -DENABLE_TESTS=OFF \
+  -DPYTHON_VERSION=3.12 \
+#  -DENABLE_TESTS=OFF \           # Not found
   -DEXPERIMENTAL=ON \
   -DSNAPSHOT=ON
 
 cd build
 make -j8
-strip --strip-unneeded openscad
+
+# Generates a version which has not 66328336 but 19417552 bytes.
+# 18964 -rwxrwxr-x  1 db811 db811 19417552 Dec 11 14:13 openscad
+
+# Run from the build directory with:
+./openscad
+
+# For generating an AppImage you need to do:
 make install DESTDIR=../AppDir    # See Log_make_install_DESTDIR.txt
 cd ..
 
 ######################################################
-# To UnPack and RePack an AppImgage with OpenSCAD-2025.12.06.ai29830-x86_64.AppImage in the openscad directory
+# To UnPack an AppImgage with OpenSCAD-2025.12.06.ai29830-x86_64.AppImage in the openscad directory
 
 # Check the latest version with a browser on https://files.openscad.org/snapshots/
 wget -cq https://files.openscad.org/snapshots/OpenSCAD-2025.12.06.ai29830-x86_64.AppImage  
@@ -148,5 +174,3 @@ export LINUXDEPLOY_OUTPUT_VERSION="${OPENSCAD_VERSION}${SUFFIX}"
 ./linuxdeploy-x86_64.AppImage --plugin qt --output appimage --appdir AppDir
 
 ###################################
-
-
