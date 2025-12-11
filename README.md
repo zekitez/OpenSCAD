@@ -2,7 +2,7 @@
 This is where I keep the patches to [openscad/openscad](https://github.com/openscad/openscad/)
 
 
-## Feature request: Collapse and expand tabs as combo box function and startup preference #6434
+## 3 Feature request: Collapse and expand tabs as combo box function and startup preference #6434
 I have scad file that builds a finger or thumb splint and has a lot of model parameters to tweak it into your personal finger/thumb shape, see https://www.thingiverse.com/thing:7145288 . The many parameters are divided into tabs. When a scad file is loaded all tabs are expanded on the initial preview and that scares off any user of the scad file when they see the many parameters. Opening all tabs collapsed removes the scarry part and gives a more easier access to the parameters. Its much more easier if you can collapse all tabs anf then just expand the tab where you want to change a parameter.
 For me a user is somebody who uses the customizer and doesnot want to see or alter the scad code.
 I noticed that this is not the first time a collapse/expand tabs request is made. To see the suggested change in action see the youtube video with a Windows version: https://www.youtube.com/watch?v=t_vN4xlLtOo .
@@ -25,7 +25,7 @@ Screenshots:
 
 <img width="871" height="557" alt="Image" src="Pictures/combobox_details.png" />
 
-## Building an installer for linux-gnu fails #6424
+## 2 Building an installer for linux-gnu fails #6424
 Describe the bug:
 
 I am trying to build an installer for Linux but scripts/release-common.sh fails/stops.
@@ -55,7 +55,7 @@ The solution for a openscad-*.x86-64.tar.gz is simple:
 - move the strip command to the line just above "QTLIBDIR=$(dirname $(...."
 - cp the icons from ./resources/icons instead from the not existing ./icons
 
-## Cross compiling with MXE from Linux (Ubuntu) for Windows fails #6421
+## 1 Cross compiling with MXE from Linux (Ubuntu) for Windows fails #6421
 Describe the bug:
 
 Compiling for Linux (Ubuntu 24.04) following README went without problems.
