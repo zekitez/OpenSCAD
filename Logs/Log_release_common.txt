@@ -1,0 +1,315 @@
+zekitez@MS-7E59:~/OpenScad/openscad$ export DEPLOYDIR=./build
+zekitez@MS-7E59:~/OpenScad/openscad$ ./scripts/release-common.sh snapshot
+Detected build-machine ARCH: 64
+Detected OS: LINUX
+No VERSION.txt file found, defaulting VERSION=2025.12.06
+No COMMIT.txt file found, using git commit: 93c839e76
+Building openscad-2025.12.06
+  CMake args: -DCMAKE_BUILD_TYPE=Release -DENABLE_TESTS=OFF -DSNAPSHOT=ON -DEXPERIMENTAL=ON -DENABLE_PYTHON=ON
+  DEPLOYDIR:  ./build
+  NUMCPU: 7
+Running CMake from ./build
+cmake .. -DCMAKE_BUILD_TYPE=Release -DENABLE_TESTS=OFF -DSNAPSHOT=ON -DEXPERIMENTAL=ON -DENABLE_PYTHON=ON  -DOPENSCAD_VERSION=2025.12.06  -DOPENSCAD_COMMIT=93c839e76
+-- OPENSCAD_SHORTVERSION: 2025.12.06
+-- OPENSCAD_YEAR: 2025
+-- OPENSCAD_MONTH: 12
+-- OPENSCAD_DAY: 6
+-- OPENSCAD_PATCH: 
+-- OPENSCAD_BUILD: 
+-- Using already installed mimalloc package, version 2.1
+-- Eigen: 3.4.0
+-- Boost: 1.83.0
+-- Harfbuzz: 8.3.0
+-- Fontconfig: 
+-- Glib: 2.80.0
+-- OpenCSG submodule: 1.5.0
+-- USE_GLAD/USE_GLEW not specified: Defaulting to glew
+-- GLEW: 2.2.0
+-- OpenGL: /usr/lib/x86_64-linux-gnu/libOpenGL.so;/usr/lib/x86_64-linux-gnu/libGLX.so;/usr/lib/x86_64-linux-gnu/libGLU.so
+-- Using header-only CGAL
+-- Targeting Unix Makefiles
+-- Using /usr/bin/c++ compiler.
+-- Boost include dirs: /usr/include
+-- Boost libraries:    
+-- Using gcc version 4 or later. Adding -frounding-math
+-- CGAL: 5.6.0
+-- CGAL: Using target CGAL::CGAL CGAL::CGAL_Core
+-- libzip: 1.7.3
+-- Freetype: 2.13.2
+-- LibXml2: 2.9.14
+-- Python 3.12.3 enabled, using Nettle 3.9.1
+-- HIDAPI: disabled (not found)
+-- SpNav: disabled (not found)
+-- Cairo: 1.18.0
+-- Flex: 2.6.4
+-- Bison: 3.8.2
+-- lib3mf: 1.8.1
+-- Qt5: 5.15.13
+-- QScintilla: 2.14.1
+-- DBus input driver enabled
+-- Qt5Gamepad input driver enabled
+-- Offscreen OpenGL Context - using Unix EGL GLX
+-- Clipper2 submodule
+-- ====================================
+-- Manifold Build Configuration Summary
+-- ====================================
+--  
+-- Environment: Linux
+--  
+-- CMAKE_VERSION:                 3.28.3
+-- CMAKE_TOOLCHAIN_FILE:          
+-- CMAKE_GENERATOR:               Unix Makefiles
+-- CPACK_CMAKE_GENERATOR:         
+-- CMAKE_BUILD_TYPE:              Release
+-- CMAKE_PREFIX_PATH:             
+-- CMAKE_CXX_COMPILER_ID:         GNU
+-- CMAKE_CXX_COMPILER_VERSION:    13.3.0
+-- BUILD_SHARED_LIBS:             OFF
+--  
+-- MANIFOLD_VERSION:              3.2.1
+-- MANIFOLD_PAR:                  ON
+-- MANIFOLD_CROSS_SECTION:        ON
+-- MANIFOLD_EXPORT:               OFF
+-- MANIFOLD_TEST:                 OFF
+-- MANIFOLD_DEBUG:                OFF
+-- MANIFOLD_ASSERT:               OFF
+-- MANIFOLD_CBIND:                ON
+-- MANIFOLD_PYBIND:               OFF
+-- MANIFOLD_JSBIND:               OFF
+-- MANIFOLD_FLAGS:                -Wall;-Wno-unknown-warning-option;-Wno-unused;-Wno-shorten-64-to-32;-O3;-ffp-contract=off;-fexcess-precision=standard
+-- MANIFOLD_COMPILE_OPTIONS:      -Wall;-Wno-unknown-warning-option;-Wno-unused;-Wno-shorten-64-to-32;-O3;-ffp-contract=off;-fexcess-precision=standard;-DMANIFOLD_CROSS_SECTION;-DMANIFOLD_PAR=1
+-- MANIFOLD_LINK_OPTIONS:         
+-- MANIFOLD_DOWNLOADS:            ON
+-- MANIFOLD_USE_BUILTIN_TBB:      OFF
+-- MANIFOLD_USE_BUILTIN_CLIPPER2: OFF
+-- MANIFOLD_USE_BUILTIN_NANOBIND: OFF
+-- MANIFOLD_FUZZ:                 OFF
+-- TRACY_ENABLE:                  OFF
+-- TRACY_MEMORY_USAGE:            OFF
+--  
+-- manifold submodule: 
+--  
+-- ====================================
+-- OpenSCAD Build Configuration Summary
+-- ====================================
+--  
+-- OpenSCAD version: 2025.12.06
+--         git hash: 93c839e76
+--  
+-- Environment: Linux
+-- Python: 3.12.3
+--  
+-- CMAKE_VERSION:         3.28.3
+-- CMAKE_TOOLCHAIN_FILE:  
+-- CMAKE_GENERATOR:       Unix Makefiles
+-- CPACK_CMAKE_GENERATOR: Unix Makefiles
+-- CMAKE_BUILD_TYPE:      Release
+-- CMAKE_PREFIX_PATH:     
+-- CMAKE_CXX_COMPILER_ID: GNU
+-- CMAKE_CXX_COMPILER_VERSION: 13.3.0
+--  
+-- SUFFIX:                
+--  
+-- Experimental Features: ON
+-- Snapshot build:        ON
+-- CGAL enabled:          ON
+-- Manifold enabled:      ON
+-- Headless build:        OFF
+-- NULLGL build:          OFF
+-- OpenGL wrangler:       glew
+-- Profiling/coverage:    OFF
+-- Use mimalloc:          ON
+-- Use built-in OpenCSG:  ON
+-- CSG node id-prefix:    OFF
+-- Offline documentation: OFF
+--  
+-- GL Offscreen Context:  Unix EGL GLX
+--  
+-- Input Drivers
+-- - HID API Driver (disabled)
+-- - Space Navigator Library Driver (disabled)
+-- - Joystick Driver (enabled)
+-- - DBus Remote Driver (enabled)
+--  
+-- DEFINES = ENABLE_EXPERIMENTAL;_REENTRANT;UNICODE;_UNICODE;_USE_MATH_DEFINES;USE_MIMALLOC;MI_LINK_SHARED;BOOST_DLL_USE_STD_FS;ENABLE_OPENCSG;OPENCSG_GLEW;ENABLE_CGAL;CGAL_DEBUG;CGAL_USE_GMPXX;ENABLE_LIBZIP;ENABLE_CAIRO;ENABLE_LIB3MF;USE_GLEW;USE_QOPENGLWIDGET;ENABLE_DBUS;ENABLE_QGAMEPAD;OPENSCAD_VERSION=2025.12.06;OPENSCAD_SHORTVERSION=2025.12.06;OPENSCAD_YEAR=2025;OPENSCAD_MONTH=12;OPENSCAD_DAY=6;OPENSCAD_COMMIT=93c839e76;STACKSIZE=8388608;OPENSCAD_OS="Unix";ENABLE_EGL;GLEW_EGL;ENABLE_GLX;ENABLE_PYTHON;USE_MANIFOLD_TRIANGULATOR;ENABLE_JOYSTICK;ENABLE_MANIFOLD;OPENSCAD_SNAPSHOT
+-- LINK OPTIONS = -v
+--  
+-- Configuring done (0.2s)
+-- Generating done (0.0s)
+-- Build files have been written to: /home/zekitez/OpenScad/openscad
+Building Project...
+[  1%] Built target OpenSCADLibInternal_autogen_timestamp_deps
+[  2%] Built target Clipper2
+[  7%] Built target OpenCSGObjects
+[  7%] Built target OpenSCADLibInternalPython
+[  8%] Built target OpenSCADLibInternal_autogen
+[ 13%] Built target manifold
+[ 19%] Built target svg
+[100%] Built target OpenSCADLibInternal
+[100%] Built target OpenSCADExe
+Creating directory structure...
+openscad-2025.12.06/examples
+openscad-2025.12.06/fonts
+openscad-2025.12.06/color-schemes
+openscad-2025.12.06/shaders
+openscad-2025.12.06/templates
+openscad-2025.12.06/libraries
+openscad-2025.12.06/locale
+cs/LC_MESSAGES/openscad.mo
+de/LC_MESSAGES/openscad.mo
+es/LC_MESSAGES/openscad.mo
+fr/LC_MESSAGES/openscad.mo
+hy/LC_MESSAGES/openscad.mo
+it/LC_MESSAGES/openscad.mo
+ka/LC_MESSAGES/openscad.mo
+pl/LC_MESSAGES/openscad.mo
+pt_BR/LC_MESSAGES/openscad.mo
+ru/LC_MESSAGES/openscad.mo
+tr/LC_MESSAGES/openscad.mo
+uk/LC_MESSAGES/openscad.mo
+zh_CN/LC_MESSAGES/openscad.mo
+zh_TW/LC_MESSAGES/openscad.mo
+cs/LC_MESSAGES/openscad.mo
+de/LC_MESSAGES/openscad.mo
+es/LC_MESSAGES/openscad.mo
+fr/LC_MESSAGES/openscad.mo
+hy/LC_MESSAGES/openscad.mo
+it/LC_MESSAGES/openscad.mo
+ka/LC_MESSAGES/openscad.mo
+pl/LC_MESSAGES/openscad.mo
+pt_BR/LC_MESSAGES/openscad.mo
+ru/LC_MESSAGES/openscad.mo
+tr/LC_MESSAGES/openscad.mo
+uk/LC_MESSAGES/openscad.mo
+zh_CN/LC_MESSAGES/openscad.mo
+zh_TW/LC_MESSAGES/openscad.mo
+'/lib/x86_64-linux-gnu/lib3MF.so.1' -> 'openscad-2025.12.06/lib/openscad/lib3MF.so.1'
+'/lib/x86_64-linux-gnu/libapparmor.so.1' -> 'openscad-2025.12.06/lib/openscad/libapparmor.so.1'
+'/lib/x86_64-linux-gnu/libasyncns.so.0' -> 'openscad-2025.12.06/lib/openscad/libasyncns.so.0'
+'/lib/x86_64-linux-gnu/libboost_program_options.so.1.83.0' -> 'openscad-2025.12.06/lib/openscad/libboost_program_options.so.1.83.0'
+'/lib/x86_64-linux-gnu/libbrotlicommon.so.1' -> 'openscad-2025.12.06/lib/openscad/libbrotlicommon.so.1'
+'/lib/x86_64-linux-gnu/libbrotlidec.so.1' -> 'openscad-2025.12.06/lib/openscad/libbrotlidec.so.1'
+'/lib/x86_64-linux-gnu/libbsd.so.0' -> 'openscad-2025.12.06/lib/openscad/libbsd.so.0'
+'/lib/x86_64-linux-gnu/libbz2.so.1.0' -> 'openscad-2025.12.06/lib/openscad/libbz2.so.1.0'
+'/lib/x86_64-linux-gnu/libcairo.so.2' -> 'openscad-2025.12.06/lib/openscad/libcairo.so.2'
+'/lib/x86_64-linux-gnu/libcap.so.2' -> 'openscad-2025.12.06/lib/openscad/libcap.so.2'
+'/lib/x86_64-linux-gnu/libcom_err.so.2' -> 'openscad-2025.12.06/lib/openscad/libcom_err.so.2'
+'/lib/x86_64-linux-gnu/libcrypto.so.3' -> 'openscad-2025.12.06/lib/openscad/libcrypto.so.3'
+'/lib/x86_64-linux-gnu/libdbus-1.so.3' -> 'openscad-2025.12.06/lib/openscad/libdbus-1.so.3'
+'/lib/x86_64-linux-gnu/libdouble-conversion.so.3' -> 'openscad-2025.12.06/lib/openscad/libdouble-conversion.so.3'
+'/lib/x86_64-linux-gnu/libEGL.so.1' -> 'openscad-2025.12.06/lib/openscad/libEGL.so.1'
+'/lib/x86_64-linux-gnu/libexpat.so.1' -> 'openscad-2025.12.06/lib/openscad/libexpat.so.1'
+'/lib/x86_64-linux-gnu/libFLAC.so.12' -> 'openscad-2025.12.06/lib/openscad/libFLAC.so.12'
+'/lib/x86_64-linux-gnu/libfontconfig.so.1' -> 'openscad-2025.12.06/lib/openscad/libfontconfig.so.1'
+'/lib/x86_64-linux-gnu/libfreetype.so.6' -> 'openscad-2025.12.06/lib/openscad/libfreetype.so.6'
+'/lib/x86_64-linux-gnu/libgcrypt.so.20' -> 'openscad-2025.12.06/lib/openscad/libgcrypt.so.20'
+'/lib/x86_64-linux-gnu/libGLdispatch.so.0' -> 'openscad-2025.12.06/lib/openscad/libGLdispatch.so.0'
+'/lib/x86_64-linux-gnu/libGLEW.so.2.2' -> 'openscad-2025.12.06/lib/openscad/libGLEW.so.2.2'
+'/lib/x86_64-linux-gnu/libglib-2.0.so.0' -> 'openscad-2025.12.06/lib/openscad/libglib-2.0.so.0'
+'/lib/x86_64-linux-gnu/libGL.so.1' -> 'openscad-2025.12.06/lib/openscad/libGL.so.1'
+'/lib/x86_64-linux-gnu/libGLU.so.1' -> 'openscad-2025.12.06/lib/openscad/libGLU.so.1'
+'/lib/x86_64-linux-gnu/libGLX.so.0' -> 'openscad-2025.12.06/lib/openscad/libGLX.so.0'
+'/lib/x86_64-linux-gnu/libgmp.so.10' -> 'openscad-2025.12.06/lib/openscad/libgmp.so.10'
+'/lib/x86_64-linux-gnu/libgpg-error.so.0' -> 'openscad-2025.12.06/lib/openscad/libgpg-error.so.0'
+'/lib/x86_64-linux-gnu/libgraphite2.so.3' -> 'openscad-2025.12.06/lib/openscad/libgraphite2.so.3'
+'/lib/x86_64-linux-gnu/libgssapi_krb5.so.2' -> 'openscad-2025.12.06/lib/openscad/libgssapi_krb5.so.2'
+'/lib/x86_64-linux-gnu/libharfbuzz.so.0' -> 'openscad-2025.12.06/lib/openscad/libharfbuzz.so.0'
+'/lib/x86_64-linux-gnu/libICE.so.6' -> 'openscad-2025.12.06/lib/openscad/libICE.so.6'
+'/lib/x86_64-linux-gnu/libicudata.so.74' -> 'openscad-2025.12.06/lib/openscad/libicudata.so.74'
+'/lib/x86_64-linux-gnu/libicui18n.so.74' -> 'openscad-2025.12.06/lib/openscad/libicui18n.so.74'
+'/lib/x86_64-linux-gnu/libicuuc.so.74' -> 'openscad-2025.12.06/lib/openscad/libicuuc.so.74'
+'/lib/x86_64-linux-gnu/libk5crypto.so.3' -> 'openscad-2025.12.06/lib/openscad/libk5crypto.so.3'
+'/lib/x86_64-linux-gnu/libkeyutils.so.1' -> 'openscad-2025.12.06/lib/openscad/libkeyutils.so.1'
+'/lib/x86_64-linux-gnu/libkrb5.so.3' -> 'openscad-2025.12.06/lib/openscad/libkrb5.so.3'
+'/lib/x86_64-linux-gnu/libkrb5support.so.0' -> 'openscad-2025.12.06/lib/openscad/libkrb5support.so.0'
+'/lib/x86_64-linux-gnu/liblz4.so.1' -> 'openscad-2025.12.06/lib/openscad/liblz4.so.1'
+'/lib/x86_64-linux-gnu/liblzma.so.5' -> 'openscad-2025.12.06/lib/openscad/liblzma.so.5'
+'/lib/x86_64-linux-gnu/libmd4c.so.0' -> 'openscad-2025.12.06/lib/openscad/libmd4c.so.0'
+'/lib/x86_64-linux-gnu/libmd.so.0' -> 'openscad-2025.12.06/lib/openscad/libmd.so.0'
+'/lib/x86_64-linux-gnu/libmimalloc.so.2' -> 'openscad-2025.12.06/lib/openscad/libmimalloc.so.2'
+'/lib/x86_64-linux-gnu/libmp3lame.so.0' -> 'openscad-2025.12.06/lib/openscad/libmp3lame.so.0'
+'/lib/x86_64-linux-gnu/libmpfr.so.6' -> 'openscad-2025.12.06/lib/openscad/libmpfr.so.6'
+'/lib/x86_64-linux-gnu/libmpg123.so.0' -> 'openscad-2025.12.06/lib/openscad/libmpg123.so.0'
+'/lib/x86_64-linux-gnu/libnettle.so.8' -> 'openscad-2025.12.06/lib/openscad/libnettle.so.8'
+'/lib/x86_64-linux-gnu/libogg.so.0' -> 'openscad-2025.12.06/lib/openscad/libogg.so.0'
+'/lib/x86_64-linux-gnu/libOpenGL.so.0' -> 'openscad-2025.12.06/lib/openscad/libOpenGL.so.0'
+'/lib/x86_64-linux-gnu/libopus.so.0' -> 'openscad-2025.12.06/lib/openscad/libopus.so.0'
+'/lib/x86_64-linux-gnu/libpcre2-16.so.0' -> 'openscad-2025.12.06/lib/openscad/libpcre2-16.so.0'
+'/lib/x86_64-linux-gnu/libpcre2-8.so.0' -> 'openscad-2025.12.06/lib/openscad/libpcre2-8.so.0'
+'/lib/x86_64-linux-gnu/libpixman-1.so.0' -> 'openscad-2025.12.06/lib/openscad/libpixman-1.so.0'
+'/lib/x86_64-linux-gnu/libpng16.so.16' -> 'openscad-2025.12.06/lib/openscad/libpng16.so.16'
+'/lib/x86_64-linux-gnu/libpulse.so.0' -> 'openscad-2025.12.06/lib/openscad/libpulse.so.0'
+'/lib/x86_64-linux-gnu/libpython3.12.so.1.0' -> 'openscad-2025.12.06/lib/openscad/libpython3.12.so.1.0'
+'/lib/x86_64-linux-gnu/libqscintilla2_qt5.so.15' -> 'openscad-2025.12.06/lib/openscad/libqscintilla2_qt5.so.15'
+'/lib/x86_64-linux-gnu/libQt5Core.so.5' -> 'openscad-2025.12.06/lib/openscad/libQt5Core.so.5'
+'/lib/x86_64-linux-gnu/libQt5DBus.so.5' -> 'openscad-2025.12.06/lib/openscad/libQt5DBus.so.5'
+'/lib/x86_64-linux-gnu/libQt5Gamepad.so.5' -> 'openscad-2025.12.06/lib/openscad/libQt5Gamepad.so.5'
+'/lib/x86_64-linux-gnu/libQt5Gui.so.5' -> 'openscad-2025.12.06/lib/openscad/libQt5Gui.so.5'
+'/lib/x86_64-linux-gnu/libQt5Multimedia.so.5' -> 'openscad-2025.12.06/lib/openscad/libQt5Multimedia.so.5'
+'/lib/x86_64-linux-gnu/libQt5Network.so.5' -> 'openscad-2025.12.06/lib/openscad/libQt5Network.so.5'
+'/lib/x86_64-linux-gnu/libQt5PrintSupport.so.5' -> 'openscad-2025.12.06/lib/openscad/libQt5PrintSupport.so.5'
+'/lib/x86_64-linux-gnu/libQt5Widgets.so.5' -> 'openscad-2025.12.06/lib/openscad/libQt5Widgets.so.5'
+'/lib/x86_64-linux-gnu/libQt5XcbQpa.so.5' -> 'openscad-2025.12.06/lib/openscad/libQt5XcbQpa.so.5'
+'/lib/x86_64-linux-gnu/libresolv.so.2' -> 'openscad-2025.12.06/lib/openscad/libresolv.so.2'
+'/lib/x86_64-linux-gnu/libSM.so.6' -> 'openscad-2025.12.06/lib/openscad/libSM.so.6'
+'/lib/x86_64-linux-gnu/libsndfile.so.1' -> 'openscad-2025.12.06/lib/openscad/libsndfile.so.1'
+'/lib/x86_64-linux-gnu/libstdc++.so.6' -> 'openscad-2025.12.06/lib/openscad/libstdc++.so.6'
+'/lib/x86_64-linux-gnu/libsystemd.so.0' -> 'openscad-2025.12.06/lib/openscad/libsystemd.so.0'
+'/lib/x86_64-linux-gnu/libtbb.so.12' -> 'openscad-2025.12.06/lib/openscad/libtbb.so.12'
+'/lib/x86_64-linux-gnu/libuuid.so.1' -> 'openscad-2025.12.06/lib/openscad/libuuid.so.1'
+'/lib/x86_64-linux-gnu/libvorbisenc.so.2' -> 'openscad-2025.12.06/lib/openscad/libvorbisenc.so.2'
+'/lib/x86_64-linux-gnu/libvorbis.so.0' -> 'openscad-2025.12.06/lib/openscad/libvorbis.so.0'
+'/lib/x86_64-linux-gnu/libX11.so.6' -> 'openscad-2025.12.06/lib/openscad/libX11.so.6'
+'/lib/x86_64-linux-gnu/libX11-xcb.so.1' -> 'openscad-2025.12.06/lib/openscad/libX11-xcb.so.1'
+'/lib/x86_64-linux-gnu/libXau.so.6' -> 'openscad-2025.12.06/lib/openscad/libXau.so.6'
+'/lib/x86_64-linux-gnu/libxcb-icccm.so.4' -> 'openscad-2025.12.06/lib/openscad/libxcb-icccm.so.4'
+'/lib/x86_64-linux-gnu/libxcb-image.so.0' -> 'openscad-2025.12.06/lib/openscad/libxcb-image.so.0'
+'/lib/x86_64-linux-gnu/libxcb-keysyms.so.1' -> 'openscad-2025.12.06/lib/openscad/libxcb-keysyms.so.1'
+'/lib/x86_64-linux-gnu/libxcb-randr.so.0' -> 'openscad-2025.12.06/lib/openscad/libxcb-randr.so.0'
+'/lib/x86_64-linux-gnu/libxcb-render.so.0' -> 'openscad-2025.12.06/lib/openscad/libxcb-render.so.0'
+'/lib/x86_64-linux-gnu/libxcb-render-util.so.0' -> 'openscad-2025.12.06/lib/openscad/libxcb-render-util.so.0'
+'/lib/x86_64-linux-gnu/libxcb-shape.so.0' -> 'openscad-2025.12.06/lib/openscad/libxcb-shape.so.0'
+'/lib/x86_64-linux-gnu/libxcb-shm.so.0' -> 'openscad-2025.12.06/lib/openscad/libxcb-shm.so.0'
+'/lib/x86_64-linux-gnu/libxcb.so.1' -> 'openscad-2025.12.06/lib/openscad/libxcb.so.1'
+'/lib/x86_64-linux-gnu/libxcb-sync.so.1' -> 'openscad-2025.12.06/lib/openscad/libxcb-sync.so.1'
+'/lib/x86_64-linux-gnu/libxcb-util.so.1' -> 'openscad-2025.12.06/lib/openscad/libxcb-util.so.1'
+'/lib/x86_64-linux-gnu/libxcb-xfixes.so.0' -> 'openscad-2025.12.06/lib/openscad/libxcb-xfixes.so.0'
+'/lib/x86_64-linux-gnu/libxcb-xinerama.so.0' -> 'openscad-2025.12.06/lib/openscad/libxcb-xinerama.so.0'
+'/lib/x86_64-linux-gnu/libxcb-xinput.so.0' -> 'openscad-2025.12.06/lib/openscad/libxcb-xinput.so.0'
+'/lib/x86_64-linux-gnu/libxcb-xkb.so.1' -> 'openscad-2025.12.06/lib/openscad/libxcb-xkb.so.1'
+'/lib/x86_64-linux-gnu/libXdmcp.so.6' -> 'openscad-2025.12.06/lib/openscad/libXdmcp.so.6'
+'/lib/x86_64-linux-gnu/libXext.so.6' -> 'openscad-2025.12.06/lib/openscad/libXext.so.6'
+'/lib/x86_64-linux-gnu/libxkbcommon.so.0' -> 'openscad-2025.12.06/lib/openscad/libxkbcommon.so.0'
+'/lib/x86_64-linux-gnu/libxkbcommon-x11.so.0' -> 'openscad-2025.12.06/lib/openscad/libxkbcommon-x11.so.0'
+'/lib/x86_64-linux-gnu/libxml2.so.2' -> 'openscad-2025.12.06/lib/openscad/libxml2.so.2'
+'/lib/x86_64-linux-gnu/libXrender.so.1' -> 'openscad-2025.12.06/lib/openscad/libXrender.so.1'
+'/lib/x86_64-linux-gnu/libzip.so.4' -> 'openscad-2025.12.06/lib/openscad/libzip.so.4'
+'/lib/x86_64-linux-gnu/libz.so.1' -> 'openscad-2025.12.06/lib/openscad/libz.so.1'
+'/lib/x86_64-linux-gnu/libzstd.so.1' -> 'openscad-2025.12.06/lib/openscad/libzstd.so.1'
+'/usr/lib/x86_64-linux-gnu/pulseaudio/libpulsecommon-16.1.so' -> 'openscad-2025.12.06/lib/openscad/libpulsecommon-16.1.so'
+'/lib/x86_64-linux-gnu/qt5/plugins/platforms/libqxcb.so' -> 'openscad-2025.12.06/lib/openscad/platforms/libqxcb.so'
+'/usr/lib/x86_64-linux-gnu/dri/swrast_dri.so' -> 'openscad-2025.12.06/lib/openscad/dri/swrast_dri.so'
+
+Binary created: openscad-2025.12.06.x86-64.tar.gz
+
+zekitez@MS-7E59:~/OpenScad/openscad$ ls -las openscad-2025.12.06*
+52376 -rw-rw-r--  1 zekitez zekitez 53626587 Dec  6 13:22 openscad-2025.12.06.x86-64.tar.gz
+
+openscad-2025.12.06:
+total 52
+4 drwxr-xr-x 12 zekitez zekitez 4096 Dec  6 13:22 .
+4 drwxrwxr-x 34 zekitez zekitez 4096 Dec  6 13:22 ..
+4 drwxr-xr-x  2 zekitez zekitez 4096 Dec  6 13:22 bin
+4 drwxr-xr-x  4 zekitez zekitez 4096 Dec  6 13:22 color-schemes
+4 drwxr-xr-x  7 zekitez zekitez 4096 Nov 25 17:16 examples
+4 drwxr-xr-x  3 zekitez zekitez 4096 Dec  6 13:22 fonts
+4 -rwxr-xr-x  1 zekitez zekitez 1411 Dec  6 13:22 install.sh
+4 drwxr-xr-x  3 zekitez zekitez 4096 Dec  6 13:22 lib
+4 drwxr-xr-x  3 zekitez zekitez 4096 Nov 25 17:16 libraries
+4 drwxr-xr-x 16 zekitez zekitez 4096 Dec  6 13:22 locale
+4 drwxr-xr-x  2 zekitez zekitez 4096 Dec  6 13:22 shaders
+4 drwxr-xr-x  3 zekitez zekitez 4096 Dec  6 13:22 share
+4 drwxr-xr-x  2 zekitez zekitez 4096 Dec  6 13:22 templates
+zekitez@MS-7E59:~/OpenScad/openscad$ 
+
+
