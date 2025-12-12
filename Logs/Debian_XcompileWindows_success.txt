@@ -1,0 +1,311 @@
+db811@debian:~$ ls
+Applications  BambuLabSpool  Bibliotheek  Desktop  Documents  Downloads  Music  My3D  openscad  OpenSCAD  openscad_deps  Pictures  Public  Templates  Videos
+db811@debian:~$ cd openscad
+db811@debian:~/openscad$ source ./scripts/setenv-mingw-xbuild.sh 64
+current path saved
+linking /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix
+     to /home/db811/openscad/mingw64.static.posix/mingw-cross-env
+OPENSCAD_LIBRARIES:
+BASEDIR: /home/db811/openscad_deps
+MXEDIR: /home/db811/openscad_deps/mxe
+MXE_TARGETS: x86_64-w64-mingw32.static.posix
+MXETARGETDIR: /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix
+MXELIBTYPE: static.posix
+DEPLOYDIR: /home/db811/openscad/mingw64.static.posix
+MXEQTSUBDIR: qt5
+PATH modified: /home/db811/openscad_deps/mxe/usr/bin
+PATH modified: /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix/qt5/bin
+db811@debian:~/openscad$ 
+db811@debian:~/openscad$ 
+db811@debian:~/openscad$ ./scripts/mingw-x-build-dependencies.sh 64
+OPENSCADDIR: /home/db811/openscad
+note: you can 'export NUMJOBS=x' for building multiple pkgs at once
+linking /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix
+     to /home/db811/openscad/mingw64.static.posix/mingw-cross-env
+OPENSCAD_LIBRARIES:
+BASEDIR: /home/db811/openscad_deps
+MXEDIR: /home/db811/openscad_deps/mxe
+MXE_TARGETS: x86_64-w64-mingw32.static.posix
+MXETARGETDIR: /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix
+MXELIBTYPE: static.posix
+DEPLOYDIR: /home/db811/openscad/mingw64.static.posix
+MXEQTSUBDIR: qt5
+PATH modified: /home/db811/openscad_deps/mxe/usr/bin
+PATH modified: /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix/qt5/bin
+entering /home/db811/openscad_deps/mxe
+checkout openscad-snapshot-build branch
+HEAD is now at b8cc6aca Update CGAL to 6.0.1.
+make MXE_PLUGIN_DIRS=plugins/gcc12 qtbase qtmultimedia qscintilla2 mpfr eigen opencsg cgal ninja nsis glib libxml2 freetype fontconfig harfbuzz libzip lib3mf double-conversion zip onetbb MXE_TARGETS=x86_64-w64-mingw32.static.posix -j 4 JOBS=2
+make: Nothing to be done for 'ninja'.
+make: Nothing to be done for 'mpfr'.
+make: Nothing to be done for 'glib'.
+make: Nothing to be done for 'freetype'.
+make: Nothing to be done for 'fontconfig'.
+make: Nothing to be done for 'harfbuzz'.
+leaving /home/db811/openscad_deps/mxe
+entering /home/db811/openscad
+db811@debian:~/openscad$ 
+db811@debian:~/openscad$ 
+db811@debian:~/openscad$ ./scripts/release-common.sh mingw64
+Detected build-machine ARCH: 64
+Detected OS: UNIX_CROSS_WIN
+linking /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix
+     to /home/db811/openscad/mingw64.static.posix/mingw-cross-env
+OPENSCAD_LIBRARIES:
+BASEDIR: /home/db811/openscad_deps
+MXEDIR: /home/db811/openscad_deps/mxe
+MXE_TARGETS: x86_64-w64-mingw32.static.posix
+MXETARGETDIR: /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix
+MXELIBTYPE: static.posix
+DEPLOYDIR: /home/db811/openscad/mingw64.static.posix
+MXEQTSUBDIR: qt5
+PATH modified: /home/db811/openscad_deps/mxe/usr/bin
+PATH modified: /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix/qt5/bin
+Mingw-cross build using ARCH=64 MXELIBTYPE=static.posix
+No VERSION.txt file found, defaulting VERSION=2025.12.12
+No COMMIT.txt file found, using git commit: 7962867aa
+Building openscad-2025.12.12
+  CMake args: -DCMAKE_BUILD_TYPE=Release -DENABLE_TESTS=OFF -GNinja -DMXECROSS=ON -DALLOW_BUNDLED_HIDAPI=ON -DPACKAGE_ARCH=x86-64
+  DEPLOYDIR:  /home/db811/openscad/mingw64.static.posix
+  NUMCPU: 4
+Running CMake from /home/db811/openscad/mingw64.static.posix
+x86_64-w64-mingw32.static.posix-cmake .. -DCMAKE_BUILD_TYPE=Release -DENABLE_TESTS=OFF -GNinja -DMXECROSS=ON -DALLOW_BUNDLED_HIDAPI=ON -DPACKAGE_ARCH=x86-64  -DOPENSCAD_VERSION=2025.12.12  -DOPENSCAD_COMMIT=7962867aa
+== Using MXE wrapper: /home/db811/openscad_deps/mxe/usr/bin/x86_64-w64-mingw32.static.posix-cmake
+     - cmake version 3.31.8
+     - warnings for unused CMAKE_POLICY_DEFAULT variables can be ignored
+== Using MXE toolchain: /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix/share/cmake/mxe-conf.cmake
+== Using MXE runresult: /home/db811/openscad_deps/mxe/usr/share/cmake/modules/TryRunResults.cmake
+loading initial cache file /home/db811/openscad_deps/mxe/usr/share/cmake/modules/TryRunResults.cmake
+-- OPENSCAD_SHORTVERSION: 2025.12.12
+-- OPENSCAD_YEAR: 2025
+-- OPENSCAD_MONTH: 12
+-- OPENSCAD_DAY: 12
+-- OPENSCAD_PATCH: 
+-- OPENSCAD_BUILD: 
+-- 
+-- Override standard malloc (MI_OVERRIDE=ON)
+-- Use the C++ compiler to compile (MI_USE_CXX=ON)
+-- 
+-- Library base name: mimalloc
+-- Version          : 1.7
+-- Build type       : release
+-- C++ Compiler     : /home/db811/openscad_deps/mxe/usr/x86_64-pc-linux-gnu/bin/x86_64-w64-mingw32.static.posix-g++
+-- Compiler flags   : -Wall;-Wextra;-Wno-unknown-pragmas;-fvisibility=hidden;-ftls-model=initial-exec;-fno-builtin-malloc
+-- Compiler defines : 
+-- Link libraries   : psapi;shell32;user32;advapi32;bcrypt
+-- Build targets    : static
+-- 
+-- Eigen: 3.4.0
+-- Boost: 1.85.0
+-- Harfbuzz: 11.4.1
+-- Fontconfig: 
+-- Glib: 2.85.3
+-- OpenCSG: 1.5.0
+-- USE_GLAD/USE_GLEW not specified: Defaulting to glew
+-- GLEW: 2.1.0
+-- OpenGL: opengl32;glu32
+-- Visual Leak Detector (VLD) is not found.
+-- Targeting Ninja
+-- Using /home/db811/openscad_deps/mxe/usr/x86_64-pc-linux-gnu/bin/x86_64-w64-mingw32.static.posix-g++ compiler.
+CMake Warning (dev) at /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix/lib/CGAL/CGAL_SetupBoost.cmake:20 (find_package):
+  Policy CMP0167 is not set: The FindBoost module is removed.  Run "cmake
+  --help-policy CMP0167" for policy details.  Use the cmake_policy command to
+  set the policy and suppress this warning.
+
+Call Stack (most recent call first):
+  /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix/lib/CGAL/CGAL_SetupCGALDependencies.cmake:48 (include)
+  /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix/lib/CGAL/CGALConfig.cmake:169 (include)
+  CMakeLists.txt:570 (find_package)
+This warning is for project developers.  Use -Wno-dev to suppress it.
+
+-- Boost include dirs: /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix/include
+-- Boost libraries:    
+-- Using gcc version 4 or later. Adding -frounding-math
+-- CGAL: 6.0.1
+-- CGAL: Using target CGAL::CGAL CGAL::CGAL_Core
+-- libzip: 1.5.2
+== Custom MXE File: /home/db811/openscad_deps/mxe/usr/share/cmake/modules/FindFreetype.cmake
+-- Freetype: 
+-- LibXml2: 2.14.4
+-- HidAPI: 0.11.2 (bundled)
+-- SpNav: disabled (not found)
+-- Cairo: 1.18.4
+-- Flex: 2.6.4
+-- Bison: 3.8.2
+-- lib3mf: 1.8.1
+-- Qt5: 5.15.17
+-- QScintilla: 2.11.2
+-- DBus input driver enabled
+-- Qt5Gamepad input driver disabled (not found)
+-- Offscreen OpenGL Context - using Microsoft WGL
+-- Offscreen OpenGL Context - using Microsoft WGL
+-- Clipper2 submodule
+-- ====================================
+-- Manifold Build Configuration Summary
+-- ====================================
+--  
+-- Environment: MXE
+--  
+-- CMAKE_VERSION:                 3.31.8
+-- CMAKE_TOOLCHAIN_FILE:          /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix/share/cmake/mxe-conf.cmake
+-- CMAKE_GENERATOR:               Ninja
+-- CPACK_CMAKE_GENERATOR:         
+-- CMAKE_BUILD_TYPE:              Release
+-- CMAKE_PREFIX_PATH:             /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix
+-- CMAKE_CXX_COMPILER_ID:         GNU
+-- CMAKE_CXX_COMPILER_VERSION:    11.5.0
+-- BUILD_SHARED_LIBS:             OFF
+--  
+-- MANIFOLD_VERSION:              3.2.1
+-- MANIFOLD_PAR:                  ON
+-- MANIFOLD_CROSS_SECTION:        ON
+-- MANIFOLD_EXPORT:               OFF
+-- MANIFOLD_TEST:                 OFF
+-- MANIFOLD_DEBUG:                OFF
+-- MANIFOLD_ASSERT:               OFF
+-- MANIFOLD_CBIND:                ON
+-- MANIFOLD_PYBIND:               OFF
+-- MANIFOLD_JSBIND:               OFF
+-- MANIFOLD_FLAGS:                -Wall;-Wno-unknown-warning-option;-Wno-unused;-Wno-shorten-64-to-32;-Wno-format;-O3;-ffp-contract=off
+-- MANIFOLD_COMPILE_OPTIONS:      -Wall;-Wno-unknown-warning-option;-Wno-unused;-Wno-shorten-64-to-32;-Wno-format;-O3;-ffp-contract=off;-DMANIFOLD_CROSS_SECTION;-DMANIFOLD_PAR=1
+-- MANIFOLD_LINK_OPTIONS:         
+-- MANIFOLD_DOWNLOADS:            ON
+-- MANIFOLD_USE_BUILTIN_TBB:      OFF
+-- MANIFOLD_USE_BUILTIN_CLIPPER2: OFF
+-- MANIFOLD_USE_BUILTIN_NANOBIND: OFF
+-- MANIFOLD_FUZZ:                 OFF
+-- TRACY_ENABLE:                  OFF
+-- TRACY_MEMORY_USAGE:            OFF
+--  
+-- manifold submodule: 
+--  
+-- ====================================
+-- OpenSCAD Build Configuration Summary
+-- ====================================
+--  
+-- OpenSCAD version: 2025.12.12
+--         git hash: 7962867aa
+--  
+-- Environment: MXE
+-- Python: disabled
+--  
+-- CMAKE_VERSION:         3.31.8
+-- CMAKE_TOOLCHAIN_FILE:  /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix/share/cmake/mxe-conf.cmake
+-- CMAKE_GENERATOR:       Ninja
+-- CPACK_CMAKE_GENERATOR: Ninja
+-- CMAKE_BUILD_TYPE:      Release
+-- CMAKE_PREFIX_PATH:     /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix
+-- CMAKE_CXX_COMPILER_ID: GNU
+-- CMAKE_CXX_COMPILER_VERSION: 11.5.0
+--  
+-- SUFFIX:                
+--  
+-- Experimental Features: OFF
+-- Snapshot build:        OFF
+-- CGAL enabled:          ON
+-- Manifold enabled:      ON
+-- Headless build:        OFF
+-- NULLGL build:          OFF
+-- OpenGL wrangler:       glew
+-- Profiling/coverage:    OFF
+-- Use mimalloc:          ON
+-- Use built-in OpenCSG:  OFF
+-- CSG node id-prefix:    OFF
+-- Offline documentation: OFF
+--  
+-- GL Offscreen Context:  Windows WGL
+--  
+-- Input Drivers
+-- - HID API Driver (enabled)
+-- - Space Navigator Library Driver (disabled)
+-- - Joystick Driver (disabled)
+-- - DBus Remote Driver (enabled)
+--  
+-- DEFINES = _REENTRANT;UNICODE;_UNICODE;_USE_MATH_DEFINES;USE_MIMALLOC;MI_OVERRIDE;MI_LINK_STATIC;BOOST_DLL_USE_STD_FS;ENABLE_OPENCSG;OPENCSG_GLEW;ENABLE_CGAL;CGAL_DEBUG;CGAL_USE_GMPXX;ENABLE_LIBZIP;ENABLE_HIDAPI;ENABLE_CAIRO;ENABLE_LIB3MF;USE_GLEW;STATIC_QT_SVG_PLUGIN;GLEW_STATIC;USE_QOPENGLWIDGET;ENABLE_DBUS;OPENSCAD_VERSION=2025.12.12;OPENSCAD_SHORTVERSION=2025.12.12;OPENSCAD_YEAR=2025;OPENSCAD_MONTH=12;OPENSCAD_DAY=12;OPENSCAD_COMMIT=7962867aa;STACKSIZE=8388608;NOGDI;OPENSCAD_OS="Windows";USE_MANIFOLD_TRIANGULATOR;ENABLE_MANIFOLD
+-- LINK OPTIONS = -v;$<$<CONFIG:Debug>:;-Wl,--gc-sections;>
+--  
+-- Configuring done (0.5s)
+-- Generating done (0.1s)
+-- Build files have been written to: /home/db811/openscad/mingw64.static.posix
+Building Project...
+[9/346] Building CXX object submodules/mimalloc/CMakeFiles/mimalloc-static.dir/src/os.c.obj
+/home/db811/openscad/submodules/mimalloc/src/os.c: In function 'bool mi_os_mem_free(void*, size_t, bool, mi_stats_t*)':
+/home/db811/openscad/submodules/mimalloc/src/os.c:379:41: warning: missing initializer for member '_MEMORY_BASIC_INFORMATION::AllocationBase' [-Wmissing-field-initializers]
+  379 |     MEMORY_BASIC_INFORMATION info = { 0 };
+      |                                         ^
+/home/db811/openscad/submodules/mimalloc/src/os.c:379:41: warning: missing initializer for member '_MEMORY_BASIC_INFORMATION::AllocationProtect' [-Wmissing-field-initializers]
+/home/db811/openscad/submodules/mimalloc/src/os.c:379:41: warning: missing initializer for member '_MEMORY_BASIC_INFORMATION::PartitionId' [-Wmissing-field-initializers]
+/home/db811/openscad/submodules/mimalloc/src/os.c:379:41: warning: missing initializer for member '_MEMORY_BASIC_INFORMATION::RegionSize' [-Wmissing-field-initializers]
+/home/db811/openscad/submodules/mimalloc/src/os.c:379:41: warning: missing initializer for member '_MEMORY_BASIC_INFORMATION::State' [-Wmissing-field-initializers]
+/home/db811/openscad/submodules/mimalloc/src/os.c:379:41: warning: missing initializer for member '_MEMORY_BASIC_INFORMATION::Protect' [-Wmissing-field-initializers]
+/home/db811/openscad/submodules/mimalloc/src/os.c:379:41: warning: missing initializer for member '_MEMORY_BASIC_INFORMATION::Type' [-Wmissing-field-initializers]
+[183/346] Building CXX object CMakeFiles/OpenSCADLibInternal.dir/src/io/export_stl.cc.obj
+In file included from /home/db811/openscad/submodules/manifold/include/manifold/common.h:24,
+                 from /home/db811/openscad/submodules/manifold/include/manifold/manifold.h:20,
+                 from /home/db811/openscad/src/geometry/manifold/ManifoldGeometry.h:9,
+                 from /home/db811/openscad/src/io/export_stl.cc:52:
+/home/db811/openscad/submodules/manifold/include/manifold/optional_assert.h:68: warning: "ASSERT" redefined
+   68 | #define ASSERT(condition, EX)
+      | 
+In file included from /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix/include/double-conversion/double-conversion.h:31,
+                 from /home/db811/openscad/src/io/export_stl.cc:42:
+/home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix/include/double-conversion/utils.h:36: note: this is the location of the previous definition
+   36 | #define ASSERT(condition)         \
+      | 
+[346/346] Linking CXX executable openscad.exe
+Reading specs from /home/db811/openscad_deps/mxe/usr/lib/gcc/x86_64-w64-mingw32.static.posix/11.5.0/specs
+COLLECT_GCC=/home/db811/openscad_deps/mxe/usr/bin/x86_64-w64-mingw32.static.posix-g++
+COLLECT_LTO_WRAPPER=/home/db811/openscad_deps/mxe/usr/libexec/gcc/x86_64-w64-mingw32.static.posix/11.5.0/lto-wrapper
+Target: x86_64-w64-mingw32.static.posix
+Configured with: /home/db811/openscad_deps/mxe/tmp-gcc-x86_64-w64-mingw32.static.posix/gcc-11.5.0/configure ac_cv_prog_HAVE_DOXYGEN=false --enable-doc=no --enable-gtk-doc=no --enable-gtk-doc-html=no --enable-gtk-doc-pdf=no --docdir=/home/db811/openscad_deps/mxe/tmp-gcc-x86_64-w64-mingw32.static.posix/gcc-11.5.0.build_.sink --infodir=/home/db811/openscad_deps/mxe/tmp-gcc-x86_64-w64-mingw32.static.posix/gcc-11.5.0.build_.sink --mandir=/home/db811/openscad_deps/mxe/tmp-gcc-x86_64-w64-mingw32.static.posix/gcc-11.5.0.build_.sink --with-html-dir=/home/db811/openscad_deps/mxe/tmp-gcc-x86_64-w64-mingw32.static.posix/gcc-11.5.0.build_.sink --disable-doxygen --target=x86_64-w64-mingw32.static.posix --build=x86_64-pc-linux-gnu --prefix=/home/db811/openscad_deps/mxe/usr --libdir=/home/db811/openscad_deps/mxe/usr/lib --with-sysroot=/home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix --enable-languages=c,c++,objc,fortran --enable-version-specific-runtime-libs --with-gcc --with-gnu-ld --with-gnu-as --disable-nls --disable-shared --disable-multilib --without-x --disable-win32-registry --enable-threads=posix --enable-default-ssp --enable-libgomp --with-gmp=/home/db811/openscad_deps/mxe/usr/x86_64-pc-linux-gnu --with-isl=/home/db811/openscad_deps/mxe/usr/x86_64-pc-linux-gnu --with-mpc=/home/db811/openscad_deps/mxe/usr/x86_64-pc-linux-gnu --with-mpfr=/home/db811/openscad_deps/mxe/usr/x86_64-pc-linux-gnu --with-as=/home/db811/openscad_deps/mxe/usr/bin/x86_64-w64-mingw32.static.posix-as --with-ld=/home/db811/openscad_deps/mxe/usr/bin/x86_64-w64-mingw32.static.posix-ld --with-nm=/home/db811/openscad_deps/mxe/usr/bin/x86_64-w64-mingw32.static.posix-nm --enable-libstdcxx-time
+Thread model: posix
+Supported LTO compression algorithms: zlib
+gcc version 11.5.0 (GCC) 
+COMPILER_PATH=/home/db811/openscad_deps/mxe/usr/libexec/gcc/x86_64-w64-mingw32.static.posix/11.5.0/:/home/db811/openscad_deps/mxe/usr/libexec/gcc/x86_64-w64-mingw32.static.posix/11.5.0/:/home/db811/openscad_deps/mxe/usr/libexec/gcc/x86_64-w64-mingw32.static.posix/:/home/db811/openscad_deps/mxe/usr/lib/gcc/x86_64-w64-mingw32.static.posix/11.5.0/:/home/db811/openscad_deps/mxe/usr/lib/gcc/x86_64-w64-mingw32.static.posix/:/home/db811/openscad_deps/mxe/usr/lib/gcc/x86_64-w64-mingw32.static.posix/11.5.0/../../../../x86_64-w64-mingw32.static.posix/bin/
+LIBRARY_PATH=/home/db811/openscad_deps/mxe/usr/lib/gcc/x86_64-w64-mingw32.static.posix/11.5.0/:/home/db811/openscad_deps/mxe/usr/lib/gcc/x86_64-w64-mingw32.static.posix/11.5.0/../../../../x86_64-w64-mingw32.static.posix/lib/../lib/:/home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix/lib/../lib/:/home/db811/openscad_deps/mxe/usr/lib/gcc/x86_64-w64-mingw32.static.posix/11.5.0/../../../../x86_64-w64-mingw32.static.posix/lib/:/home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix/lib/
+COLLECT_GCC_OPTIONS='-frounding-math' '-Wno-attributes' '-O3' '-D' 'NDEBUG' '-mwindows' '-municode' '-v' '-o' 'openscad.exe' '-mtune=generic' '-march=x86-64' '-dumpdir' 'openscad.'
+ /home/db811/openscad_deps/mxe/usr/libexec/gcc/x86_64-w64-mingw32.static.posix/11.5.0/collect2 -plugin /home/db811/openscad_deps/mxe/usr/libexec/gcc/x86_64-w64-mingw32.static.posix/11.5.0/liblto_plugin.so -plugin-opt=/home/db811/openscad_deps/mxe/usr/libexec/gcc/x86_64-w64-mingw32.static.posix/11.5.0/lto-wrapper -plugin-opt=-fresolution=/tmp/ccNG8Hfg.res -plugin-opt=-pass-through=-lmingw32 -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lmoldname -plugin-opt=-pass-through=-lmingwex -plugin-opt=-pass-through=-lssp_nonshared -plugin-opt=-pass-through=-lssp -plugin-opt=-pass-through=-lmsvcrt -plugin-opt=-pass-through=-lkernel32 -plugin-opt=-pass-through=-lpthread -plugin-opt=-pass-through=-lgdi32 -plugin-opt=-pass-through=-lcomdlg32 -plugin-opt=-pass-through=-ladvapi32 -plugin-opt=-pass-through=-lshell32 -plugin-opt=-pass-through=-luser32 -plugin-opt=-pass-through=-lkernel32 -plugin-opt=-pass-through=-lmingw32 -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lmoldname -plugin-opt=-pass-through=-lmingwex -plugin-opt=-pass-through=-lssp_nonshared -plugin-opt=-pass-through=-lssp -plugin-opt=-pass-through=-lmsvcrt -plugin-opt=-pass-through=-lkernel32 --sysroot=/home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix -m i386pep --subsystem windows -Bdynamic -o openscad.exe /home/db811/openscad_deps/mxe/usr/lib/gcc/x86_64-w64-mingw32.static.posix/11.5.0/../../../../x86_64-w64-mingw32.static.posix/lib/../lib/crt2u.o /home/db811/openscad_deps/mxe/usr/lib/gcc/x86_64-w64-mingw32.static.posix/11.5.0/crtbegin.o -L/home/db811/openscad_deps/mxe/usr/lib/gcc/x86_64-w64-mingw32.static.posix/11.5.0 -L/home/db811/openscad_deps/mxe/usr/lib/gcc/x86_64-w64-mingw32.static.posix/11.5.0/../../../../x86_64-w64-mingw32.static.posix/lib/../lib -L/home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix/lib/../lib -L/home/db811/openscad_deps/mxe/usr/lib/gcc/x86_64-w64-mingw32.static.posix/11.5.0/../../../../x86_64-w64-mingw32.static.posix/lib -L/home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix/lib --stack 8388608 CMakeFiles/OpenSCADExe.dir/src/main_wrapper.cc.obj CMakeFiles/OpenSCADExe.dir/openscad_win32.rc.res CMakeFiles/OpenSCADExe.dir/home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix/qt5/lib/cmake/Qt5Gui/Qt5Gui_QGifPlugin_Import.cpp.obj CMakeFiles/OpenSCADExe.dir/home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix/qt5/lib/cmake/Qt5Gui/Qt5Gui_QICNSPlugin_Import.cpp.obj CMakeFiles/OpenSCADExe.dir/home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix/qt5/lib/cmake/Qt5Gui/Qt5Gui_QICOPlugin_Import.cpp.obj CMakeFiles/OpenSCADExe.dir/home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix/qt5/lib/cmake/Qt5Gui/Qt5Gui_QJp2Plugin_Import.cpp.obj CMakeFiles/OpenSCADExe.dir/home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix/qt5/lib/cmake/Qt5Gui/Qt5Gui_QJpegPlugin_Import.cpp.obj CMakeFiles/OpenSCADExe.dir/home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix/qt5/lib/cmake/Qt5Gui/Qt5Gui_QMngPlugin_Import.cpp.obj CMakeFiles/OpenSCADExe.dir/home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix/qt5/lib/cmake/Qt5Gui/Qt5Gui_QSvgIconPlugin_Import.cpp.obj CMakeFiles/OpenSCADExe.dir/home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix/qt5/lib/cmake/Qt5Gui/Qt5Gui_QSvgPlugin_Import.cpp.obj CMakeFiles/OpenSCADExe.dir/home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix/qt5/lib/cmake/Qt5Gui/Qt5Gui_QTgaPlugin_Import.cpp.obj CMakeFiles/OpenSCADExe.dir/home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix/qt5/lib/cmake/Qt5Gui/Qt5Gui_QTiffPlugin_Import.cpp.obj CMakeFiles/OpenSCADExe.dir/home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix/qt5/lib/cmake/Qt5Gui/Qt5Gui_QWbmpPlugin_Import.cpp.obj CMakeFiles/OpenSCADExe.dir/home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix/qt5/lib/cmake/Qt5Gui/Qt5Gui_QWebpPlugin_Import.cpp.obj CMakeFiles/OpenSCADExe.dir/home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix/qt5/lib/cmake/Qt5Gui/Qt5Gui_QWindowsIntegrationPlugin_Import.cpp.obj CMakeFiles/OpenSCADExe.dir/home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix/qt5/lib/cmake/Qt5Widgets/Qt5Widgets_QWindowsVistaStylePlugin_Import.cpp.obj CMakeFiles/OpenSCADExe.dir/home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix/qt5/lib/cmake/Qt5Network/Qt5Network_QGenericEnginePlugin_Import.cpp.obj CMakeFiles/OpenSCADExe.dir/home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix/qt5/lib/cmake/Qt5Multimedia/Qt5Multimedia_AudioCaptureServicePlugin_Import.cpp.obj CMakeFiles/OpenSCADExe.dir/home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix/qt5/lib/cmake/Qt5Multimedia/Qt5Multimedia_DSServicePlugin_Import.cpp.obj CMakeFiles/OpenSCADExe.dir/home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix/qt5/lib/cmake/Qt5Multimedia/Qt5Multimedia_QM3uPlaylistPlugin_Import.cpp.obj CMakeFiles/OpenSCADExe.dir/home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix/qt5/lib/cmake/Qt5Multimedia/Qt5Multimedia_QWindowsAudioPlugin_Import.cpp.obj --out-implib libopenscad.dll.a --major-image-version 0 --minor-image-version 0 libopenscadinternal.a libsvg.a submodules/mimalloc/libmimalloc-static.a -lpsapi -lshell32 -luser32 -ladvapi32 /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix/lib/libboost_regex-mt-x64.a /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix/lib/libboost_program_options-mt-x64.a /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix/lib/libopencsg.a /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix/lib/libGLEW.a /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix/lib/libGLEW.a /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix/lib/libopengl32.a /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix/lib/libglu32.a -lopengl32 -lglu32 /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix/lib/libgmpxx.a /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix/lib/libmpfr.a /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix/lib/libgmp.a /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix/lib/libzip.a -lharfbuzz -lfreetype -lbz2 -lpng16 -lharfbuzz_too -lfreetype_too -lglib-2.0 -lintl -liconv -latomic -lm -lws2_32 -lwinmm -lpcre2-8 -lole32 -lshlwapi -luuid -lz -lbrotlidec -lbrotlicommon -lsetupapi -lhid -lcairo -ldl -lgdi32 -lmsimg32 -ldwrite -ld2d1 -lwindowscodecs -lfontconfig -lpixman-1 -lstdc++ -lexpat -lharfbuzz -lfreetype -lbz2 -lpng16 -lharfbuzz_too -lfreetype_too -lglib-2.0 -lintl -liconv -latomic -lm -lws2_32 -lwinmm -lpcre2-8 -lole32 -lshlwapi -luuid -lz -lbrotlidec -lbrotlicommon -lsetupapi -lhid -lcairo -ldl -lgdi32 -lmsimg32 -ldwrite -ld2d1 -lwindowscodecs -lfontconfig -lpixman-1 -lstdc++ -lexpat /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix/lib/lib3MF.a -lbcrypt submodules/manifold/src/libmanifold.a /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix/lib/libtbb12.a /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix/qt5/lib/libQt5Multimedia.a /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix/qt5/plugins/mediaservice/libqtmedia_audioengine.a /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix/qt5/plugins/mediaservice/libdsengine.a /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix/qt5/plugins/playlistformats/libqtmultimedia_m3u.a /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix/qt5/plugins/audio/libqtaudio_windows.a /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix/qt5/lib/libQt5Multimedia.a /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix/qt5/plugins/mediaservice/libqtmedia_audioengine.a /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix/qt5/plugins/mediaservice/libdsengine.a /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix/qt5/plugins/playlistformats/libqtmultimedia_m3u.a /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix/qt5/plugins/audio/libqtaudio_windows.a /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix/lib/libmf.a /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix/lib/libmfplat.a /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix/lib/libmfuuid.a /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix/lib/libd3d9.a /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix/lib/libdxva2.a /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix/lib/libevr.a /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix/lib/libdmoguids.a /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix/lib/libmsdmo.a /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix/lib/libksuser.a /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix/qt5/lib//libQt5Multimedia.a /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix/lib/libstrmiids.a /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix/lib/libamstrmid.a /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix/qt5/lib/libQt5OpenGL.a /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix/qt5/lib/libQt5Concurrent.a /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix/qt5/lib/libQt5Network.a /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix/qt5/plugins/bearer/libqgenericbearer.a /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix/qt5/lib/libQt5Network.a /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix/qt5/plugins/bearer/libqgenericbearer.a /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix/qt5/lib//libQt5Network.a /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix/lib/libdnsapi.a /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix/lib/libssl.a /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix/lib/libcrypto.a /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix/lib/libcrypt32.a /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix/qt5/lib/libqscintilla2_qt5.a /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix/qt5/lib/libQt5DBus.a /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix/lib/libdbus-1.a /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix/lib/libiphlpapi.a /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix/lib/libdbghelp.a /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix/qt5/lib/libQt5Widgets.a /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix/qt5/lib/libQt5Svg.a /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix/qt5/plugins/imageformats/libqsvg.a /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix/qt5/lib/libQt5Gui.a /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix/qt5/plugins/styles/libqwindowsvistastyle.a /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix/qt5/plugins/imageformats/libqgif.a /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix/qt5/plugins/imageformats/libqicns.a /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix/qt5/plugins/imageformats/libqico.a /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix/qt5/plugins/imageformats/libqjp2.a /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix/qt5/plugins/imageformats/libqjpeg.a /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix/qt5/plugins/imageformats/libqmng.a /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix/qt5/plugins/iconengines/libqsvgicon.a /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix/qt5/plugins/imageformats/libqtga.a /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix/qt5/plugins/imageformats/libqtiff.a /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix/qt5/plugins/imageformats/libqwbmp.a /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix/qt5/plugins/imageformats/libqwebp.a /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix/qt5/plugins/platforms/libqwindows.a /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix/qt5/lib/libQt5EventDispatcherSupport.a /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix/qt5/lib/libQt5FontDatabaseSupport.a /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix/qt5/lib/libQt5ThemeSupport.a /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix/qt5/lib/libQt5AccessibilitySupport.a /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix/qt5/lib/libQt5WindowsUIAutomationSupport.a /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix/qt5/lib/libQt5Widgets.a /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix/qt5/lib/libQt5Svg.a /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix/qt5/plugins/imageformats/libqsvg.a /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix/qt5/lib/libQt5Gui.a /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix/qt5/plugins/styles/libqwindowsvistastyle.a /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix/qt5/plugins/imageformats/libqgif.a /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix/qt5/plugins/imageformats/libqicns.a /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix/qt5/plugins/imageformats/libqico.a /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix/qt5/plugins/imageformats/libqjp2.a /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix/qt5/plugins/imageformats/libqjpeg.a /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix/qt5/plugins/imageformats/libqmng.a /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix/qt5/plugins/iconengines/libqsvgicon.a /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix/qt5/plugins/imageformats/libqtga.a /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix/qt5/plugins/imageformats/libqtiff.a /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix/qt5/plugins/imageformats/libqwbmp.a /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix/qt5/plugins/imageformats/libqwebp.a /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix/qt5/plugins/platforms/libqwindows.a /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix/qt5/lib/libQt5EventDispatcherSupport.a /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix/qt5/lib/libQt5FontDatabaseSupport.a /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix/qt5/lib/libQt5ThemeSupport.a /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix/qt5/lib/libQt5AccessibilitySupport.a /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix/qt5/lib/libQt5WindowsUIAutomationSupport.a /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix/lib/libjasper.a /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix/lib/libmng.a /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix/lib/liblcms2.a /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix/qt5/lib//libQt5Svg.a /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix/qt5/lib//libQt5Widgets.a /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix/lib/libuxtheme.a /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix/lib/libtiff.a /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix/lib/liblzma.a /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix/lib/libjpeg.a /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix/lib/libwebpmux.a /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix/lib/libwebpdemux.a /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix/lib/libwebp.a /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix/lib/libsharpyuv.a /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix/lib/libdwmapi.a /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix/lib/libwinspool.a /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix/lib/libwtsapi32.a /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix/qt5/lib//libQt5EventDispatcherSupport.a /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix/qt5/lib//libQt5FontDatabaseSupport.a /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix/qt5/lib//libQt5ThemeSupport.a /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix/qt5/lib//libQt5AccessibilitySupport.a /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix/qt5/lib//libQt5WindowsUIAutomationSupport.a /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix/lib/libfontconfig.a /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix/lib/libexpat.a /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix/lib/libdwrite.a /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix/lib/libd2d1.a /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix/qt5/lib/libQt5Core.a /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix/qt5/lib/libqtmain.a /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix/qt5/lib//libQt5Gui.a /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix/lib/libd3d11.a /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix/lib/libdxgi.a /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix/lib/libdxguid.a /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix/lib/libharfbuzz.a /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix/lib/libfreetype.a /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix/lib/libbz2.a /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix/lib/libpng16.a /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix/lib/libharfbuzz_too.a /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix/lib/libfreetype_too.a /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix/lib/libbrotlidec.a /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix/lib/libbrotlicommon.a /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix/lib/libglib-2.0.a /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix/lib/libintl.a /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix/lib/libiconv.a -latomic /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix/lib/libm.a /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix/lib/libpcre2-8.a /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix/lib/libshlwapi.a /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix/lib/libgdi32.a /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix/lib/libcomdlg32.a /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix/lib/liboleaut32.a /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix/lib/libimm32.a /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix/qt5/lib//libQt5Core.a /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix/lib/libmpr.a /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix/lib/libuserenv.a /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix/lib/libversion.a /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix/lib/libdouble-conversion.a /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix/lib/libz.a /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix/lib/libpcre2-16.a /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix/lib/libzstd.a /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix/lib/libnetapi32.a /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix/lib/libws2_32.a /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix/lib/libadvapi32.a /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix/lib/libkernel32.a /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix/lib/libole32.a /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix/lib/libshell32.a /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix/lib/libuuid.a /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix/lib/libuser32.a /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix/lib/libwinmm.a /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix/lib/libxml2.a submodules/Clipper2/CPP/libClipper2.a -lm /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix/lib/libz.a -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32 -lstdc++ -lmingw32 -lgcc -lmoldname -lmingwex -lssp_nonshared -lssp -lmsvcrt -lkernel32 -lpthread -lgdi32 -lcomdlg32 -ladvapi32 -lshell32 -luser32 -lkernel32 -lmingw32 -lgcc -lmoldname -lmingwex -lssp_nonshared -lssp -lmsvcrt -lkernel32 /home/db811/openscad_deps/mxe/usr/lib/gcc/x86_64-w64-mingw32.static.posix/11.5.0/crtend.o
+COLLECT_GCC_OPTIONS='-frounding-math' '-Wno-attributes' '-O3' '-D' 'NDEBUG' '-mwindows' '-municode' '-v' '-o' 'openscad.exe' '-mtune=generic' '-march=x86-64' '-dumpdir' 'openscad.'
+Compiling language files (CWD = /home/db811/openscad)...
+msgfmt -c -v -o ./locale/cs/LC_MESSAGES/openscad.mo ./locale/cs.po
+235 translated messages, 118 fuzzy translations, 316 untranslated messages.
+msgfmt -c -v -o ./locale/de/LC_MESSAGES/openscad.mo ./locale/de.po
+449 translated messages, 70 fuzzy translations, 150 untranslated messages.
+msgfmt -c -v -o ./locale/es/LC_MESSAGES/openscad.mo ./locale/es.po
+264 translated messages, 33 fuzzy translations, 372 untranslated messages.
+msgfmt -c -v -o ./locale/fr/LC_MESSAGES/openscad.mo ./locale/fr.po
+366 translated messages, 114 fuzzy translations, 189 untranslated messages.
+msgfmt -c -v -o ./locale/hy/LC_MESSAGES/openscad.mo ./locale/hy.po
+368 translated messages, 110 fuzzy translations, 191 untranslated messages.
+msgfmt -c -v -o ./locale/it/LC_MESSAGES/openscad.mo ./locale/it.po
+495 translated messages, 52 fuzzy translations, 122 untranslated messages.
+msgfmt -c -v -o ./locale/ka/LC_MESSAGES/openscad.mo ./locale/ka.po
+459 translated messages, 61 fuzzy translations, 149 untranslated messages.
+msgfmt -c -v -o ./locale/pl/LC_MESSAGES/openscad.mo ./locale/pl.po
+392 translated messages, 121 fuzzy translations, 156 untranslated messages.
+msgfmt -c -v -o ./locale/pt_BR/LC_MESSAGES/openscad.mo ./locale/pt_BR.po
+404 translated messages, 69 fuzzy translations, 196 untranslated messages.
+msgfmt -c -v -o ./locale/ru/LC_MESSAGES/openscad.mo ./locale/ru.po
+459 translated messages, 59 fuzzy translations, 151 untranslated messages.
+msgfmt -c -v -o ./locale/tr/LC_MESSAGES/openscad.mo ./locale/tr.po
+442 translated messages, 71 fuzzy translations, 156 untranslated messages.
+msgfmt -c -v -o ./locale/uk/LC_MESSAGES/openscad.mo ./locale/uk.po
+271 translated messages, 113 fuzzy translations, 285 untranslated messages.
+msgfmt -c -v -o ./locale/zh_CN/LC_MESSAGES/openscad.mo ./locale/zh_CN.po
+420 translated messages, 77 fuzzy translations, 172 untranslated messages.
+msgfmt -c -v -o ./locale/zh_TW/LC_MESSAGES/openscad.mo ./locale/zh_TW.po
+391 translated messages, 109 fuzzy translations, 169 untranslated messages.
+Creating packages with CPack...
+CPack: Create package using ZIP
+CPack: Install projects
+CPack: - Install project: OpenSCAD []
+CPack: Create package
+CPack: - package: /home/db811/openscad/mingw64.static.posix/OpenSCAD-2025.12.12-x86-64.zip generated.
+CPack: Create package using NSIS
+CPack: Install projects
+CPack: - Install project: OpenSCAD []
+CPack: Create package
+CPack: - package: /home/db811/openscad/mingw64.static.posix/OpenSCAD-2025.12.12-x86-64-Installer.exe generated.
+Packaging Complete!
+db811@debian:~/openscad$ 
+

@@ -1,0 +1,1447 @@
+
+db811@debian:~/openscad$ python --version
+Python 3.13.5
+db811@debian:~/openscad$ sudo apt-get install \
+db811@debian:~/openscad$ sudo apt-get install \
+    autoconf \
+    automake \\
+    autopoint \
+    bash \\
+    bison \
+    bzip2 \
+    flex \
+    g++ \ultilib \
+    g++-multilib \
+    gettext \
+    git \ \
+    gperf \l \
+    intltool \i386 \
+    libc6-dev-i386 \
+    libclang-dev \.0-dev \
+    libgdk-pixbuf2.0-dev \
+    libltdl-dev \
+    libgl-dev \v \
+    libpcre2-dev \
+    libssl-dev \\
+    libtool-bin \-perl \
+    libxml-parser-perl \
+    lzip \
+    make \l \
+    openssl \l \
+    p7zip-full \
+    patch \
+    perl \3 \
+    python3 \ako \
+    python3-mako \ing \
+    python3-packaging \es \
+    python3-pkg-resources \
+    python3-setuptools \
+    python-is-python3 \
+    ruby \
+    sed \e3 \
+    sqlite3 \
+    unzip \
+    wget \ls
+    xz-utils
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+Package libgdk-pixbuf2.0-dev is not available, but is referred to by another package.
+This may mean that the package is missing, has been obsoleted, or
+is only available from another source
+However the following packages replace it:
+  libgdk-pixbuf-xlib-2.0-dev
+
+E: Package 'libgdk-pixbuf2.0-dev' has no installation candidate
+db811@debian:~/openscad$ 
+db811@debian:~/openscad$ 
+db811@debian:~/openscad$ 
+db811@debian:~/openscad$ sudo apt-get install \
+    autoconf \
+    automake \
+    autopoint \
+    bash \
+    bison \
+    bzip2 \
+    flex \
+    g++ \
+    g++-multilib \
+    gettext \
+    git \
+    gperf \
+    intltool \
+    libc6-dev-i386 \
+    libclang-dev \
+#    libgdk-pixbuf2.0-dev \   # Problem on Debian
+    libgdk-pixbuf-2.0-dev \
+    libltdl-dev \
+    libgl-dev \
+    libpcre2-dev \
+    libssl-dev \
+    libtool-bin \
+    libxml-parser-perl \
+    lzip \
+    make \
+    openssl \
+    p7zip-full \
+    patch \
+    perl \
+    python3 \
+    python3-mako \
+    python3-packaging \
+    python3-pkg-resources \
+    python3-setuptools \
+    python-is-python3 \
+    ruby \
+    sed \
+    sqlite3 \
+    unzip \
+    xz-utils
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+bash is already the newest version (5.2.37-2+b5).
+bison is already the newest version (2:3.8.2+dfsg-1+b2).
+bzip2 is already the newest version (1.0.8-6).
+flex is already the newest version (2.6.4-8.2+b4).
+g++ is already the newest version (4:14.2.0-1).
+g++ set to manually installed.
+gettext is already the newest version (0.23.1-2).
+git is already the newest version (1:2.47.3-0+deb13u1).
+The following additional packages will be installed:
+  autotools-dev g++-14-multilib gcc-14-multilib gcc-multilib lib32asan8 lib32atomic1 lib32gcc-14-dev lib32gcc-s1 lib32gomp1 lib32itm1 lib32quadmath0 lib32stdc++-14-dev lib32stdc++6 lib32ubsan1 libc6-dev-x32 libc6-i386 libc6-x32
+  libclang-19-dev libclang-common-19-dev libclang-rt-19-dev libclang1-19 libobjc-14-dev libobjc4 libx32asan8 libx32atomic1 libx32gcc-14-dev libx32gcc-s1 libx32gomp1 libx32itm1 libx32quadmath0 libx32stdc++-14-dev libx32stdc++6
+  libx32ubsan1
+Suggested packages:
+  autoconf-archive gnu-standards autoconf-doc libtool lib32stdc++6-14-dbg libx32stdc++6-14-dbg
+The following NEW packages will be installed:
+  autoconf automake autopoint autotools-dev g++-14-multilib g++-multilib gcc-14-multilib gcc-multilib gperf intltool lib32asan8 lib32atomic1 lib32gcc-14-dev lib32gcc-s1 lib32gomp1 lib32itm1 lib32quadmath0 lib32stdc++-14-dev
+  lib32stdc++6 lib32ubsan1 libc6-dev-i386 libc6-dev-x32 libc6-i386 libc6-x32 libclang-19-dev libclang-common-19-dev libclang-dev libclang-rt-19-dev libclang1-19 libobjc-14-dev libobjc4 libx32asan8 libx32atomic1 libx32gcc-14-dev
+  libx32gcc-s1 libx32gomp1 libx32itm1 libx32quadmath0 libx32stdc++-14-dev libx32stdc++6 libx32ubsan1
+0 upgraded, 41 newly installed, 0 to remove and 0 not upgraded.
+Need to get 67.5 MB of archives.
+After this operation, 526 MB of additional disk space will be used.
+Do you want to continue? [Y/n] Y
+Get:1 http://debian.snt.utwente.nl/debian trixie/main amd64 autoconf all 2.72-3.1 [494 kB]
+Get:2 http://debian.snt.utwente.nl/debian trixie/main amd64 autotools-dev all 20240727.1 [60.2 kB]
+Get:3 http://debian.snt.utwente.nl/debian trixie/main amd64 automake all 1:1.17-4 [862 kB]
+Get:4 http://debian.snt.utwente.nl/debian trixie/main amd64 autopoint all 0.23.1-2 [770 kB]
+Get:5 http://debian.snt.utwente.nl/debian trixie/main amd64 libc6-i386 amd64 2.41-12 [2,540 kB]
+Get:6 http://debian.snt.utwente.nl/debian trixie/main amd64 libc6-dev-i386 amd64 2.41-12 [1,427 kB]
+Get:7 http://debian.snt.utwente.nl/debian trixie/main amd64 libc6-x32 amd64 2.41-12 [2,669 kB]
+Get:8 http://debian.snt.utwente.nl/debian trixie/main amd64 libc6-dev-x32 amd64 2.41-12 [1,594 kB]
+Get:9 http://debian.snt.utwente.nl/debian trixie/main amd64 lib32gcc-s1 amd64 14.2.0-19 [88.4 kB]
+Get:10 http://debian.snt.utwente.nl/debian trixie/main amd64 libx32gcc-s1 amd64 14.2.0-19 [72.8 kB]
+Get:11 http://debian.snt.utwente.nl/debian trixie/main amd64 lib32gomp1 amd64 14.2.0-19 [138 kB]
+Get:12 http://debian.snt.utwente.nl/debian trixie/main amd64 libx32gomp1 amd64 14.2.0-19 [134 kB]
+Get:13 http://debian.snt.utwente.nl/debian trixie/main amd64 lib32itm1 amd64 14.2.0-19 [27.5 kB]
+Get:14 http://debian.snt.utwente.nl/debian trixie/main amd64 libx32itm1 amd64 14.2.0-19 [26.2 kB]
+Get:15 http://debian.snt.utwente.nl/debian trixie/main amd64 lib32atomic1 amd64 14.2.0-19 [7,700 B]
+Get:16 http://debian.snt.utwente.nl/debian trixie/main amd64 libx32atomic1 amd64 14.2.0-19 [9,268 B]
+Get:17 http://debian.snt.utwente.nl/debian trixie/main amd64 lib32asan8 amd64 14.2.0-19 [2,607 kB]
+Get:18 http://debian.snt.utwente.nl/debian trixie/main amd64 libx32asan8 amd64 14.2.0-19 [2,587 kB]
+Get:19 http://debian.snt.utwente.nl/debian trixie/main amd64 lib32stdc++6 amd64 14.2.0-19 [745 kB]
+Get:20 http://debian.snt.utwente.nl/debian trixie/main amd64 lib32ubsan1 amd64 14.2.0-19 [1,053 kB]
+Get:21 http://debian.snt.utwente.nl/debian trixie/main amd64 libx32stdc++6 amd64 14.2.0-19 [698 kB]
+Get:22 http://debian.snt.utwente.nl/debian trixie/main amd64 libx32ubsan1 amd64 14.2.0-19 [1,064 kB]
+Get:23 http://debian.snt.utwente.nl/debian trixie/main amd64 lib32quadmath0 amd64 14.2.0-19 [231 kB]
+Get:24 http://debian.snt.utwente.nl/debian trixie/main amd64 libx32quadmath0 amd64 14.2.0-19 [148 kB]
+Get:25 http://debian.snt.utwente.nl/debian trixie/main amd64 lib32gcc-14-dev amd64 14.2.0-19 [2,419 kB]
+Get:26 http://debian.snt.utwente.nl/debian trixie/main amd64 libx32gcc-14-dev amd64 14.2.0-19 [2,186 kB]
+Get:27 http://debian.snt.utwente.nl/debian trixie/main amd64 gcc-14-multilib amd64 14.2.0-19 [1,020 B]
+Get:28 http://debian.snt.utwente.nl/debian trixie/main amd64 lib32stdc++-14-dev amd64 14.2.0-19 [1,069 kB]
+Get:29 http://debian.snt.utwente.nl/debian trixie/main amd64 libx32stdc++-14-dev amd64 14.2.0-19 [1,003 kB]
+Get:30 http://debian.snt.utwente.nl/debian trixie/main amd64 g++-14-multilib amd64 14.2.0-19 [1,028 B]
+Get:31 http://debian.snt.utwente.nl/debian trixie/main amd64 gcc-multilib amd64 4:14.2.0-1 [1,600 B]
+Get:32 http://debian.snt.utwente.nl/debian trixie/main amd64 g++-multilib amd64 4:14.2.0-1 [1,028 B]
+Get:33 http://debian.snt.utwente.nl/debian trixie/main amd64 gperf amd64 3.2.1-1 [153 kB]
+Get:34 http://debian.snt.utwente.nl/debian trixie/main amd64 intltool all 0.51.0-7 [46.0 kB]
+Get:35 http://debian.snt.utwente.nl/debian trixie/main amd64 libobjc4 amd64 14.2.0-19 [43.3 kB]
+Get:36 http://debian.snt.utwente.nl/debian trixie/main amd64 libobjc-14-dev amd64 14.2.0-19 [173 kB]
+Get:37 http://debian.snt.utwente.nl/debian trixie/main amd64 libclang1-19 amd64 1:19.1.7-3+b1 [7,623 kB]
+Get:38 http://debian.snt.utwente.nl/debian trixie/main amd64 libclang-common-19-dev amd64 1:19.1.7-3+b1 [740 kB]
+Get:39 http://debian.snt.utwente.nl/debian trixie/main amd64 libclang-19-dev amd64 1:19.1.7-3+b1 [28.3 MB]
+Get:40 http://debian.snt.utwente.nl/debian trixie/main amd64 libclang-dev amd64 1:19.0-63 [5,828 B]
+Get:41 http://debian.snt.utwente.nl/debian trixie/main amd64 libclang-rt-19-dev amd64 1:19.1.7-3+b1 [3,690 kB]
+Fetched 67.5 MB in 3s (21.9 MB/s)              
+Extracting templates from packages: 100%
+Selecting previously unselected package autoconf.
+(Reading database ... 185838 files and directories currently installed.)
+Preparing to unpack .../00-autoconf_2.72-3.1_all.deb ...
+Unpacking autoconf (2.72-3.1) ...
+Selecting previously unselected package autotools-dev.
+Preparing to unpack .../01-autotools-dev_20240727.1_all.deb ...
+Unpacking autotools-dev (20240727.1) ...
+Selecting previously unselected package automake.
+Preparing to unpack .../02-automake_1%3a1.17-4_all.deb ...
+Unpacking automake (1:1.17-4) ...
+Selecting previously unselected package autopoint.
+Preparing to unpack .../03-autopoint_0.23.1-2_all.deb ...
+Unpacking autopoint (0.23.1-2) ...
+Selecting previously unselected package libc6-i386.
+Preparing to unpack .../04-libc6-i386_2.41-12_amd64.deb ...
+Unpacking libc6-i386 (2.41-12) ...
+Selecting previously unselected package libc6-dev-i386.
+Preparing to unpack .../05-libc6-dev-i386_2.41-12_amd64.deb ...
+Unpacking libc6-dev-i386 (2.41-12) ...
+Selecting previously unselected package libc6-x32.
+Preparing to unpack .../06-libc6-x32_2.41-12_amd64.deb ...
+Unpacking libc6-x32 (2.41-12) ...
+Selecting previously unselected package libc6-dev-x32.
+Preparing to unpack .../07-libc6-dev-x32_2.41-12_amd64.deb ...
+Unpacking libc6-dev-x32 (2.41-12) ...
+Selecting previously unselected package lib32gcc-s1.
+Preparing to unpack .../08-lib32gcc-s1_14.2.0-19_amd64.deb ...
+Unpacking lib32gcc-s1 (14.2.0-19) ...
+Selecting previously unselected package libx32gcc-s1.
+Preparing to unpack .../09-libx32gcc-s1_14.2.0-19_amd64.deb ...
+Unpacking libx32gcc-s1 (14.2.0-19) ...
+Selecting previously unselected package lib32gomp1.
+Preparing to unpack .../10-lib32gomp1_14.2.0-19_amd64.deb ...
+Unpacking lib32gomp1 (14.2.0-19) ...
+Selecting previously unselected package libx32gomp1.
+Preparing to unpack .../11-libx32gomp1_14.2.0-19_amd64.deb ...
+Unpacking libx32gomp1 (14.2.0-19) ...
+Selecting previously unselected package lib32itm1.
+Preparing to unpack .../12-lib32itm1_14.2.0-19_amd64.deb ...
+Unpacking lib32itm1 (14.2.0-19) ...
+Selecting previously unselected package libx32itm1.
+Preparing to unpack .../13-libx32itm1_14.2.0-19_amd64.deb ...
+Unpacking libx32itm1 (14.2.0-19) ...
+Selecting previously unselected package lib32atomic1.
+Preparing to unpack .../14-lib32atomic1_14.2.0-19_amd64.deb ...
+Unpacking lib32atomic1 (14.2.0-19) ...
+Selecting previously unselected package libx32atomic1.
+Preparing to unpack .../15-libx32atomic1_14.2.0-19_amd64.deb ...
+Unpacking libx32atomic1 (14.2.0-19) ...
+Selecting previously unselected package lib32asan8.
+Preparing to unpack .../16-lib32asan8_14.2.0-19_amd64.deb ...
+Unpacking lib32asan8 (14.2.0-19) ...
+Selecting previously unselected package libx32asan8.
+Preparing to unpack .../17-libx32asan8_14.2.0-19_amd64.deb ...
+Unpacking libx32asan8 (14.2.0-19) ...
+Selecting previously unselected package lib32stdc++6.
+Preparing to unpack .../18-lib32stdc++6_14.2.0-19_amd64.deb ...
+Unpacking lib32stdc++6 (14.2.0-19) ...
+Selecting previously unselected package lib32ubsan1.
+Preparing to unpack .../19-lib32ubsan1_14.2.0-19_amd64.deb ...
+Unpacking lib32ubsan1 (14.2.0-19) ...
+Selecting previously unselected package libx32stdc++6.
+Preparing to unpack .../20-libx32stdc++6_14.2.0-19_amd64.deb ...
+Unpacking libx32stdc++6 (14.2.0-19) ...
+Selecting previously unselected package libx32ubsan1.
+Preparing to unpack .../21-libx32ubsan1_14.2.0-19_amd64.deb ...
+Unpacking libx32ubsan1 (14.2.0-19) ...
+Selecting previously unselected package lib32quadmath0.
+Preparing to unpack .../22-lib32quadmath0_14.2.0-19_amd64.deb ...
+Unpacking lib32quadmath0 (14.2.0-19) ...
+Selecting previously unselected package libx32quadmath0.
+Preparing to unpack .../23-libx32quadmath0_14.2.0-19_amd64.deb ...
+Unpacking libx32quadmath0 (14.2.0-19) ...
+Selecting previously unselected package lib32gcc-14-dev.
+Preparing to unpack .../24-lib32gcc-14-dev_14.2.0-19_amd64.deb ...
+Unpacking lib32gcc-14-dev (14.2.0-19) ...
+Selecting previously unselected package libx32gcc-14-dev.
+Preparing to unpack .../25-libx32gcc-14-dev_14.2.0-19_amd64.deb ...
+Unpacking libx32gcc-14-dev (14.2.0-19) ...
+Selecting previously unselected package gcc-14-multilib.
+Preparing to unpack .../26-gcc-14-multilib_14.2.0-19_amd64.deb ...
+Unpacking gcc-14-multilib (14.2.0-19) ...
+Selecting previously unselected package lib32stdc++-14-dev.
+Preparing to unpack .../27-lib32stdc++-14-dev_14.2.0-19_amd64.deb ...
+Unpacking lib32stdc++-14-dev (14.2.0-19) ...
+Selecting previously unselected package libx32stdc++-14-dev.
+Preparing to unpack .../28-libx32stdc++-14-dev_14.2.0-19_amd64.deb ...
+Unpacking libx32stdc++-14-dev (14.2.0-19) ...
+Selecting previously unselected package g++-14-multilib.
+Preparing to unpack .../29-g++-14-multilib_14.2.0-19_amd64.deb ...
+Unpacking g++-14-multilib (14.2.0-19) ...
+Selecting previously unselected package gcc-multilib.
+Preparing to unpack .../30-gcc-multilib_4%3a14.2.0-1_amd64.deb ...
+Unpacking gcc-multilib (4:14.2.0-1) ...
+Selecting previously unselected package g++-multilib.
+Preparing to unpack .../31-g++-multilib_4%3a14.2.0-1_amd64.deb ...
+Unpacking g++-multilib (4:14.2.0-1) ...
+Selecting previously unselected package gperf.
+Preparing to unpack .../32-gperf_3.2.1-1_amd64.deb ...
+Unpacking gperf (3.2.1-1) ...
+Selecting previously unselected package intltool.
+Preparing to unpack .../33-intltool_0.51.0-7_all.deb ...
+Unpacking intltool (0.51.0-7) ...
+Selecting previously unselected package libobjc4:amd64.
+Preparing to unpack .../34-libobjc4_14.2.0-19_amd64.deb ...
+Unpacking libobjc4:amd64 (14.2.0-19) ...
+Selecting previously unselected package libobjc-14-dev:amd64.
+Preparing to unpack .../35-libobjc-14-dev_14.2.0-19_amd64.deb ...
+Unpacking libobjc-14-dev:amd64 (14.2.0-19) ...
+Selecting previously unselected package libclang1-19.
+Preparing to unpack .../36-libclang1-19_1%3a19.1.7-3+b1_amd64.deb ...
+Unpacking libclang1-19 (1:19.1.7-3+b1) ...
+Selecting previously unselected package libclang-common-19-dev:amd64.
+Preparing to unpack .../37-libclang-common-19-dev_1%3a19.1.7-3+b1_amd64.deb ...
+Unpacking libclang-common-19-dev:amd64 (1:19.1.7-3+b1) ...
+Selecting previously unselected package libclang-19-dev.
+Preparing to unpack .../38-libclang-19-dev_1%3a19.1.7-3+b1_amd64.deb ...
+Unpacking libclang-19-dev (1:19.1.7-3+b1) ...
+Selecting previously unselected package libclang-dev.
+Preparing to unpack .../39-libclang-dev_1%3a19.0-63_amd64.deb ...
+Unpacking libclang-dev (1:19.0-63) ...
+Selecting previously unselected package libclang-rt-19-dev:amd64.
+Preparing to unpack .../40-libclang-rt-19-dev_1%3a19.1.7-3+b1_amd64.deb ...
+Unpacking libclang-rt-19-dev:amd64 (1:19.1.7-3+b1) ...
+Setting up libclang1-19 (1:19.1.7-3+b1) ...
+Setting up libclang-common-19-dev:amd64 (1:19.1.7-3+b1) ...
+Setting up libobjc4:amd64 (14.2.0-19) ...
+Setting up libobjc-14-dev:amd64 (14.2.0-19) ...
+Setting up gperf (3.2.1-1) ...
+Setting up libc6-x32 (2.41-12) ...
+Setting up autotools-dev (20240727.1) ...
+Setting up autopoint (0.23.1-2) ...
+Setting up libx32gomp1 (14.2.0-19) ...
+Setting up autoconf (2.72-3.1) ...
+Setting up libc6-i386 (2.41-12) ...
+Setting up libx32quadmath0 (14.2.0-19) ...
+Setting up libclang-19-dev (1:19.1.7-3+b1) ...
+Setting up lib32atomic1 (14.2.0-19) ...
+Setting up libx32atomic1 (14.2.0-19) ...
+Setting up automake (1:1.17-4) ...
+update-alternatives: using /usr/bin/automake-1.17 to provide /usr/bin/automake (automake) in auto mode
+Setting up libc6-dev-i386 (2.41-12) ...
+Setting up lib32itm1 (14.2.0-19) ...
+Setting up libclang-dev (1:19.0-63) ...
+Setting up libx32gcc-s1 (14.2.0-19) ...
+Setting up libx32itm1 (14.2.0-19) ...
+Setting up libx32asan8 (14.2.0-19) ...
+Setting up libc6-dev-x32 (2.41-12) ...
+Setting up lib32gomp1 (14.2.0-19) ...
+Setting up lib32gcc-s1 (14.2.0-19) ...
+Setting up lib32stdc++6 (14.2.0-19) ...
+Setting up lib32asan8 (14.2.0-19) ...
+Setting up intltool (0.51.0-7) ...
+Setting up libclang-rt-19-dev:amd64 (1:19.1.7-3+b1) ...
+Setting up lib32quadmath0 (14.2.0-19) ...
+Setting up libx32stdc++6 (14.2.0-19) ...
+Setting up libx32ubsan1 (14.2.0-19) ...
+Setting up lib32ubsan1 (14.2.0-19) ...
+Setting up libx32gcc-14-dev (14.2.0-19) ...
+Setting up lib32gcc-14-dev (14.2.0-19) ...
+Setting up lib32stdc++-14-dev (14.2.0-19) ...
+Setting up libx32stdc++-14-dev (14.2.0-19) ...
+Setting up gcc-14-multilib (14.2.0-19) ...
+Setting up g++-14-multilib (14.2.0-19) ...
+Setting up gcc-multilib (4:14.2.0-1) ...
+Setting up g++-multilib (4:14.2.0-1) ...
+Processing triggers for base-files (13.8+deb13u2) ...
+Processing triggers for libc-bin (2.41-12) ...
+Processing triggers for man-db (2.13.1-1) ...
+bash: libgdk-pixbuf-2.0-dev: command not found
+db811@debian:~/openscad$ 
+db811@debian:~/openscad$ sudo apt-get install itstool nsis libssl-dev
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+The following additional packages will be installed:
+  nsis-common python3-libxml2
+Suggested packages:
+  libssl-doc mingw-w64 nsis-doc nsis-pluginapi wine
+The following NEW packages will be installed:
+  itstool libssl-dev nsis nsis-common python3-libxml2
+0 upgraded, 5 newly installed, 0 to remove and 0 not upgraded.
+Need to get 4,925 kB of archives.
+After this operation, 25.5 MB of additional disk space will be used.
+Do you want to continue? [Y/n] Y
+Get:1 http://debian.snt.utwente.nl/debian trixie/main amd64 python3-libxml2 amd64 2.12.7+dfsg+really2.9.14-2.1+deb13u2 [189 kB]
+Get:2 http://debian.snt.utwente.nl/debian trixie/main amd64 itstool all 2.0.6-4 [40.8 kB]
+Get:3 http://debian.snt.utwente.nl/debian trixie/main amd64 libssl-dev amd64 3.5.4-1~deb13u1 [2,957 kB]
+Get:4 http://debian.snt.utwente.nl/debian trixie/main amd64 nsis-common all 3.11-1 [1,168 kB]
+Get:5 http://debian.snt.utwente.nl/debian trixie/main amd64 nsis amd64 3.11-1 [569 kB]
+Fetched 4,925 kB in 0s (29.2 MB/s)
+Selecting previously unselected package python3-libxml2:amd64.
+(Reading database ... 188881 files and directories currently installed.)
+Preparing to unpack .../python3-libxml2_2.12.7+dfsg+really2.9.14-2.1+deb13u2_amd64.deb ...
+Unpacking python3-libxml2:amd64 (2.12.7+dfsg+really2.9.14-2.1+deb13u2) ...
+Selecting previously unselected package itstool.
+Preparing to unpack .../itstool_2.0.6-4_all.deb ...
+Unpacking itstool (2.0.6-4) ...
+Selecting previously unselected package libssl-dev:amd64.
+Preparing to unpack .../libssl-dev_3.5.4-1~deb13u1_amd64.deb ...
+Unpacking libssl-dev:amd64 (3.5.4-1~deb13u1) ...
+Selecting previously unselected package nsis-common.
+Preparing to unpack .../nsis-common_3.11-1_all.deb ...
+Unpacking nsis-common (3.11-1) ...
+Selecting previously unselected package nsis.
+Preparing to unpack .../archives/nsis_3.11-1_amd64.deb ...
+Unpacking nsis (3.11-1) ...
+Setting up nsis-common (3.11-1) ...
+Setting up python3-libxml2:amd64 (2.12.7+dfsg+really2.9.14-2.1+deb13u2) ...
+Setting up libssl-dev:amd64 (3.5.4-1~deb13u1) ...
+Setting up itstool (2.0.6-4) ...
+Setting up nsis (3.11-1) ...
+Processing triggers for man-db (2.13.1-1) ...
+db811@debian:~/openscad$ which libtool
+db811@debian:~/openscad$ which glibtool
+db811@debian:~/openscad$ ls /usr/bin/*libto*
+ls: cannot access '/usr/bin/*libto*': No such file or directory
+db811@debian:~/openscad$ sudo apt-get install libtool
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+The following additional packages will be installed:
+  libltdl-dev
+Suggested packages:
+  libtool-doc gfortran | fortran95-compiler gcj-jdk
+The following NEW packages will be installed:
+  libltdl-dev libtool
+0 upgraded, 2 newly installed, 0 to remove and 0 not upgraded.
+Need to get 707 kB of archives.
+After this operation, 2,271 kB of additional disk space will be used.
+Do you want to continue? [Y/n] Y
+Get:1 http://debian.snt.utwente.nl/debian trixie/main amd64 libltdl-dev amd64 2.5.4-4 [168 kB]
+Get:2 http://debian.snt.utwente.nl/debian trixie/main amd64 libtool all 2.5.4-4 [539 kB]
+Fetched 707 kB in 0s (6,429 kB/s)
+Selecting previously unselected package libltdl-dev:amd64.
+(Reading database ... 189440 files and directories currently installed.)
+Preparing to unpack .../libltdl-dev_2.5.4-4_amd64.deb ...
+Unpacking libltdl-dev:amd64 (2.5.4-4) ...
+Selecting previously unselected package libtool.
+Preparing to unpack .../libtool_2.5.4-4_all.deb ...
+Unpacking libtool (2.5.4-4) ...
+Setting up libtool (2.5.4-4) ...
+Setting up libltdl-dev:amd64 (2.5.4-4) ...
+Processing triggers for man-db (2.13.1-1) ...
+db811@debian:~/openscad$ ls /usr/bin/*libto*
+/usr/bin/libtoolize
+db811@debian:~/openscad$ source ./scripts/setenv-mingw-xbuild.sh 64
+current path saved
+linking /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix
+     to /home/db811/openscad/mingw64.static.posix/mingw-cross-env
+OPENSCAD_LIBRARIES:
+BASEDIR: /home/db811/openscad_deps
+MXEDIR: /home/db811/openscad_deps/mxe
+MXE_TARGETS: x86_64-w64-mingw32.static.posix
+MXETARGETDIR: /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix
+MXELIBTYPE: static.posix
+DEPLOYDIR: /home/db811/openscad/mingw64.static.posix
+MXEQTSUBDIR: qt5
+PATH modified: /home/db811/openscad_deps/mxe/usr/bin
+PATH modified: /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix/qt5/bin
+db811@debian:~/openscad$ ./scripts/mingw-x-build-dependencies.sh 64
+OPENSCADDIR: /home/db811/openscad
+note: you can 'export NUMJOBS=x' for building multiple pkgs at once
+linking /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix
+     to /home/db811/openscad/mingw64.static.posix/mingw-cross-env
+OPENSCAD_LIBRARIES:
+BASEDIR: /home/db811/openscad_deps
+MXEDIR: /home/db811/openscad_deps/mxe
+MXE_TARGETS: x86_64-w64-mingw32.static.posix
+MXETARGETDIR: /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix
+MXELIBTYPE: static.posix
+DEPLOYDIR: /home/db811/openscad/mingw64.static.posix
+MXEQTSUBDIR: qt5
+PATH modified: /home/db811/openscad_deps/mxe/usr/bin
+PATH modified: /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix/qt5/bin
+Downloading MXE into  /home/db811/openscad_deps
+Cloning into '/home/db811/openscad_deps/mxe'...
+remote: Enumerating objects: 59209, done.
+remote: Counting objects: 100% (46/46), done.
+remote: Compressing objects: 100% (17/17), done.
+remote: Total 59209 (delta 34), reused 29 (delta 29), pack-reused 59163 (from 2)
+Receiving objects: 100% (59209/59209), 26.63 MiB | 21.64 MiB/s, done.
+Resolving deltas: 100% (43577/43577), done.
+entering /home/db811/openscad_deps/mxe
+checkout openscad-snapshot-build branch
+Note: switching to 'openscad-snapshot-build'.
+
+You are in 'detached HEAD' state. You can look around, make experimental
+changes and commit them, and you can discard any commits you make in this
+state without impacting any branches by switching back to a branch.
+
+If you want to create a new branch to retain commits you create, you may
+do so (now or later) by using -c with the switch command. Example:
+
+  git switch -c <new-branch-name>
+
+Or undo this operation with:
+
+  git switch -
+
+Turn off this advice by setting config variable advice.detachedHead to false
+
+HEAD is now at b8cc6aca Update CGAL to 6.0.1.
+make MXE_PLUGIN_DIRS=plugins/gcc11 qtbase qtmultimedia qscintilla2 mpfr eigen opencsg cgal ninja nsis glib libxml2 freetype fontconfig harfbuzz libzip lib3mf double-conversion zip MXE_TARGETS=x86_64-w64-mingw32.static.posix -j 4 JOBS=2
+[create settings.mk]
+grep: plugins/gcc11/*.mk: No such file or directory
+grep: plugins/gcc11/*.mk: No such file or directory
+find: ‘plugins/gcc11’: No such file or directory
+grep: plugins/gcc11: No such file or directory
+[download]    mingw-w64-v13.0.0.tar.bz2
+[download]    binutils-2.38.tar.bz2
+[download]    ccache-3.6.tar.xz
+[download]    gmp-6.3.0.tar.xz
+[download]    isl-0.24.tar.bz2
+[download]    mpfr-4.2.2.tar.xz
+[download]    mpc-1.3.1.tar.gz
+[download]    gcc-11.5.0.tar.xz
+[download]    pkgconf-da179fd.tar.gz
+[download]    libtool-2.5.4.tar.xz
+[download]    expat-2.7.1.tar.bz2
+[download]    dbus-1.15.6.tar.xz
+[download]    brotli-v1.1.0.tar.gz
+[download]    cmake-3.31.8.tar.gz
+MXE Warning! Downloading brotli from second URL.
+[download]    bzip2-1.0.8.tar.gz
+[download]    zlib-v1.3.1.tar.xz
+MXE Warning! Downloading expat from second URL.
+[download]    libpng-1.6.50.tar.xz
+[download]    freetype-2.13.3.tar.xz
+[download]    libiconv-1.18.tar.gz
+[download]    gettext-0.25.tar.lz
+[download]    fontconfig-2.16.0.tar.xz
+[download]    openssl-3.5.2.tar.gz
+[download]    freetds-1.5.4.tar.bz2
+[download]    ninja-v1.13.1.tar.gz
+[download]    meson-1.8.3.tar.gz
+[download]    libffi-3.5.2.tar.gz
+[download]    pcre2-10.45.tar.bz2
+[download]    glib-2.85.3.tar.xz
+[download]    lzo-2.10.tar.gz
+[download]    pixman-0.46.4.tar.gz
+[download]    cairo-1.18.4.tar.xz
+[download]    icu4c-release-74.2.tar.gz
+[download]    harfbuzz-11.4.1.tar.xz
+[download]    jpegsrc.v9f.tar.gz
+[download]    dlfcn-win32-v1.4.2.tar.gz
+[download]    zstd-v1.5.7.tar.gz
+[download]    mariadb-connector-c-v3.4.5.tar.gz
+[download]    mesa-23.1.7.tar.xz
+MXE Warning! Downloading mariadb-connector-c from second URL.
+[download]    postgresql-13.6.tar.bz2
+[download]    sqlite-autoconf-3500400.tar.gz
+[download]    qtbase-everywhere-opensource-src-5.15.17.tar.xz
+MXE Warning! Downloading qtbase from backup.
+[download]    jasper-version-4.2.8.tar.gz
+[download]    libwebp-1.6.0.tar.gz
+[download]    xz-v5.8.1.tar.gz
+[download]    tiff-4.7.0.tar.xz
+[download]    lcms2-2.17.tar.gz
+[download]    libmng-2.0.3.tar.xz
+[download]    qtimageformats-everywhere-opensource-src-5.15.17.tar.xz
+[download]    qtsvg-everywhere-opensource-src-5.15.17.tar.xz
+MXE Warning! Downloading qtimageformats from backup.
+[download]    qtxmlpatterns-everywhere-opensource-src-5.15.17.tar.xz
+MXE Warning! Downloading qtsvg from backup.
+[download]    qtdeclarative-everywhere-opensource-src-5.15.17.tar.xz
+[download]    qtmultimedia-everywhere-opensource-src-5.15.17.tar.xz
+MXE Warning! Downloading qtxmlpatterns from backup.
+[download]    QScintilla_gpl-2.11.2.tar.gz
+MXE Warning! Downloading qtmultimedia from backup.
+[download]    eigen-3.4.0.tar.bz2
+MXE Warning! Downloading qtdeclarative from backup.
+[download]    freeglut-3.6.0.tar.gz
+[download]    glew-2.1.0.tgz
+[download]    OpenCSG-1.5.0.tar.gz
+[download]    boost_1_85_0.tar.bz2
+[download]    CGAL-6.0.1-library.tar.xz
+[download]    nsis-3.06.1-src.tar.bz2
+[download]    scons-local-3.1.2.tar.gz
+[download]    libxml2-2.14.4.tar.xz
+[download]    libzip-rel-1.5.2.tar.gz
+[download]    lib3mf-1.8.1.tar.gz
+[download]    double-conversion-v3.1.5.tar.gz
+MXE Warning! Downloading libzip from second URL.
+[download]    zip30.tar.gz
+[check reqs]
+Missing requirement: libtool
+[nonet lib]   /home/db811/openscad_deps/mxe/usr/x86_64-pc-linux-gnu/lib/nonetwork.so                                                                
+[git-log]   b8cc6aca Update CGAL to 6.0.1.
+Missing requirement: ruby
+
+Please have a look at "docs/index.html" to ensure
+that your system meets all requirements.
+
+make: *** [Makefile:480: /home/db811/openscad_deps/mxe/usr/installed/check-requirements] Error 1
+make: *** Waiting for unfinished jobs....
+db811@debian:~/openscad$ 
+db811@debian:~/openscad$ 
+db811@debian:~/openscad$ ./scripts/release-common.sh mingw64
+Detected build-machine ARCH: 64
+Detected OS: UNIX_CROSS_WIN
+linking /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix
+     to /home/db811/openscad/mingw64.static.posix/mingw-cross-env
+OPENSCAD_LIBRARIES:
+BASEDIR: /home/db811/openscad_deps
+MXEDIR: /home/db811/openscad_deps/mxe
+MXE_TARGETS: x86_64-w64-mingw32.static.posix
+MXETARGETDIR: /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix
+MXELIBTYPE: static.posix
+DEPLOYDIR: /home/db811/openscad/mingw64.static.posix
+MXEQTSUBDIR: qt5
+PATH modified: /home/db811/openscad_deps/mxe/usr/bin
+PATH modified: /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix/qt5/bin
+Mingw-cross build using ARCH=64 MXELIBTYPE=static.posix
+No VERSION.txt file found, defaulting VERSION=2025.12.12
+No COMMIT.txt file found, using git commit: 7962867aa
+Building openscad-2025.12.12
+  CMake args: -DCMAKE_BUILD_TYPE=Release -DENABLE_TESTS=OFF -GNinja -DMXECROSS=ON -DALLOW_BUNDLED_HIDAPI=ON -DPACKAGE_ARCH=x86-64
+  DEPLOYDIR:  /home/db811/openscad/mingw64.static.posix
+  NUMCPU: 4
+Running CMake from /home/db811/openscad/mingw64.static.posix
+x86_64-w64-mingw32.static.posix-cmake .. -DCMAKE_BUILD_TYPE=Release -DENABLE_TESTS=OFF -GNinja -DMXECROSS=ON -DALLOW_BUNDLED_HIDAPI=ON -DPACKAGE_ARCH=x86-64  -DOPENSCAD_VERSION=2025.12.12  -DOPENSCAD_COMMIT=7962867aa
+./scripts/release-common.sh: line 185: x86_64-w64-mingw32.static.posix-cmake: command not found
+db811@debian:~/openscad$ la
+bash: la: command not found
+db811@debian:~/openscad$ 
+db811@debian:~/openscad$ ls
+appcast-snapshots.xml.in  CMakeLists.txt      COPYING      examples    Info.plist.in         openscad.appdata.xml      org.openscad.OpenSCAD.xml  releases   snap        tests          xcode
+appcast.xml.in            CMakeSettings.json  doc          fonts       libraries             openscad.appdata.xml.in   patches                    resources  src         valgrind.supp
+build                     color-schemes       Doxyfile     fonts-osx   locale                openscad.appdata.xml.in2  README.md                  scripts    submodules  vcpkg.json
+cmake                     contrib             dsa_pub.pem  Info.plist  mingw64.static.posix  OpenSCAD.sdef             RELEASE_NOTES.md           shaders    templates   winconsole
+db811@debian:~/openscad$ ls ..
+Desktop  Documents  Downloads  Music  openscad  OpenSCAD  openscad_deps  Pictures  Public  Templates  Videos
+db811@debian:~/openscad$ ~/openscad_deps/mxe 
+bash: /home/db811/openscad_deps/mxe: Is a directory
+db811@debian:~/openscad$ source ./scripts/setenv-mingw-xbuild.sh 64
+linking /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix
+     to /home/db811/openscad/mingw64.static.posix/mingw-cross-env
+OPENSCAD_LIBRARIES:
+BASEDIR: /home/db811/openscad_deps
+MXEDIR: /home/db811/openscad_deps/mxe
+MXE_TARGETS: x86_64-w64-mingw32.static.posix
+MXETARGETDIR: /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix
+MXELIBTYPE: static.posix
+DEPLOYDIR: /home/db811/openscad/mingw64.static.posix
+MXEQTSUBDIR: qt5
+PATH modified: /home/db811/openscad_deps/mxe/usr/bin
+PATH modified: /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix/qt5/bin
+db811@debian:~/openscad$ ./scripts/mingw-x-build-dependencies.sh 64
+OPENSCADDIR: /home/db811/openscad
+note: you can 'export NUMJOBS=x' for building multiple pkgs at once
+linking /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix
+     to /home/db811/openscad/mingw64.static.posix/mingw-cross-env
+OPENSCAD_LIBRARIES:
+BASEDIR: /home/db811/openscad_deps
+MXEDIR: /home/db811/openscad_deps/mxe
+MXE_TARGETS: x86_64-w64-mingw32.static.posix
+MXETARGETDIR: /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix
+MXELIBTYPE: static.posix
+DEPLOYDIR: /home/db811/openscad/mingw64.static.posix
+MXEQTSUBDIR: qt5
+PATH modified: /home/db811/openscad_deps/mxe/usr/bin
+PATH modified: /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix/qt5/bin
+entering /home/db811/openscad_deps/mxe
+checkout openscad-snapshot-build branch
+HEAD is now at b8cc6aca Update CGAL to 6.0.1.
+make MXE_PLUGIN_DIRS=plugins/gcc11 qtbase qtmultimedia qscintilla2 mpfr eigen opencsg cgal ninja nsis glib libxml2 freetype fontconfig harfbuzz libzip lib3mf double-conversion zip MXE_TARGETS=x86_64-w64-mingw32.static.posix -j 4 JOBS=2
+grep: plugins/gcc11/*.mk: No such file or directory
+grep: plugins/gcc11/*.mk: No such file or directory
+find: ‘plugins/gcc11’: No such file or directory
+grep: plugins/gcc11: No such file or directory
+[check reqs]
+Missing requirement: libtool
+Missing requirement: ruby
+
+Please have a look at "docs/index.html" to ensure
+that your system meets all requirements.
+
+make: *** [Makefile:480: /home/db811/openscad_deps/mxe/usr/installed/check-requirements] Error 1
+db811@debian:~/openscad$ 
+db811@debian:~/openscad$ 
+db811@debian:~/openscad$ sudo apt install ruby
+Installing:                     
+  ruby
+
+Installing dependencies:
+  fonts-lato  libruby  libruby3.3  rake  ruby-csv  ruby-did-you-mean  ruby-net-telnet  ruby-ruby2-keywords  ruby-rubygems  ruby-sdbm  ruby-webrick  ruby-xmlrpc  ruby3.3  rubygems-integration  zip
+
+Suggested packages:
+  ri  ruby-dev  bundler
+
+Summary:
+  Upgrading: 0, Installing: 16, Removing: 0, Not Upgrading: 0
+  Download size: 10.8 MB
+  Space needed: 47.0 MB / 1,825 GB available
+
+Continue? [Y/n] Y
+Get:1 http://debian.snt.utwente.nl/debian trixie/main amd64 fonts-lato all 2.015-1 [2,780 kB]
+Get:2 http://debian.snt.utwente.nl/debian trixie/main amd64 rubygems-integration all 1.19 [5,488 B]
+Get:3 http://debian.snt.utwente.nl/debian trixie/main amd64 ruby3.3 amd64 3.3.8-2 [834 kB]
+Get:4 http://debian.snt.utwente.nl/debian trixie/main amd64 ruby-rubygems all 3.6.7-2 [407 kB]
+Get:5 http://debian.snt.utwente.nl/debian trixie/main amd64 ruby amd64 1:3.3+b1 [6,560 B]
+Get:6 http://debian.snt.utwente.nl/debian trixie/main amd64 rake all 13.2.1-1 [65.2 kB]
+Get:7 http://debian.snt.utwente.nl/debian trixie/main amd64 ruby-csv all 3.3.4-1 [42.2 kB]
+Get:8 http://debian.snt.utwente.nl/debian trixie/main amd64 ruby-did-you-mean all 1.6.3-2 [20.9 kB]
+Get:9 http://debian.snt.utwente.nl/debian trixie/main amd64 ruby-net-telnet all 0.2.0-1 [13.1 kB]
+Get:10 http://debian.snt.utwente.nl/debian trixie/main amd64 ruby-ruby2-keywords all 0.0.5-1 [4,300 B]
+Get:11 http://debian.snt.utwente.nl/debian trixie/main amd64 ruby-webrick all 1.9.1-1 [59.6 kB]
+Get:12 http://debian.snt.utwente.nl/debian trixie/main amd64 ruby-xmlrpc all 0.3.3-2 [24.4 kB]
+Get:13 http://debian.snt.utwente.nl/debian trixie/main amd64 libruby3.3 amd64 3.3.8-2 [6,301 kB]
+Get:14 http://debian.snt.utwente.nl/debian trixie/main amd64 libruby amd64 1:3.3+b1 [5,440 B]
+Get:15 http://debian.snt.utwente.nl/debian trixie/main amd64 ruby-sdbm amd64 1.0.0-5+b7 [15.1 kB]
+Get:16 http://debian.snt.utwente.nl/debian trixie/main amd64 zip amd64 3.0-15 [235 kB]
+Fetched 10.8 MB in 1s (7,488 kB/s)
+Selecting previously unselected package fonts-lato.
+(Reading database ... 189509 files and directories currently installed.)
+Preparing to unpack .../00-fonts-lato_2.015-1_all.deb ...
+Unpacking fonts-lato (2.015-1) ...
+Selecting previously unselected package rubygems-integration.
+Preparing to unpack .../01-rubygems-integration_1.19_all.deb ...
+Unpacking rubygems-integration (1.19) ...
+Selecting previously unselected package ruby3.3.
+Preparing to unpack .../02-ruby3.3_3.3.8-2_amd64.deb ...
+Unpacking ruby3.3 (3.3.8-2) ...
+Selecting previously unselected package ruby-rubygems.
+Preparing to unpack .../03-ruby-rubygems_3.6.7-2_all.deb ...
+Unpacking ruby-rubygems (3.6.7-2) ...
+Selecting previously unselected package ruby.
+Preparing to unpack .../04-ruby_1%3a3.3+b1_amd64.deb ...
+Unpacking ruby (1:3.3+b1) ...
+Selecting previously unselected package rake.
+Preparing to unpack .../05-rake_13.2.1-1_all.deb ...
+Unpacking rake (13.2.1-1) ...
+Selecting previously unselected package ruby-csv.
+Preparing to unpack .../06-ruby-csv_3.3.4-1_all.deb ...
+Unpacking ruby-csv (3.3.4-1) ...
+Selecting previously unselected package ruby-did-you-mean.
+Preparing to unpack .../07-ruby-did-you-mean_1.6.3-2_all.deb ...
+Unpacking ruby-did-you-mean (1.6.3-2) ...
+Selecting previously unselected package ruby-net-telnet.
+Preparing to unpack .../08-ruby-net-telnet_0.2.0-1_all.deb ...
+Unpacking ruby-net-telnet (0.2.0-1) ...
+Selecting previously unselected package ruby-ruby2-keywords.
+Preparing to unpack .../09-ruby-ruby2-keywords_0.0.5-1_all.deb ...
+Unpacking ruby-ruby2-keywords (0.0.5-1) ...
+Selecting previously unselected package ruby-webrick.
+Preparing to unpack .../10-ruby-webrick_1.9.1-1_all.deb ...
+Unpacking ruby-webrick (1.9.1-1) ...
+Selecting previously unselected package ruby-xmlrpc.
+Preparing to unpack .../11-ruby-xmlrpc_0.3.3-2_all.deb ...
+Unpacking ruby-xmlrpc (0.3.3-2) ...
+Selecting previously unselected package libruby3.3:amd64.
+Preparing to unpack .../12-libruby3.3_3.3.8-2_amd64.deb ...
+Unpacking libruby3.3:amd64 (3.3.8-2) ...
+Selecting previously unselected package libruby:amd64.
+Preparing to unpack .../13-libruby_1%3a3.3+b1_amd64.deb ...
+Unpacking libruby:amd64 (1:3.3+b1) ...
+Selecting previously unselected package ruby-sdbm:amd64.
+Preparing to unpack .../14-ruby-sdbm_1.0.0-5+b7_amd64.deb ...
+Unpacking ruby-sdbm:amd64 (1.0.0-5+b7) ...
+Selecting previously unselected package zip.
+Preparing to unpack .../15-zip_3.0-15_amd64.deb ...
+Unpacking zip (3.0-15) ...
+Setting up ruby-ruby2-keywords (0.0.5-1) ...
+Setting up fonts-lato (2.015-1) ...
+Setting up rubygems-integration (1.19) ...
+Setting up zip (3.0-15) ...
+Setting up ruby-net-telnet (0.2.0-1) ...
+Setting up ruby-csv (3.3.4-1) ...
+Setting up ruby-webrick (1.9.1-1) ...
+Setting up ruby-did-you-mean (1.6.3-2) ...
+Setting up ruby-xmlrpc (0.3.3-2) ...
+Setting up rake (13.2.1-1) ...
+Setting up ruby3.3 (3.3.8-2) ...
+Setting up libruby3.3:amd64 (3.3.8-2) ...
+Setting up ruby-rubygems (3.6.7-2) ...
+Setting up libruby:amd64 (1:3.3+b1) ...
+Setting up ruby (1:3.3+b1) ...
+Setting up ruby-sdbm:amd64 (1.0.0-5+b7) ...
+Processing triggers for fontconfig (2.15.0-2.3) ...
+Processing triggers for libc-bin (2.41-12) ...
+Processing triggers for man-db (2.13.1-1) ...
+db811@debian:~/openscad$ sudo apt install libtool
+libtool is already the newest version (2.5.4-4).
+Summary:
+  Upgrading: 0, Installing: 0, Removing: 0, Not Upgrading: 0
+db811@debian:~/openscad$ ls /usr/bin/*tool*
+/usr/bin/ciptool                         /usr/bin/dm-tool    /usr/bin/gcov-tool-14       /usr/bin/gtk4-rendernode-tool  /usr/bin/intltoolize       /usr/bin/ipptool     /usr/bin/sdptool                        /usr/bin/ziptool
+/usr/bin/dbxtool                         /usr/bin/fwupdtool  /usr/bin/gtk4-builder-tool  /usr/bin/gtk-builder-tool      /usr/bin/intltool-merge    /usr/bin/itstool     /usr/bin/spa-acp-tool
+/usr/bin/dh_autotools-dev_restoreconfig  /usr/bin/gatttool   /usr/bin/gtk4-image-tool    /usr/bin/hcitool               /usr/bin/intltool-prepare  /usr/bin/libtoolize  /usr/bin/x86_64-linux-gnu-gcov-tool
+/usr/bin/dh_autotools-dev_updateconfig   /usr/bin/gcov-tool  /usr/bin/gtk4-path-tool     /usr/bin/intltool-extract      /usr/bin/intltool-update   /usr/bin/pixeltool   /usr/bin/x86_64-linux-gnu-gcov-tool-14
+db811@debian:~/openscad$ sudo apt install libtool-bin
+Installing:                     
+  libtool-bin
+
+Summary:
+  Upgrading: 0, Installing: 1, Removing: 0, Not Upgrading: 0
+  Download size: 458 kB
+  Space needed: 776 kB / 1,825 GB available
+
+Get:1 http://debian.snt.utwente.nl/debian trixie/main amd64 libtool-bin amd64 2.5.4-4 [458 kB]
+Fetched 458 kB in 0s (5,317 kB/s)   
+Selecting previously unselected package libtool-bin.
+(Reading database ... 193001 files and directories currently installed.)
+Preparing to unpack .../libtool-bin_2.5.4-4_amd64.deb ...
+Unpacking libtool-bin (2.5.4-4) ...
+Setting up libtool-bin (2.5.4-4) ...
+Processing triggers for man-db (2.13.1-1) ...
+db811@debian:~/openscad$ ls /usr/bin/*tool*
+/usr/bin/ciptool                         /usr/bin/fwupdtool          /usr/bin/gtk4-image-tool       /usr/bin/intltool-extract  /usr/bin/ipptool     /usr/bin/sdptool
+/usr/bin/dbxtool                         /usr/bin/gatttool           /usr/bin/gtk4-path-tool        /usr/bin/intltoolize       /usr/bin/itstool     /usr/bin/spa-acp-tool
+/usr/bin/dh_autotools-dev_restoreconfig  /usr/bin/gcov-tool          /usr/bin/gtk4-rendernode-tool  /usr/bin/intltool-merge    /usr/bin/libtool     /usr/bin/x86_64-linux-gnu-gcov-tool
+/usr/bin/dh_autotools-dev_updateconfig   /usr/bin/gcov-tool-14       /usr/bin/gtk-builder-tool      /usr/bin/intltool-prepare  /usr/bin/libtoolize  /usr/bin/x86_64-linux-gnu-gcov-tool-14
+/usr/bin/dm-tool                         /usr/bin/gtk4-builder-tool  /usr/bin/hcitool               /usr/bin/intltool-update   /usr/bin/pixeltool   /usr/bin/ziptool
+db811@debian:~/openscad$ 
+db811@debian:~/openscad$ 
+db811@debian:~/openscad$ 
+db811@debian:~/openscad$ 
+db811@debian:~/openscad$ source ./scripts/setenv-mingw-xbuild.sh 64
+linking /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix
+     to /home/db811/openscad/mingw64.static.posix/mingw-cross-env
+OPENSCAD_LIBRARIES:
+BASEDIR: /home/db811/openscad_deps
+MXEDIR: /home/db811/openscad_deps/mxe
+MXE_TARGETS: x86_64-w64-mingw32.static.posix
+MXETARGETDIR: /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix
+MXELIBTYPE: static.posix
+DEPLOYDIR: /home/db811/openscad/mingw64.static.posix
+MXEQTSUBDIR: qt5
+PATH modified: /home/db811/openscad_deps/mxe/usr/bin
+PATH modified: /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix/qt5/bin
+db811@debian:~/openscad$ ./scripts/mingw-x-build-dependencies.sh 64
+OPENSCADDIR: /home/db811/openscad
+note: you can 'export NUMJOBS=x' for building multiple pkgs at once
+linking /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix
+     to /home/db811/openscad/mingw64.static.posix/mingw-cross-env
+OPENSCAD_LIBRARIES:
+BASEDIR: /home/db811/openscad_deps
+MXEDIR: /home/db811/openscad_deps/mxe
+MXE_TARGETS: x86_64-w64-mingw32.static.posix
+MXETARGETDIR: /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix
+MXELIBTYPE: static.posix
+DEPLOYDIR: /home/db811/openscad/mingw64.static.posix
+MXEQTSUBDIR: qt5
+PATH modified: /home/db811/openscad_deps/mxe/usr/bin
+PATH modified: /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix/qt5/bin
+entering /home/db811/openscad_deps/mxe
+checkout openscad-snapshot-build branch
+HEAD is now at b8cc6aca Update CGAL to 6.0.1.
+make MXE_PLUGIN_DIRS=plugins/gcc11 qtbase qtmultimedia qscintilla2 mpfr eigen opencsg cgal ninja nsis glib libxml2 freetype fontconfig harfbuzz libzip lib3mf double-conversion zip MXE_TARGETS=x86_64-w64-mingw32.static.posix -j 4 JOBS=2
+grep: plugins/gcc11/*.mk: No such file or directory
+grep: plugins/gcc11/*.mk: No such file or directory
+find: ‘plugins/gcc11’: No such file or directory
+grep: plugins/gcc11: No such file or directory
+[check reqs]
+[build]       mxe-conf                x86_64-w64-mingw32.static.posix
+[build]       mxe-conf                x86_64-pc-linux-gnu
+[done]        mxe-conf                x86_64-w64-mingw32.static.posix                 12 KiB         0m2.484s
+[done]        mxe-conf                x86_64-pc-linux-gnu                             12 KiB         0m2.491s
+[build]       ccache                  x86_64-pc-linux-gnu
+[build]       zstd                    x86_64-pc-linux-gnu
+[done]        ccache                  x86_64-pc-linux-gnu                             4888 KiB       0m5.614s
+[build]       ccache                  x86_64-w64-mingw32.static.posix
+[build]       gmp                     x86_64-pc-linux-gnu
+[build]       pkgconf                 x86_64-pc-linux-gnu
+[done]        ccache                  x86_64-w64-mingw32.static.posix                 2264 KiB       0m2.410s
+[build]       cmake                   x86_64-pc-linux-gnu
+[done]        pkgconf                 x86_64-pc-linux-gnu                             1748 KiB       0m3.618s
+[build]       libiconv                x86_64-pc-linux-gnu
+[done]        zstd                    x86_64-pc-linux-gnu                             18584 KiB      0m19.765s
+[build]       autotools               x86_64-pc-linux-gnu
+[done]        autotools               x86_64-pc-linux-gnu                             428 KiB        0m3.908s
+[meta]        cc                      x86_64-pc-linux-gnu
+[build]       libffi                  x86_64-pc-linux-gnu
+[done]        libiconv                x86_64-pc-linux-gnu                             33456 KiB      0m14.787s
+[build]       zlib                    x86_64-pc-linux-gnu
+[done]        zlib                    x86_64-pc-linux-gnu                             5312 KiB       0m3.037s
+[build]       icu4c                   x86_64-pc-linux-gnu
+[done]        libffi                  x86_64-pc-linux-gnu                             8260 KiB       0m5.838s
+[build]       python-conf             x86_64-pc-linux-gnu
+[done]        gmp                     x86_64-pc-linux-gnu                             33296 KiB      0m24.849s
+[build]       binutils                x86_64-w64-mingw32.static.posix
+[done]        python-conf             x86_64-pc-linux-gnu                             12 KiB         0m2.438s
+[build]       mingw-w64               x86_64-w64-mingw32.static.posix
+[done]        mingw-w64               x86_64-w64-mingw32.static.posix                 16 KiB         0m2.416s
+[build]       isl                     x86_64-pc-linux-gnu
+[done]        isl                     x86_64-pc-linux-gnu                             72588 KiB      0m23.744s
+[build]       mpfr                    x86_64-pc-linux-gnu
+[done]        mpfr                    x86_64-pc-linux-gnu                             18392 KiB      0m18.373s
+[build]       pkgconf                 x86_64-w64-mingw32.static.posix
+[done]        pkgconf                 x86_64-w64-mingw32.static.posix                 424 KiB        0m2.482s
+[build]       gettext                 x86_64-pc-linux-gnu
+[done]        binutils                x86_64-w64-mingw32.static.posix                 599288 KiB     0m57.032s
+[build]       mpc                     x86_64-pc-linux-gnu
+[done]        mpc                     x86_64-pc-linux-gnu                             7452 KiB       0m7.654s
+[build]       gcc                     x86_64-w64-mingw32.static.posix
+[done]        icu4c                   x86_64-pc-linux-gnu                             116608 KiB     1m32.529s
+[done]        gettext                 x86_64-pc-linux-gnu                             461556 KiB     3m20.695s
+[done]        cmake                   x86_64-pc-linux-gnu                             539412 KiB     6m21.767s
+[build]       cmake-conf              x86_64-pc-linux-gnu
+[done]        cmake-conf              x86_64-pc-linux-gnu                             12 KiB         0m2.424s
+[build]       cmake-conf              x86_64-w64-mingw32.static.posix
+[build]       ninja                   x86_64-pc-linux-gnu
+[done]        cmake-conf              x86_64-w64-mingw32.static.posix                 12 KiB         0m2.440s
+[done]        ninja                   x86_64-pc-linux-gnu                             9192 KiB       0m7.134s
+make: Nothing to be done for 'ninja'.
+[build]       meson                   x86_64-pc-linux-gnu
+[done]        meson                   x86_64-pc-linux-gnu                             31000 KiB      0m2.540s
+[build]       meson-wrapper           x86_64-pc-linux-gnu
+[done]        meson-wrapper           x86_64-pc-linux-gnu                             12 KiB         0m2.368s
+[build]       meson-wrapper           x86_64-w64-mingw32.static.posix
+[build]       glib                    x86_64-pc-linux-gnu
+[done]        meson-wrapper           x86_64-w64-mingw32.static.posix                 12 KiB         0m2.426s
+[done]        glib                    x86_64-pc-linux-gnu                             240360 KiB     0m37.458s
+[done]        gcc                     x86_64-w64-mingw32.static.posix                 4274180 KiB    11m6.875s
+[meta]        cc                      x86_64-w64-mingw32.static.posix
+[build]       lib3mf                  x86_64-w64-mingw32.static.posix
+[build]       expat                   x86_64-w64-mingw32.static.posix
+[build]       brotli                  x86_64-w64-mingw32.static.posix
+[build]       bzip2                   x86_64-w64-mingw32.static.posix
+[done]        bzip2                   x86_64-w64-mingw32.static.posix                 3668 KiB       0m3.096s
+[build]       zlib                    x86_64-w64-mingw32.static.posix
+[done]        zlib                    x86_64-w64-mingw32.static.posix                 5576 KiB       0m3.633s
+[build]       libiconv                x86_64-w64-mingw32.static.posix
+[done]        expat                   x86_64-w64-mingw32.static.posix                 12580 KiB      0m8.999s
+[build]       openssl                 x86_64-w64-mingw32.static.posix
+[done]        brotli                  x86_64-w64-mingw32.static.posix                 7528 KiB       0m10.592s
+[build]       libffi                  x86_64-w64-mingw32.static.posix
+[done]        libffi                  x86_64-w64-mingw32.static.posix                 8096 KiB       0m6.455s
+[build]       pcre2                   x86_64-w64-mingw32.static.posix
+[done]        libiconv                x86_64-w64-mingw32.static.posix                 28912 KiB      0m12.291s
+[build]       lzo                     x86_64-w64-mingw32.static.posix
+[done]        lib3mf                  x86_64-w64-mingw32.static.posix                 36072 KiB      0m29.151s
+[build]       icu4c                   x86_64-w64-mingw32.static.posix
+[done]        pcre2                   x86_64-w64-mingw32.static.posix                 18744 KiB      0m12.981s
+[build]       jpeg                    x86_64-w64-mingw32.static.posix
+[done]        jpeg                    x86_64-w64-mingw32.static.posix                 9004 KiB       0m7.091s
+[build]       dlfcn-win32             x86_64-w64-mingw32.static.posix
+[done]        lzo                     x86_64-w64-mingw32.static.posix                 7084 KiB       0m18.718s
+[build]       zstd                    x86_64-w64-mingw32.static.posix
+[done]        dlfcn-win32             x86_64-w64-mingw32.static.posix                 324 KiB        0m3.225s
+[build]       pthreads                x86_64-w64-mingw32.static.posix
+[done]        pthreads                x86_64-w64-mingw32.static.posix                 1228 KiB       0m2.869s
+[build]       sqlite                  x86_64-w64-mingw32.static.posix
+[done]        zstd                    x86_64-w64-mingw32.static.posix                 14940 KiB      0m13.039s
+[build]       jasper                  x86_64-w64-mingw32.static.posix
+[done]        jasper                  x86_64-w64-mingw32.static.posix                 9416 KiB       0m8.803s
+[build]       libwebp                 x86_64-w64-mingw32.static.posix
+[done]        sqlite                  x86_64-w64-mingw32.static.posix                 15628 KiB      0m23.828s
+[build]       xz                      x86_64-w64-mingw32.static.posix
+[done]        xz                      x86_64-w64-mingw32.static.posix                 17556 KiB      0m12.368s
+[build]       gmp                     x86_64-w64-mingw32.static.posix
+[done]        libwebp                 x86_64-w64-mingw32.static.posix                 38220 KiB      0m20.132s
+[build]       eigen                   x86_64-w64-mingw32.static.posix
+[done]        eigen                   x86_64-w64-mingw32.static.posix                 51148 KiB      0m5.728s
+[build]       freeglut                x86_64-w64-mingw32.static.posix
+[done]        freeglut                x86_64-w64-mingw32.static.posix                 7284 KiB       0m9.439s
+[build]       glew                    x86_64-w64-mingw32.static.posix
+[done]        glew                    x86_64-w64-mingw32.static.posix                 10748 KiB      0m6.192s
+[build]       boost                   x86_64-w64-mingw32.static.posix
+[done]        icu4c                   x86_64-w64-mingw32.static.posix                 511332 KiB     1m32.491s
+[build]       nsis                    x86_64-w64-mingw32.static.posix
+[done]        gmp                     x86_64-w64-mingw32.static.posix                 202668 KiB     0m45.531s
+[build]       libxml2                 x86_64-w64-mingw32.static.posix
+[done]        libxml2                 x86_64-w64-mingw32.static.posix                 54760 KiB      0m14.046s
+[build]       libzip                  x86_64-w64-mingw32.static.posix
+[done]        libzip                  x86_64-w64-mingw32.static.posix                 15488 KiB      0m10.980s
+[build]       double-conversion       x86_64-w64-mingw32.static.posix
+[done]        double-conversion       x86_64-w64-mingw32.static.posix                 20412 KiB      0m3.716s
+[build]       zip                     x86_64-w64-mingw32.static.posix
+[done]        zip                     x86_64-w64-mingw32.static.posix                 6088 KiB       0m5.264s
+[build]       dbus                    x86_64-w64-mingw32.static.posix
+[done]        nsis                    x86_64-w64-mingw32.static.posix                 34732 KiB      0m42.765s
+[build]       libpng                  x86_64-w64-mingw32.static.posix
+[done]        libpng                  x86_64-w64-mingw32.static.posix                 23056 KiB      0m13.749s
+[build]       gettext                 x86_64-w64-mingw32.static.posix
+[done]        dbus                    x86_64-w64-mingw32.static.posix                 23888 KiB      0m38.705s
+[build]       pixman                  x86_64-w64-mingw32.static.posix
+[done]        pixman                  x86_64-w64-mingw32.static.posix                 116732 KiB     0m13.725s
+[build]       mariadb-connector-c     x86_64-w64-mingw32.static.posix
+[done]        gettext                 x86_64-w64-mingw32.static.posix                 239832 KiB     0m36.452s
+[build]       mesa                    x86_64-w64-mingw32.static.posix
+[done]        mariadb-connector-c     x86_64-w64-mingw32.static.posix                 21076 KiB      0m26.301s
+[build]       tiff                    x86_64-w64-mingw32.static.posix
+[done]        openssl                 x86_64-w64-mingw32.static.posix                 1967628 KiB    4m11.077s
+[build]       mpfr                    x86_64-w64-mingw32.static.posix
+[done]        tiff                    x86_64-w64-mingw32.static.posix                 24448 KiB      0m28.135s
+[build]       freetype-bootstrap      x86_64-w64-mingw32.static.posix
+[done]        freetype-bootstrap      x86_64-w64-mingw32.static.posix                 30944 KiB      0m11.667s
+[build]       freetds                 x86_64-w64-mingw32.static.posix
+[done]        mpfr                    x86_64-w64-mingw32.static.posix                 417248 KiB     0m47.769s
+[build]       glib                    x86_64-w64-mingw32.static.posix
+[done]        freetds                 x86_64-w64-mingw32.static.posix                 121388 KiB     1m2.132s
+[build]       postgresql              x86_64-w64-mingw32.static.posix
+[done]        mesa                    x86_64-w64-mingw32.static.posix                 324952 KiB     2m13.765s
+[build]       lcms                    x86_64-w64-mingw32.static.posix
+[done]        boost                   x86_64-w64-mingw32.static.posix                 1026028 KiB    4m13.552s
+[build]       fontconfig              x86_64-w64-mingw32.static.posix
+[done]        lcms                    x86_64-w64-mingw32.static.posix                 17704 KiB      0m11.357s
+[build]       libmng                  x86_64-w64-mingw32.static.posix
+[done]        libmng                  x86_64-w64-mingw32.static.posix                 12952 KiB      0m7.378s
+[done]        fontconfig              x86_64-w64-mingw32.static.posix                 18812 KiB      0m18.093s
+make: Nothing to be done for 'fontconfig'.
+[done]        glib                    x86_64-w64-mingw32.static.posix                 355096 KiB     1m22.061s
+make: Nothing to be done for 'glib'.
+[build]       cairo                   x86_64-w64-mingw32.static.posix
+[done]        cairo                   x86_64-w64-mingw32.static.posix                 119108 KiB     0m32.136s
+[build]       harfbuzz                x86_64-w64-mingw32.static.posix
+[done]        postgresql              x86_64-w64-mingw32.static.posix                 323040 KiB     1m58.190s
+[done]        harfbuzz                x86_64-w64-mingw32.static.posix                 168372 KiB     1m40.822s
+make: Nothing to be done for 'harfbuzz'.
+[build]       freetype                x86_64-w64-mingw32.static.posix
+[done]        freetype                x86_64-w64-mingw32.static.posix                 31008 KiB      0m14.166s
+make: Nothing to be done for 'freetype'.
+[build]       qtbase                  x86_64-w64-mingw32.static.posix
+[done]        qtbase                  x86_64-w64-mingw32.static.posix                 840596 KiB     14m0.787s
+[build]       qtimageformats          x86_64-w64-mingw32.static.posix
+[build]       qtsvg                   x86_64-w64-mingw32.static.posix
+[build]       qtxmlpatterns           x86_64-w64-mingw32.static.posix
+[build]       qscintilla2             x86_64-w64-mingw32.static.posix
+[done]        qtimageformats          x86_64-w64-mingw32.static.posix                 17252 KiB      0m9.468s
+[build]       opencsg                 x86_64-w64-mingw32.static.posix
+[done]        qtsvg                   x86_64-w64-mingw32.static.posix                 18364 KiB      0m13.156s
+[build]       cgal                    x86_64-w64-mingw32.static.posix
+[done]        opencsg                 x86_64-w64-mingw32.static.posix                 11092 KiB      0m5.755s
+[done]        cgal                    x86_64-w64-mingw32.static.posix                 51576 KiB      0m2.981s
+[done]        qscintilla2             x86_64-w64-mingw32.static.posix                 36876 KiB      0m59.271s
+[done]        qtxmlpatterns           x86_64-w64-mingw32.static.posix                 387184 KiB     2m1.871s
+[build]       qtdeclarative           x86_64-w64-mingw32.static.posix
+[done]        qtdeclarative           x86_64-w64-mingw32.static.posix                 542396 KiB     8m6.501s
+[build]       qtmultimedia            x86_64-w64-mingw32.static.posix
+[done]        qtmultimedia            x86_64-w64-mingw32.static.posix                 64696 KiB      1m59.866s
+leaving /home/db811/openscad_deps/mxe
+entering /home/db811/openscad
+db811@debian:~/openscad$ ls
+appcast-snapshots.xml.in  CMakeLists.txt      COPYING      examples    Info.plist.in         openscad.appdata.xml      org.openscad.OpenSCAD.xml  releases   snap        tests          xcode
+appcast.xml.in            CMakeSettings.json  doc          fonts       libraries             openscad.appdata.xml.in   patches                    resources  src         valgrind.supp
+build                     color-schemes       Doxyfile     fonts-osx   locale                openscad.appdata.xml.in2  README.md                  scripts    submodules  vcpkg.json
+cmake                     contrib             dsa_pub.pem  Info.plist  mingw64.static.posix  OpenSCAD.sdef             RELEASE_NOTES.md           shaders    templates   winconsole
+db811@debian:~/openscad$ ./scripts/release-common.sh mingw64
+Detected build-machine ARCH: 64
+Detected OS: UNIX_CROSS_WIN
+linking /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix
+     to /home/db811/openscad/mingw64.static.posix/mingw-cross-env
+OPENSCAD_LIBRARIES:
+BASEDIR: /home/db811/openscad_deps
+MXEDIR: /home/db811/openscad_deps/mxe
+MXE_TARGETS: x86_64-w64-mingw32.static.posix
+MXETARGETDIR: /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix
+MXELIBTYPE: static.posix
+DEPLOYDIR: /home/db811/openscad/mingw64.static.posix
+MXEQTSUBDIR: qt5
+PATH modified: /home/db811/openscad_deps/mxe/usr/bin
+PATH modified: /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix/qt5/bin
+Mingw-cross build using ARCH=64 MXELIBTYPE=static.posix
+No VERSION.txt file found, defaulting VERSION=2025.12.12
+No COMMIT.txt file found, using git commit: 7962867aa
+Building openscad-2025.12.12
+  CMake args: -DCMAKE_BUILD_TYPE=Release -DENABLE_TESTS=OFF -GNinja -DMXECROSS=ON -DALLOW_BUNDLED_HIDAPI=ON -DPACKAGE_ARCH=x86-64
+  DEPLOYDIR:  /home/db811/openscad/mingw64.static.posix
+  NUMCPU: 4
+Running CMake from /home/db811/openscad/mingw64.static.posix
+x86_64-w64-mingw32.static.posix-cmake .. -DCMAKE_BUILD_TYPE=Release -DENABLE_TESTS=OFF -GNinja -DMXECROSS=ON -DALLOW_BUNDLED_HIDAPI=ON -DPACKAGE_ARCH=x86-64  -DOPENSCAD_VERSION=2025.12.12  -DOPENSCAD_COMMIT=7962867aa
+== Using MXE wrapper: /home/db811/openscad_deps/mxe/usr/bin/x86_64-w64-mingw32.static.posix-cmake
+     - cmake version 3.31.8
+     - warnings for unused CMAKE_POLICY_DEFAULT variables can be ignored
+== Using MXE toolchain: /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix/share/cmake/mxe-conf.cmake
+== Using MXE runresult: /home/db811/openscad_deps/mxe/usr/share/cmake/modules/TryRunResults.cmake
+loading initial cache file /home/db811/openscad_deps/mxe/usr/share/cmake/modules/TryRunResults.cmake
+-- OPENSCAD_SHORTVERSION: 2025.12.12
+-- OPENSCAD_YEAR: 2025
+-- OPENSCAD_MONTH: 12
+-- OPENSCAD_DAY: 12
+-- OPENSCAD_PATCH: 
+-- OPENSCAD_BUILD: 
+-- The C compiler identification is GNU 11.5.0
+-- The CXX compiler identification is GNU 11.5.0
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /home/db811/openscad_deps/mxe/usr/x86_64-pc-linux-gnu/bin/x86_64-w64-mingw32.static.posix-gcc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /home/db811/openscad_deps/mxe/usr/x86_64-pc-linux-gnu/bin/x86_64-w64-mingw32.static.posix-g++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Found PkgConfig: /home/db811/openscad_deps/mxe/usr/bin/x86_64-w64-mingw32.static.posix-pkg-config (found version "0.28")
+-- 
+-- Override standard malloc (MI_OVERRIDE=ON)
+-- Use the C++ compiler to compile (MI_USE_CXX=ON)
+-- 
+-- Library base name: mimalloc
+-- Version          : 1.7
+-- Build type       : release
+-- C++ Compiler     : /home/db811/openscad_deps/mxe/usr/x86_64-pc-linux-gnu/bin/x86_64-w64-mingw32.static.posix-g++
+-- Compiler flags   : -Wall;-Wextra;-Wno-unknown-pragmas;-fvisibility=hidden;-ftls-model=initial-exec;-fno-builtin-malloc
+-- Compiler defines : 
+-- Link libraries   : psapi;shell32;user32;advapi32;bcrypt
+-- Build targets    : static
+-- 
+-- Eigen: 3.4.0
+-- Boost: 1.85.0
+-- Harfbuzz: 11.4.1
+-- Fontconfig: 
+-- Glib: 2.85.3
+-- OpenCSG: 1.5.0
+-- USE_GLAD/USE_GLEW not specified: Defaulting to glew
+-- GLEW: 2.1.0
+-- OpenGL: opengl32;glu32
+-- Visual Leak Detector (VLD) is not found.
+-- Targeting Ninja
+-- Using /home/db811/openscad_deps/mxe/usr/x86_64-pc-linux-gnu/bin/x86_64-w64-mingw32.static.posix-g++ compiler.
+-- Found GMP: /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix/lib/libgmp.a  
+-- Found MPFR: /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix/lib/libmpfr.a  
+CMake Warning (dev) at /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix/lib/CGAL/CGAL_SetupBoost.cmake:20 (find_package):
+  Policy CMP0167 is not set: The FindBoost module is removed.  Run "cmake
+  --help-policy CMP0167" for policy details.  Use the cmake_policy command to
+  set the policy and suppress this warning.
+
+Call Stack (most recent call first):
+  /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix/lib/CGAL/CGAL_SetupCGALDependencies.cmake:48 (include)
+  /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix/lib/CGAL/CGALConfig.cmake:169 (include)
+  CMakeLists.txt:570 (find_package)
+This warning is for project developers.  Use -Wno-dev to suppress it.
+
+-- Found Boost: /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix/lib/cmake/Boost-1.85.0/BoostConfig.cmake (found suitable version "1.85.0", minimum required is "1.72")
+-- Boost include dirs: /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix/include
+-- Boost libraries:    
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success
+-- Found Threads: TRUE
+-- Using gcc version 4 or later. Adding -frounding-math
+-- CGAL: 6.0.1
+-- CGAL: Using target CGAL::CGAL CGAL::CGAL_Core
+-- libzip: 1.5.2
+== Custom MXE File: /home/db811/openscad_deps/mxe/usr/share/cmake/modules/FindFreetype.cmake
+-- Checking for module 'freetype2'
+--   Found freetype2, version 26.2.20
+-- Freetype: 
+-- LibXml2: 2.14.4
+-- HidAPI: 0.11.2 (bundled)
+-- SpNav: disabled (not found)
+-- Cairo: 1.18.4
+-- Flex: 2.6.4
+-- Bison: 3.8.2
+-- Found Lib3MF: /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix/lib/lib3MF.a (found version "1.8.1")
+-- lib3mf: 1.8.1
+-- Found ZLIB: /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix/lib/libz.a (found version "1.3.1")
+-- Qt5: 5.15.17
+-- QScintilla: 2.11.2
+-- DBus input driver enabled
+-- Qt5Gamepad input driver disabled (not found)
+-- Offscreen OpenGL Context - using Microsoft WGL
+-- Offscreen OpenGL Context - using Microsoft WGL
+-- Clipper2 submodule
+-- Checking for module 'tbb'
+--   Package tbb was not found in the pkg-config search path.
+Perhaps you should add the directory containing `tbb.pc'
+to the PKG_CONFIG_PATH environment variable
+Package 'tbb', required by 'world', not found
+CMake Error at /home/db811/openscad_deps/mxe/usr/x86_64-pc-linux-gnu/share/cmake-3.31/Modules/FindPkgConfig.cmake:645 (message):
+  The following required packages were not found:
+
+   - tbb
+
+Call Stack (most recent call first):
+  /home/db811/openscad_deps/mxe/usr/x86_64-pc-linux-gnu/share/cmake-3.31/Modules/FindPkgConfig.cmake:873 (_pkg_check_modules_internal)
+  CMakeLists.txt:1182 (pkg_check_modules)
+
+
+-- Configuring incomplete, errors occurred!
+db811@debian:~/openscad$ ls
+appcast-snapshots.xml.in  CMakeLists.txt      COPYING      examples    Info.plist.in         openscad.appdata.xml      org.openscad.OpenSCAD.xml  releases   snap        tests          xcode
+appcast.xml.in            CMakeSettings.json  doc          fonts       libraries             openscad.appdata.xml.in   patches                    resources  src         valgrind.supp
+build                     color-schemes       Doxyfile     fonts-osx   locale                openscad.appdata.xml.in2  README.md                  scripts    submodules  vcpkg.json
+cmake                     contrib             dsa_pub.pem  Info.plist  mingw64.static.posix  OpenSCAD.sdef             RELEASE_NOTES.md           shaders    templates   winconsole
+db811@debian:~/openscad$ wget https://github.com/zekitez/OpenSCAD/archive/refs/heads/main.zip
+--2025-12-12 16:12:46--  https://github.com/zekitez/OpenSCAD/archive/refs/heads/main.zip
+Resolving github.com (github.com)... 140.82.121.4
+Connecting to github.com (github.com)|140.82.121.4|:443... connected.
+HTTP request sent, awaiting response... 302 Found
+Location: https://codeload.github.com/zekitez/OpenSCAD/zip/refs/heads/main [following]
+--2025-12-12 16:12:48--  https://codeload.github.com/zekitez/OpenSCAD/zip/refs/heads/main
+Resolving codeload.github.com (codeload.github.com)... 140.82.121.9
+Connecting to codeload.github.com (codeload.github.com)|140.82.121.9|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: unspecified [application/zip]
+Saving to: ‘main.zip’
+
+main.zip                                                       [ <=>                                                                                                                                    ] 515.89K  --.-KB/s    in 0.06s   
+
+2025-12-12 16:12:48 (8.65 MB/s) - ‘main.zip’ saved [528268]
+
+db811@debian:~/openscad$ unzip main.zip
+Archive:  main.zip
+5e8b8cb8bc00677ec0cfe8cd713de7e33387f946
+   creating: OpenSCAD-main/
+  inflating: OpenSCAD-main/HowToBuild_OpenSCAD.txt  
+  inflating: OpenSCAD-main/LICENSE   
+   creating: OpenSCAD-main/Logs/
+  inflating: OpenSCAD-main/Logs/Log_appimagetool.txt  
+  inflating: OpenSCAD-main/Logs/Log_cmake_-B_build_-D.txt  
+  inflating: OpenSCAD-main/Logs/Log_make_-j8.txt  
+  inflating: OpenSCAD-main/Logs/Log_make_install_DESTDIR.txt  
+  inflating: OpenSCAD-main/Logs/Log_release_common.txt  
+   creating: OpenSCAD-main/Pictures/
+  inflating: OpenSCAD-main/Pictures/combobox_details.png  
+  inflating: OpenSCAD-main/Pictures/preferences_curtomizer.png  
+  inflating: OpenSCAD-main/README.md  
+   creating: OpenSCAD-main/locale/
+  inflating: OpenSCAD-main/locale/cs.po  
+  inflating: OpenSCAD-main/locale/de.po  
+  inflating: OpenSCAD-main/locale/es.po  
+  inflating: OpenSCAD-main/locale/fr.po  
+  inflating: OpenSCAD-main/locale/hy.po  
+  inflating: OpenSCAD-main/locale/it.po  
+  inflating: OpenSCAD-main/locale/ka.po  
+  inflating: OpenSCAD-main/locale/openscad.pot  
+  inflating: OpenSCAD-main/locale/pl.po  
+  inflating: OpenSCAD-main/locale/pt_BR.po  
+  inflating: OpenSCAD-main/locale/ru.po  
+  inflating: OpenSCAD-main/locale/sv.po  
+  inflating: OpenSCAD-main/locale/tr.po  
+  inflating: OpenSCAD-main/locale/uk.po  
+  inflating: OpenSCAD-main/locale/zh_CN.po  
+  inflating: OpenSCAD-main/locale/zh_TW.po  
+   creating: OpenSCAD-main/scripts/
+  inflating: OpenSCAD-main/scripts/installer-linux.sh  
+  inflating: OpenSCAD-main/scripts/mingw-x-build-dependencies.sh  
+  inflating: OpenSCAD-main/scripts/release-common.sh  
+   creating: OpenSCAD-main/src/
+   creating: OpenSCAD-main/src/gui/
+  inflating: OpenSCAD-main/src/gui/Preferences.cc  
+  inflating: OpenSCAD-main/src/gui/Preferences.h  
+  inflating: OpenSCAD-main/src/gui/Preferences.ui  
+   creating: OpenSCAD-main/src/gui/parameter/
+  inflating: OpenSCAD-main/src/gui/parameter/ParameterVirtualWidget.h  
+  inflating: OpenSCAD-main/src/gui/parameter/ParameterWidget.cc  
+  inflating: OpenSCAD-main/src/gui/parameter/ParameterWidget.h  
+  inflating: OpenSCAD-main/src/gui/parameter/ParameterWidget.ui  
+db811@debian:~/openscad$ ls
+appcast-snapshots.xml.in  CMakeLists.txt      COPYING      examples    Info.plist.in  mingw64.static.posix      OpenSCAD-main              README.md         scripts  submodules     vcpkg.json
+appcast.xml.in            CMakeSettings.json  doc          fonts       libraries      openscad.appdata.xml      OpenSCAD.sdef              RELEASE_NOTES.md  shaders  templates      winconsole
+build                     color-schemes       Doxyfile     fonts-osx   locale         openscad.appdata.xml.in   org.openscad.OpenSCAD.xml  releases          snap     tests          xcode
+cmake                     contrib             dsa_pub.pem  Info.plist  main.zip       openscad.appdata.xml.in2  patches                    resources         src      valgrind.supp
+db811@debian:~/openscad$ cp -rpP OpenSCAD-main/src/* ./src/.
+db811@debian:~/openscad$ cp -rpP OpenSCAD-main/sripts/* ./scripts/
+cp: cannot stat 'OpenSCAD-main/sripts/*': No such file or directory
+db811@debian:~/openscad$ cp -rpP OpenSCAD-main/scripts/* ./scripts/
+db811@debian:~/openscad$ cp -rpP OpenSCAD-main/locale/* ./locale/
+db811@debian:~/openscad$ chmod +x ./scripts/*
+db811@debian:~/openscad$ ./scripts/mingw-x-build-dependencies.sh 64
+OPENSCADDIR: /home/db811/openscad
+note: you can 'export NUMJOBS=x' for building multiple pkgs at once
+linking /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix
+     to /home/db811/openscad/mingw64.static.posix/mingw-cross-env
+OPENSCAD_LIBRARIES:
+BASEDIR: /home/db811/openscad_deps
+MXEDIR: /home/db811/openscad_deps/mxe
+MXE_TARGETS: x86_64-w64-mingw32.static.posix
+MXETARGETDIR: /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix
+MXELIBTYPE: static.posix
+DEPLOYDIR: /home/db811/openscad/mingw64.static.posix
+MXEQTSUBDIR: qt5
+PATH modified: /home/db811/openscad_deps/mxe/usr/bin
+PATH modified: /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix/qt5/bin
+entering /home/db811/openscad_deps/mxe
+checkout openscad-snapshot-build branch
+HEAD is now at b8cc6aca Update CGAL to 6.0.1.
+make MXE_PLUGIN_DIRS=plugins/gcc12 qtbase qtmultimedia qscintilla2 mpfr eigen opencsg cgal ninja nsis glib libxml2 freetype fontconfig harfbuzz libzip lib3mf double-conversion zip onetbb MXE_TARGETS=x86_64-w64-mingw32.static.posix -j 4 JOBS=2
+[download]    isl-0.16.1.tar.bz2
+[download]    gcc-12.5.0.tar.xz
+[download]    onetbb-v2022.2.0.tar.gz
+make: Nothing to be done for 'ninja'.
+MXE Warning! Downloading onetbb from second URL.
+make: Nothing to be done for 'mpfr'.
+make: Nothing to be done for 'glib'.
+make: Nothing to be done for 'freetype'.
+make: Nothing to be done for 'fontconfig'.
+make: Nothing to be done for 'harfbuzz'.
+[build]       onetbb                  x86_64-w64-mingw32.static.posix
+[done]        onetbb                  x86_64-w64-mingw32.static.posix                 24472 KiB      0m20.615s
+leaving /home/db811/openscad_deps/mxe
+entering /home/db811/openscad
+db811@debian:~/openscad$ 
+db811@debian:~/openscad$ 
+db811@debian:~/openscad$ ./scripts/release-common.sh mingw64
+Detected build-machine ARCH: 64
+Detected OS: UNIX_CROSS_WIN
+linking /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix
+     to /home/db811/openscad/mingw64.static.posix/mingw-cross-env
+OPENSCAD_LIBRARIES:
+BASEDIR: /home/db811/openscad_deps
+MXEDIR: /home/db811/openscad_deps/mxe
+MXE_TARGETS: x86_64-w64-mingw32.static.posix
+MXETARGETDIR: /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix
+MXELIBTYPE: static.posix
+DEPLOYDIR: /home/db811/openscad/mingw64.static.posix
+MXEQTSUBDIR: qt5
+PATH modified: /home/db811/openscad_deps/mxe/usr/bin
+PATH modified: /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix/qt5/bin
+Mingw-cross build using ARCH=64 MXELIBTYPE=static.posix
+No VERSION.txt file found, defaulting VERSION=2025.12.12
+No COMMIT.txt file found, using git commit: 7962867aa
+Building openscad-2025.12.12
+  CMake args: -DCMAKE_BUILD_TYPE=Release -DENABLE_TESTS=OFF -GNinja -DMXECROSS=ON -DALLOW_BUNDLED_HIDAPI=ON -DPACKAGE_ARCH=x86-64
+  DEPLOYDIR:  /home/db811/openscad/mingw64.static.posix
+  NUMCPU: 4
+Running CMake from /home/db811/openscad/mingw64.static.posix
+x86_64-w64-mingw32.static.posix-cmake .. -DCMAKE_BUILD_TYPE=Release -DENABLE_TESTS=OFF -GNinja -DMXECROSS=ON -DALLOW_BUNDLED_HIDAPI=ON -DPACKAGE_ARCH=x86-64  -DOPENSCAD_VERSION=2025.12.12  -DOPENSCAD_COMMIT=7962867aa
+== Using MXE wrapper: /home/db811/openscad_deps/mxe/usr/bin/x86_64-w64-mingw32.static.posix-cmake
+     - cmake version 3.31.8
+     - warnings for unused CMAKE_POLICY_DEFAULT variables can be ignored
+== Using MXE toolchain: /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix/share/cmake/mxe-conf.cmake
+== Using MXE runresult: /home/db811/openscad_deps/mxe/usr/share/cmake/modules/TryRunResults.cmake
+loading initial cache file /home/db811/openscad_deps/mxe/usr/share/cmake/modules/TryRunResults.cmake
+-- OPENSCAD_SHORTVERSION: 2025.12.12
+-- OPENSCAD_YEAR: 2025
+-- OPENSCAD_MONTH: 12
+-- OPENSCAD_DAY: 12
+-- OPENSCAD_PATCH: 
+-- OPENSCAD_BUILD: 
+-- 
+-- Override standard malloc (MI_OVERRIDE=ON)
+-- Use the C++ compiler to compile (MI_USE_CXX=ON)
+-- 
+-- Library base name: mimalloc
+-- Version          : 1.7
+-- Build type       : release
+-- C++ Compiler     : /home/db811/openscad_deps/mxe/usr/x86_64-pc-linux-gnu/bin/x86_64-w64-mingw32.static.posix-g++
+-- Compiler flags   : -Wall;-Wextra;-Wno-unknown-pragmas;-fvisibility=hidden;-ftls-model=initial-exec;-fno-builtin-malloc
+-- Compiler defines : 
+-- Link libraries   : psapi;shell32;user32;advapi32;bcrypt
+-- Build targets    : static
+-- 
+-- Eigen: 3.4.0
+-- Boost: 1.85.0
+-- Harfbuzz: 11.4.1
+-- Fontconfig: 
+-- Glib: 2.85.3
+-- OpenCSG: 1.5.0
+-- USE_GLAD/USE_GLEW not specified: Defaulting to glew
+-- GLEW: 2.1.0
+-- OpenGL: opengl32;glu32
+-- Visual Leak Detector (VLD) is not found.
+-- Targeting Ninja
+-- Using /home/db811/openscad_deps/mxe/usr/x86_64-pc-linux-gnu/bin/x86_64-w64-mingw32.static.posix-g++ compiler.
+CMake Warning (dev) at /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix/lib/CGAL/CGAL_SetupBoost.cmake:20 (find_package):
+  Policy CMP0167 is not set: The FindBoost module is removed.  Run "cmake
+  --help-policy CMP0167" for policy details.  Use the cmake_policy command to
+  set the policy and suppress this warning.
+
+Call Stack (most recent call first):
+  /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix/lib/CGAL/CGAL_SetupCGALDependencies.cmake:48 (include)
+  /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix/lib/CGAL/CGALConfig.cmake:169 (include)
+  CMakeLists.txt:570 (find_package)
+This warning is for project developers.  Use -Wno-dev to suppress it.
+
+-- Boost include dirs: /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix/include
+-- Boost libraries:    
+-- Using gcc version 4 or later. Adding -frounding-math
+-- CGAL: 6.0.1
+-- CGAL: Using target CGAL::CGAL CGAL::CGAL_Core
+-- libzip: 1.5.2
+== Custom MXE File: /home/db811/openscad_deps/mxe/usr/share/cmake/modules/FindFreetype.cmake
+-- Freetype: 
+-- LibXml2: 2.14.4
+-- HidAPI: 0.11.2 (bundled)
+-- SpNav: disabled (not found)
+-- Cairo: 1.18.4
+-- Flex: 2.6.4
+-- Bison: 3.8.2
+-- lib3mf: 1.8.1
+-- Qt5: 5.15.17
+-- QScintilla: 2.11.2
+-- DBus input driver enabled
+-- Qt5Gamepad input driver disabled (not found)
+-- Offscreen OpenGL Context - using Microsoft WGL
+-- Offscreen OpenGL Context - using Microsoft WGL
+-- Clipper2 submodule
+-- Checking for module 'tbb'
+--   Found tbb, version 2022.2.0
+CMake Error at CMakeLists.txt:1183 (add_library):
+  add_library cannot create imported target "TBB::tbb" because another target
+  with the same name already exists.
+
+
+-- TBB: 2022.2.0
+-- Performing Test HAS_FP_CONTRACT
+-- Performing Test HAS_FP_CONTRACT - Success
+-- Performing Test HAS_FP_PRECISION
+-- Performing Test HAS_FP_PRECISION - Failed
+-- ====================================
+-- Manifold Build Configuration Summary
+-- ====================================
+--  
+-- Environment: MXE
+--  
+-- CMAKE_VERSION:                 3.31.8
+-- CMAKE_TOOLCHAIN_FILE:          /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix/share/cmake/mxe-conf.cmake
+-- CMAKE_GENERATOR:               Ninja
+-- CPACK_CMAKE_GENERATOR:         
+-- CMAKE_BUILD_TYPE:              Release
+-- CMAKE_PREFIX_PATH:             /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix
+-- CMAKE_CXX_COMPILER_ID:         GNU
+-- CMAKE_CXX_COMPILER_VERSION:    11.5.0
+-- BUILD_SHARED_LIBS:             OFF
+--  
+-- MANIFOLD_VERSION:              3.2.1
+-- MANIFOLD_PAR:                  ON
+-- MANIFOLD_CROSS_SECTION:        ON
+-- MANIFOLD_EXPORT:               OFF
+-- MANIFOLD_TEST:                 OFF
+-- MANIFOLD_DEBUG:                OFF
+-- MANIFOLD_ASSERT:               OFF
+-- MANIFOLD_CBIND:                ON
+-- MANIFOLD_PYBIND:               OFF
+-- MANIFOLD_JSBIND:               OFF
+-- MANIFOLD_FLAGS:                -Wall;-Wno-unknown-warning-option;-Wno-unused;-Wno-shorten-64-to-32;-Wno-format;-O3;-ffp-contract=off
+-- MANIFOLD_COMPILE_OPTIONS:      -Wall;-Wno-unknown-warning-option;-Wno-unused;-Wno-shorten-64-to-32;-Wno-format;-O3;-ffp-contract=off;-DMANIFOLD_CROSS_SECTION;-DMANIFOLD_PAR=1
+-- MANIFOLD_LINK_OPTIONS:         
+-- MANIFOLD_DOWNLOADS:            ON
+-- MANIFOLD_USE_BUILTIN_TBB:      OFF
+-- MANIFOLD_USE_BUILTIN_CLIPPER2: OFF
+-- MANIFOLD_USE_BUILTIN_NANOBIND: OFF
+-- MANIFOLD_FUZZ:                 OFF
+-- TRACY_ENABLE:                  OFF
+-- TRACY_MEMORY_USAGE:            OFF
+--  
+-- manifold submodule: 
+--  
+-- ====================================
+-- OpenSCAD Build Configuration Summary
+-- ====================================
+--  
+-- OpenSCAD version: 2025.12.12
+--         git hash: 7962867aa
+--  
+-- Environment: MXE
+-- Python: disabled
+--  
+-- CMAKE_VERSION:         3.31.8
+-- CMAKE_TOOLCHAIN_FILE:  /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix/share/cmake/mxe-conf.cmake
+-- CMAKE_GENERATOR:       Ninja
+-- CPACK_CMAKE_GENERATOR: Ninja
+-- CMAKE_BUILD_TYPE:      Release
+-- CMAKE_PREFIX_PATH:     /home/db811/openscad_deps/mxe/usr/x86_64-w64-mingw32.static.posix
+-- CMAKE_CXX_COMPILER_ID: GNU
+-- CMAKE_CXX_COMPILER_VERSION: 11.5.0
+--  
+-- SUFFIX:                
+--  
+-- Experimental Features: OFF
+-- Snapshot build:        OFF
+-- CGAL enabled:          ON
+-- Manifold enabled:      ON
+-- Headless build:        OFF
+-- NULLGL build:          OFF
+-- OpenGL wrangler:       glew
+-- Profiling/coverage:    OFF
+-- Use mimalloc:          ON
+-- Use built-in OpenCSG:  OFF
+-- CSG node id-prefix:    OFF
+-- Offline documentation: OFF
+--  
+-- GL Offscreen Context:  Windows WGL
+--  
+-- Input Drivers
+-- - HID API Driver (enabled)
+-- - Space Navigator Library Driver (disabled)
+-- - Joystick Driver (disabled)
+-- - DBus Remote Driver (enabled)
+--  
+-- DEFINES = _REENTRANT;UNICODE;_UNICODE;_USE_MATH_DEFINES;USE_MIMALLOC;MI_OVERRIDE;MI_LINK_STATIC;BOOST_DLL_USE_STD_FS;ENABLE_OPENCSG;OPENCSG_GLEW;ENABLE_CGAL;CGAL_DEBUG;CGAL_USE_GMPXX;ENABLE_LIBZIP;ENABLE_HIDAPI;ENABLE_CAIRO;ENABLE_LIB3MF;USE_GLEW;STATIC_QT_SVG_PLUGIN;GLEW_STATIC;USE_QOPENGLWIDGET;ENABLE_DBUS;OPENSCAD_VERSION=2025.12.12;OPENSCAD_SHORTVERSION=2025.12.12;OPENSCAD_YEAR=2025;OPENSCAD_MONTH=12;OPENSCAD_DAY=12;OPENSCAD_COMMIT=7962867aa;STACKSIZE=8388608;NOGDI;OPENSCAD_OS="Windows";USE_MANIFOLD_TRIANGULATOR;ENABLE_MANIFOLD
+-- LINK OPTIONS = -v;$<$<CONFIG:Debug>:;-Wl,--gc-sections;>
+--  
+-- Configuring incomplete, errors occurred!
+db811@debian:~/openscad$ 
+
