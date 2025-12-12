@@ -1,11 +1,12 @@
 ###########################################
 #
-# In this file I keep my notes on building OpenSCAD with some patches.
-# Building environment: Linux Ubuntu 24.04, Linux Mint (has a problem, see below) and MinGW-w64 on Windows.
+# In this file I keep my notes on building OpenSCAD / PythonSCAD with some patches.
+# Building environment: Linux Ubuntu 24.04 Cinnamon, Linux Mint (has a problem, see below) and MinGW-w64 on Windows 11.
 # Cross compiling on Ubuntu for Windows and generating a Windows installer works also.
 # Building on a Windows machine using MinGW-w64 works but building a windows installer on MinGW-w64 is not tried.
 #
 # Just copy line by line and paste each line in an xterm.
+# If you want PythonSCAD then just replace openscad with pythonscad.
 #
 ###########################################
 # Get the openscad code:
@@ -18,23 +19,25 @@ git submodule update --init --recursive
 sudo ./scripts/uni-get-dependencies.sh
 ./scripts/check-dependencies.sh
 
-In case of missing packages: install them.
+# In case of missing packages: install them.
 
 #########################################
 # Merge the patched OpenSCAD code into the cloned openscad directory:
 # https://www.funkysi1701.com/posts/2025/merge-two-projects-into-one/
-
+#
 #git remote add OpenSCAD https://github.com/zekitez/OpenSCAD.git
 #git fetch OpenSCAD
 #git merge OpenSCAD/develop --allow-unrelated-histories --no-ff --no-commit
 #git reset HEAD README.md
 #git check
-
+#
 # Fix merge conflicts and you are done.
 # The next 2 lines are needed if you want to push the change to a new branche.
 # git checkout -b feature/merge-OpenSCAD-into-openscad
 # git push origin feature/merge-OpenSCAD-into-openscad
 #########################################
+# Get the pached code and overwrite the openscad code.
+# Maybe do this step after a 1st succesfull building step and then repeat the building step.
 
 wget https://github.com/zekitez/OpenSCAD/archive/refs/heads/main.zip
 unzip main.zip
@@ -228,18 +231,18 @@ ls ./squashfs-root   # Directory created by the extract.
 export OPENSCAD_VERSION=$(openscad_version)
 export OPENSCAD_COMMIT=$(openscad_commit)
 
-# You may need to update the dates 20251107 and 20250213 to get the latest version.
+# You may need to update the dates 20251107 and 20250213 to get the latest version of:
 wget https://github.com/linuxdeploy/linuxdeploy/releases/download/1-alpha-20251107-1/linuxdeploy-x86_64.AppImage
 wget https://github.com/linuxdeploy/linuxdeploy-plugin-qt/releases/download/1-alpha-20250213-1/linuxdeploy-plugin-qt-x86_64.AppImage
 
-chmod +x linux*
+chmod +x linuxdeploy*
 
 export EXTRA_QT_PLUGINS=svg
 export PYTHON_VERSION=$(python3 -c "import sys; v=sys.version_info; print(f'{v.major}.{v.minor}.{v.micro}')")
 export LINUXDEPLOY_OUTPUT_VERSION="${OPENSCAD_VERSION}${SUFFIX}"
 
-# The next line is not needed for openscad because it does not use Python, 
-# only pythonscad uses Python but then it uses your locally installed Python or venv instead of Python within the AppImage.
+# linuxdeploy-plugin-python.sh is not needed for openscad because it does not use Python although there are not used .py files present. 
+# Only pythonscad uses Python but then it uses your locally installed Python or venv instead of Python within the AppImage.
 # ./linuxdeploy-plugin-python.sh --appdir ./AppDir
 
 ./linuxdeploy-x86_64.AppImage --list-plugins               # check if plugin qt is 'seen' if so continue.
