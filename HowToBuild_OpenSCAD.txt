@@ -1,4 +1,13 @@
 ###########################################
+#
+# In this file I keep my notes on building OpenSCAD with some patches.
+# Building environment: Linux Ubuntu 24.04, Linux Mint (has a problem, see below) and MinGW-w64 on Windows.
+# Cross compiling on Ubuntu for Windows and generating a Windows installer works also.
+# Building on a Windows machine using MinGW-w64 works but building a windows installer on MinGW-w64 is not tried.
+#
+# Just copy line by line and paste each line in an xterm.
+#
+###########################################
 # Get the openscad code:
 
 git clone https://github.com/openscad/openscad.git
@@ -38,7 +47,7 @@ cp -rpP OpenSCAD-main/locale/* ./locale/
 chmod +x ./scripts/*
 
 #########################################
-#  Build step for Linux on Linux in the cloned openscad directory:
+#  Build step for a Linux executable building on Linux in the cloned openscad directory:
 
 rm -rf build
 mkdir build
@@ -52,7 +61,7 @@ cmake --build build -t clean
 # Once only with a new build directory or to change options  do:
 cmake -B build -DEXPERIMENTAL=ON -DENABLE_PYTHON=ON -DSNAPSHOT=ON    # See my Log_cmake_-B_build_-D.txt
 
-# Generates a version which has 66328336 bytes.
+# Generates an executable which has 66328336 bytes.
 # 64780 -rwxrwxr-x  1 db811 db811  66328336 Dec 11 14:04 openscad
 # For a smaller version see below with the RELEASE flag.
 
@@ -77,9 +86,72 @@ cd ..
 export OPENSCAD_VERSION=$(openscad_version)
 export OPENSCAD_COMMIT=$(openscad_commit)
 
-# Runs on Ubuntu but fails on Mint.
+# Runs on Ubuntu but failed on Mint.
 export DEPLOYDIR=./build
 ./scripts/release-common.sh snapshot    # See LOG_release_common.txt . 
+
+####################################################
+# See openscad issue: Cross compiling with MXE from Linux (Ubuntu) for Windows fails #6421
+# This works only after adding onetbb to scripts/mingw-x-build-dependencies.sh !!!
+# To build Cross-compile on Linux for Windows:
+
+# python --version
+#   Python 3.12.3
+
+# Environment requirements from https://mxe.cc/#requirements
+sudo apt-get install \
+    autoconf \
+    automake \
+    autopoint \
+    bash \
+    bison \
+    bzip2 \
+    flex \
+    g++ \
+    g++-multilib \
+    gettext \
+    git \
+    gperf \
+    intltool \
+    libc6-dev-i386 \
+    libclang-dev \
+    libgdk-pixbuf2.0-dev \
+    libltdl-dev \
+    libgl-dev \
+    libpcre2-dev \
+    libssl-dev \
+    libtool-bin \
+    libxml-parser-perl \
+    lzip \
+    make \
+    openssl \
+    p7zip-full \
+    patch \
+    perl \
+    python3 \
+    python3-mako \
+    python3-packaging \
+    python3-pkg-resources \
+    python3-setuptools \
+    python-is-python3 \
+    ruby \
+    sed \
+    sqlite3 \
+    unzip \
+    wget \
+    xz-utils
+
+# On Linux 
+# In addition on Ubuntu (could be more packages are needed) :
+sudo apt-get install itstool nsis libssl-dev
+sudo ln -s /usr/bin/libtool /usr/bin/glibtool     
+
+
+git pull                       # Get the latest code
+cmake --build build -t clean
+source ./scripts/setenv-mingw-xbuild.sh 64
+./scripts/mingw-x-build-dependencies.sh 64
+./scripts/release-common.sh mingw64
 
 ####################################################
 # To build an AppDir for an Linux AppImage on Linux from within an empty directory (in the openscad directory):
@@ -107,7 +179,7 @@ cmake -B build \
 cd build
 make -j8
 
-# Generates a version which has not 66328336 but 19417552 bytes.
+# Generates an executable which has not 66328336 but 19417552 bytes.
 # 18964 -rwxrwxr-x  1 db811 db811 19417552 Dec 11 14:13 openscad
 
 # Run from the build directory with:
@@ -174,3 +246,4 @@ export LINUXDEPLOY_OUTPUT_VERSION="${OPENSCAD_VERSION}${SUFFIX}"
 ./linuxdeploy-x86_64.AppImage --plugin qt --output appimage --appdir AppDir
 
 ###################################
+
