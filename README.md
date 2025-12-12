@@ -1,5 +1,7 @@
 # OpenSCAD
-This is where I keep the patches to [openscad/openscad](https://github.com/openscad/openscad/)
+This is where I keep my patches to [openscad/openscad](https://github.com/openscad/openscad/)
+The reason for the patches is described below.
+Building OpenSCAD with the patches is stated in HowToBuild_OpenSCAD.txt .
 
 
 ## 3 Feature request: Collapse and expand tabs as combo box function and startup preference #6434
