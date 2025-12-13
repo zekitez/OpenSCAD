@@ -44,7 +44,7 @@ unzip main.zip
 
 # Dangerous but...
 cp -rpP OpenSCAD-main/src/* ./src/.
-cp -rpP OpenSCAD-main/scripts/* ./scripts/
+### cp -rpP OpenSCAD-main/scripts/* ./scripts/  # Not
 cp -rpP OpenSCAD-main/locale/* ./locale/
 
 # In PythonSCAD src/gui/Preferences.* differs from OpenSCAD. Thus:
