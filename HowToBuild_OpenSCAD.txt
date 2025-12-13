@@ -1,16 +1,15 @@
 ###########################################
 #
-# In this file I keep my notes on building OpenSCAD / PythonSCAD with some patches.
-# Building environment: Linux Ubuntu 24.04 Cinnamon, 
-#                       Linux Mint (builds but has a problem, see below),
-#                       Linux Debian 13.2 Cinnamon (replacement for Linux Mint) and 
+# In this file I keep my notes on building OpenSCAD with some patches.
+# Building environment: Linux Ubuntu 24.04 Cinnamon (no problem), 
+#                       Linux Mint                  (builds but has a problem, see below),
+#                       Linux Debian 13.2 Cinnamon  (replacement for Linux Mint) and 
 #                       MinGW-w64 on Windows 11.
 # Since OpenSCAD is build on Debian, Mint is replace with Debian 13.2 .
 # Cross compiling on Ubuntu for Windows and generating a Windows installer works with some adjustments.
 # Building on a Windows machine using MinGW-w64 works but building a windows installer on MinGW-w64 is not tried.
 #
 # Just copy line by line and paste each line in an xterm.
-# If you want PythonSCAD then just replace openscad with pythonscad.
 #
 ###########################################
 # Get the openscad code:
@@ -26,22 +25,8 @@ sudo ./scripts/uni-get-dependencies.sh
 # In case of missing packages: install them.
 
 #########################################
-# Merge the patched OpenSCAD code into the cloned openscad directory:
-# https://www.funkysi1701.com/posts/2025/merge-two-projects-into-one/
-#
-#git remote add OpenSCAD https://github.com/zekitez/OpenSCAD.git
-#git fetch OpenSCAD
-#git merge OpenSCAD/develop --allow-unrelated-histories --no-ff --no-commit
-#git reset HEAD README.md
-#git check
-#
-# Fix merge conflicts and you are done.
-# The next 2 lines are needed if you want to push the change to a new branche.
-# git checkout -b feature/merge-OpenSCAD-into-openscad
-# git push origin feature/merge-OpenSCAD-into-openscad
-#########################################
 # Get the pached code and overwrite the openscad code.
-# Maybe do this step after a 1st succesfull building step and then repeat the building step.
+# Do this step after a 1st succesfull building step and then repeat the building step.
 
 wget https://github.com/zekitez/OpenSCAD/archive/refs/heads/main.zip
 unzip main.zip
@@ -154,6 +139,7 @@ sudo apt-get install \
 sudo apt-get install itstool nsis libssl-dev libtool    # On Debian install libtool-bin instead (is libtool)
 sudo ln -s /usr/bin/libtool /usr/bin/glibtool           # Check first if /usr/bin/libtool is present.
 
+# Kill the xTerm and start with a fresh one.
 
 git pull                       # Get the latest code
 # cmake --build build -t clean   # Not needed, builds in openscad/mingw64.static.posix directory.
