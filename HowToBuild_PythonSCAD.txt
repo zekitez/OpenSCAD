@@ -48,7 +48,7 @@ cp -rpP OpenSCAD-main/scripts/* ./scripts/
 cp -rpP OpenSCAD-main/locale/* ./locale/
 
 # In PythonSCAD src/gui/Preferences.* differs from OpenSCAD. Thus:
-cp OpenSCAD-main/PythonSCAD/src/gui/Preferences.* ./src/gui/*
+cp OpenSCAD-main/pythonscad/src/gui/Preferences.* ./src/gui/*
 
 chmod +x ./scripts/*
 
