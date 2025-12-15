@@ -83,3 +83,21 @@ CMake Error at /home/zekitez/openscad_deps/mxe/usr/x86_64-pc-linux-gnu/share/cma
 The following required packages were not found:
 
 . tbb
+
+# PythonSCAD
+
+## 1 Script create_appimage.sh fails on a missing pythonscad-python link, dependency libfive.so and an unknown linuxdeploy-plugin-python.sh. #227
+Descibe the bug:
+The 1st issue is that "make install DESTDIR=../AppDir" fails on a missing pythonscad-python link.
+After adding in the build directory "ln -s pythonscad pythonscad-python" the problem was solved.
+See Fail_Log.txt line 839.
+
+The 2nd issue is that linuxdeploy-plugin-python.sh is not in the pythonscad repository but in local
+"/home/gsohler/git/linuxdeploy-plugin-python" and it is probably adapted for Python 3.12.3 . The problem was solved by cloning niess/linuxdeploy-plugin-python and patch it for Python 3.12.3 .
+
+The 3rd issue is that "linuxdeploy --plugin qt --output appimage --appdir AppDir" fails on "ERROR: Could not find dependency: libfive.so". See Fail_Log.txt lines 866 and 1148. This was solved by removing "-DENABLE_LIBFIVE=1" from line 4 in file create_appimage.sh
+"cmake -DCMAKE_INSTALL_PREFIX=/usr -DEXPERIMENTAL=1 -DENABLE_PYTHON=1 -DPYTHON_VERSION=3.12 -DENABLE_LIBFIVE=1 .."
+
+I am confused... the created AppImage does not run Python from within the AppImage but uses a locally created Python venv. See attached screenshot.
+
+The issue continues. Currently (20251215) cross compiling for windows still fails. See the issue.
