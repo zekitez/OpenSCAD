@@ -2,16 +2,41 @@
 #
 # In this file I keep my notes on building PythonSCAD with some patches.
 # Building environment: Linux Ubuntu 24.04 Cinnamon (no problem), 
-#                       Linux Mint                  (builds but has a problem, see below),
+#                       Linux Mint                  (builds but had a problem, see below),
 #                       Linux Debian 13.2 Cinnamon  (replacement for Linux Mint) and 
 #                       MinGW-w64 on Windows 11.
-# Since PythonSCAD is build on Debian, Mint is replace with Debian 13.2 .
-# Cross compiling on Ubuntu for Windows and generating a Windows installer works with some adjustments.
-# Building on a Windows machine using MinGW-w64 works but building a windows installer on MinGW-w64 is not tried.
+# Since PythonSCAD is build on Debian, Mint is replace with Debian 13.2 unfortunatly Debian is not as easy as Ubuntu.
+# You still will find build issues.
+# Cross compiling PythonSCAD on Ubuntu for Windows fails.
+# Only building on Linux for Linux works.
+# Building on a Windows machine using MinGW-w64 is not tried.
 #
 # Just copy line by line and paste each line in an xterm.
 #
 ###########################################
+# For pythodscad bsdtar is needed:
+# https://www.linuxfromscratch.org/blfs/view/svn/general/libarchive.html
+
+sudo apt update
+sudo apt upgrade
+sudo apt install libarchive-tools  # This should do it.
+
+$ bsdtar
+bsdtar: Must specify one of -c, -r, -t, -u, -x    # If you do not get that text continue with:
+
+wget https://github.com/libarchive/libarchive/releases/download/v3.8.4/libarchive-3.8.4.tar.gz
+
+gunzip libarchive-3.8.4.tar.gz      # --> libarchive-3.8.4.tar
+tar -xvf libarchive-3.8.4.tar       # --> libarchive-3.8.4
+
+./configure --prefix=/usr --disable-static &&
+make
+
+make check
+
+sudo make install
+
+#################################################
 # Get the pythonscad code:
 
 git clone https://github.com/pythonscad/pythonscad.git
@@ -89,8 +114,8 @@ cd ..
 
 # The used release-common.sh is a patched version of the original script, see "Building an installer for linux-gnu fails #6424" on GitHub !!
 . ./scripts/establish_version.sh
-export OPENSCAD_VERSION=$(pythonscad_version)
-export OPENSCAD_COMMIT=$(pythonscad_commit)
+export PYTHONSCAD_VERSION=$(openscad_version)
+export PYTHONSCAD_COMMIT=$(openscad_commit)
 
 # Runs on Ubuntu but failed on Mint.
 export DEPLOYDIR=./build
@@ -126,8 +151,8 @@ sudo apt-get install \
     intltool \
     libc6-dev-i386 \
     libclang-dev \
-#    libgdk-pixbuf2.0-dev \   # Problem on Debian
-    libgdk-pixbuf-2.0-dev \
+    libgdk-pixbuf2.0-dev \   # Problem on Debian
+#    libgdk-pixbuf-2.0-dev \ # Problem on Ubuntu
     libltdl-dev \
     libgl-dev \
     libpcre2-dev \
@@ -153,6 +178,8 @@ sudo apt-get install \
     wget \
     xz-utils
 
+sudo apt-get install libpcre3 libpcre3-dev libarchive-tools bspatch
+
 # On Linux 
 # In addition on Ubuntu (could be more packages are needed) :
 sudo apt-get install itstool nsis libssl-dev libtool    # On Debian install libtool-bin instead (is libtool)
@@ -161,11 +188,10 @@ sudo ln -s /usr/bin/libtool /usr/bin/glibtool           # Check first if /usr/bi
 # Kill the xTerm and start with a fresh one.
 
 git pull                       # Get the latest code
-# cmake --build build -t clean   # Not needed, builds in pythonscad/mingw64.static.posix directory.
 
 source ./scripts/setenv-mingw-xbuild.sh 64
 
-./scripts/mingw-x-build-dependencies.sh 64  # Install any reported "Missing requirementt: ..." and repeat this step.
+./scripts/mingw-x-build-dependencies.sh 64  # Install any reported "Missing requirement: ..." and repeat this step.
                                             # This takes time, enough for a large meal and a nap.
 
 ./scripts/release-common.sh mingw64       # If you have not installed my patches then here it fails on not found package "-  tbb".
@@ -238,15 +264,15 @@ ls ./squashfs-root   # Directory created by the extract.
 # export PATH=/appimage/usr/bin:"$PATH"
 # export EXTRA_QT_PLUGINS=svg
 # export PYTHON_VERSION=$(python3 -c "import sys; v=sys.version_info; print(f'{v.major}.{v.minor}.{v.micro}')")
-# export LINUXDEPLOY_OUTPUT_VERSION="${OPENSCAD_VERSION}${SUFFIX}"
+# export LINUXDEPLOY_OUTPUT_VERSION="${PYTHONSCAD_VERSION}${SUFFIX}"
 # ./linuxdeploy-x86_64.AppImage --plugin python --plugin qt --output appimage --appdir AppDir
 
 ###############################################
 # To make an AppImage in the pythonscad directory:
 
 . ./scripts/establish_version.sh
-export OPENSCAD_VERSION=$(pythonscad_version)
-export OPENSCAD_COMMIT=$(pythonscad_commit)
+export PYTHONSCAD_VERSION=$(openscad_version)
+export PYTHONSCAD_COMMIT=$(openscad_commit)
 
 # You may need to update the dates 20251107 and 20250213 to get the latest version of:
 wget https://github.com/linuxdeploy/linuxdeploy/releases/download/1-alpha-20251107-1/linuxdeploy-x86_64.AppImage
@@ -256,7 +282,7 @@ chmod +x linuxdeploy*
 
 export EXTRA_QT_PLUGINS=svg
 export PYTHON_VERSION=$(python3 -c "import sys; v=sys.version_info; print(f'{v.major}.{v.minor}.{v.micro}')")
-export LINUXDEPLOY_OUTPUT_VERSION="${OPENSCAD_VERSION}${SUFFIX}"
+export LINUXDEPLOY_OUTPUT_VERSION="${PYTHONSCAD_VERSION}${SUFFIX}"
 
 # linuxdeploy-plugin-python.sh is not needed for pythonscad because it does not use Python although there are not used .py files present. 
 # Only pythonscad uses Python but then it uses your locally installed Python or venv instead of Python within the AppImage.
