@@ -6,9 +6,9 @@
 #                       Linux Debian 13.2 Cinnamon  (replacement for Linux Mint) and 
 #                       MinGW-w64 on Windows 11.
 # Since PythonSCAD is build on Debian, Mint is replace with Debian 13.2 unfortunatly Debian is not as easy as Ubuntu.
-# You still will find build issues.
+# You still will find build issues. Sometimes you have to kill an xTerm and start again with a fresh xTerm...
 # Cross compiling PythonSCAD on Ubuntu for Windows fails.
-# Only building on Linux for Linux works.
+# Only building on Linux for Linux works. After "sudo make install" check /usr for pythonscad file...
 # Building on a Windows machine using MinGW-w64 is not tried.
 #
 # Just copy line by line and paste each line in an xterm.
@@ -73,9 +73,12 @@ cp -rpP OpenSCAD-main/src/* ./src/.
 cp -rpP OpenSCAD-main/locale/* ./locale/
 
 # In PythonSCAD src/gui/Preferences.* differs from OpenSCAD. Thus:
-cp OpenSCAD-main/pythonscad/src/gui/Preferences.* ./src/gui/*
+cp -rpP OpenSCAD-main/pythonscad/src/gui/Preferences.* ./src/gui/
 
 chmod +x ./scripts/*
+cmake --build build -t clean
+cd ./build
+make -j8
 
 #########################################
 #  Build step for a Linux executable building on Linux in the cloned pythonscad directory:
@@ -104,8 +107,10 @@ make -j8
 # Run from the build directory with:
 ./pythonscad
 
-cd ..
 # Optional, install it on this computer with in /usr/bin : 
+# sudo make install        
+cd ..
+# Or optional, install it on this computer with in /usr/bin : 
 # sudo cmake --install build
 
 ######################################################
@@ -114,8 +119,8 @@ cd ..
 
 # The used release-common.sh is a patched version of the original script, see "Building an installer for linux-gnu fails #6424" on GitHub !!
 . ./scripts/establish_version.sh
-export PYTHONSCAD_VERSION=$(openscad_version)
-export PYTHONSCAD_COMMIT=$(openscad_commit)
+export OPENSCAD_VERSION=$(openscad_version)
+export OPENSCAD_COMMIT=$(openscad_commit)
 
 # Runs on Ubuntu but failed on Mint.
 export DEPLOYDIR=./build
@@ -208,18 +213,22 @@ mkdir build
 # Get latest files from pythonscad master
 git pull
 
+. ./scripts/establish_version.sh
+export OPENSCAD_VERSION=$(openscad_version)
+export OPENSCAD_COMMIT=$(openscad_commit)
 
 cmake -B build \
-  -DCMAKE_INSTALL_PREFIX=/usr \
-  -DCMAKE_BUILD_TYPE=Release \    # This option causes compilation with warnings.
-#  -DUSE_BUILTIN_OPENCSG=ON \     # Not found
-  -DMANIFOLD_PYBIND=OFF \
-  -DMANIFOLD_TEST=OFF \
-  -DENABLE_PYTHON=ON \
-  -DPYTHON_VERSION=3.13 \
-#  -DENABLE_TESTS=OFF \           # Not found
-  -DEXPERIMENTAL=ON \
-  -DSNAPSHOT=ON
+                  -DOPENSCAD_VERSION="$OPENSCAD_VERSION" \
+                  -DOPENSCAD_COMMIT="$OPENSCAD_COMMIT" \
+                  -DCMAKE_INSTALL_PREFIX=/usr \
+                  -DCMAKE_BUILD_TYPE=Release \
+                  -DUSE_BUILTIN_OPENCSG=ON \
+                  -DMANIFOLD_PYBIND=OFF \
+                  -DMANIFOLD_TEST=OFF \
+                  -DENABLE_PYTHON=ON \
+                  -DENABLE_TESTS=OFF \
+                  -DEXPERIMENTAL=ON \
+                  -DSNAPSHOT=ON
 
 cd build
 make -j8
@@ -271,8 +280,8 @@ ls ./squashfs-root   # Directory created by the extract.
 # To make an AppImage in the pythonscad directory:
 
 . ./scripts/establish_version.sh
-export PYTHONSCAD_VERSION=$(openscad_version)
-export PYTHONSCAD_COMMIT=$(openscad_commit)
+export OPENSCAD_VERSION=$(openscad_version)
+export OPENSCAD_COMMIT=$(openscad_commit)
 
 # You may need to update the dates 20251107 and 20250213 to get the latest version of:
 wget https://github.com/linuxdeploy/linuxdeploy/releases/download/1-alpha-20251107-1/linuxdeploy-x86_64.AppImage
