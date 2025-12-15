@@ -100,4 +100,4 @@ The 3rd issue is that "linuxdeploy --plugin qt --output appimage --appdir AppDir
 
 I am confused... the created AppImage does not run Python from within the AppImage but uses a locally created Python venv. See attached screenshot.
 
-The issue continues. Currently (20251215) cross compiling for windows still fails. See the issue.
+20251215: The issue continues. Currently cross compiling for windows still fails and more undocumented packages or needed on Linux. See the issue.
