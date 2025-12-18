@@ -12,8 +12,8 @@
 #
 # Just copy line by line and paste each line in an xterm.
 #
-# Since 2025-12-12, Cross Compiling on Linux for Windows will fail !!!!
-# The problem could be in the changed of OpenScad's MXE usage.
+# Since 2025-12-12, Cross Compiling on Linux for Windows may fail !!!!
+# The problem could be that both OpenSCAD and PythonSCAD use openscad_deps...
 #
 ###########################################
 # Get the openscad code:
@@ -45,7 +45,7 @@ cp -rpP OpenSCAD-main/locale/* ./locale/
 chmod +x ./scripts/*
 
 #########################################
-#  Build step for a Linux executable building on Linux in the cloned openscad directory:
+#  Build step for a Linux executable and/or an AppDir for an Linux AppImage building on Linux in the cloned openscad directory:
 
 rm -rf build
 mkdir build
@@ -57,11 +57,14 @@ git pull
 cmake --build build -t clean
 
 # Once only with a new build directory or to change options  do:
-cmake -B build -DEXPERIMENTAL=ON -DENABLE_PYTHON=ON -DSNAPSHOT=ON    # See my Log_cmake_-B_build_-D.txt
+cmake -B build \
+      -DEXPERIMENTAL=ON \
+      -DENABLE_PYTHON=ON \
+      -DSNAPSHOT=ON           # See my Log_cmake_-B_build_-D.txt
 
 # Generates an executable which has 66328336 bytes.
-# 64780 -rwxrwxr-x  1 db811 db811  66328336 Dec 11 14:04 openscad
-# For a smaller version see below with the RELEASE flag.
+# 64780 -rwxrwxr-x  1 db811 db811  66328336 Dec 11 14:04 openscad           <-----
+# For a smaller version see below.
 
 # Use 8 cores to make, depends on the CPU cores, 
 # Use without the -jn option (slow), or with n = 4 or 6 or ..(faster). See my Log_make_-j8.txt.
@@ -74,6 +77,70 @@ make -j8
 cd ..
 # Optional, install it on this computer with in /usr/bin : 
 # sudo cmake --install build
+
+# For generating an AppImage you need to do:
+make install DESTDIR=../AppDir    # See Log_make_install_DESTDIR.txt
+cd ..
+
+####################################################
+#  Build step for a Linux executable and/or an AppDir for an Linux AppImage building on Linux in the cloned openscad directory:
+
+rm -rf build
+mkdir build
+
+# Get latest files from openscad master
+git pull
+
+# -DPYTHON_VERSION=3.12  ???
+
+cmake -B build \
+  -DCMAKE_INSTALL_PREFIX=/usr \
+  -DCMAKE_BUILD_TYPE=Release \    # This option causes compilation with warnings.
+#  -DUSE_BUILTIN_OPENCSG=ON \     # Not found
+  -DMANIFOLD_PYBIND=OFF \
+  -DMANIFOLD_TEST=OFF \
+  -DENABLE_PYTHON=ON \
+  -DPYTHON_VERSION=3.12 \
+#  -DENABLE_TESTS=OFF \           # Not found
+  -DEXPERIMENTAL=ON \
+  -DSNAPSHOT=ON
+
+cd build
+make -j8
+
+# Generates an executable which has not 66328336 but 19417552 bytes.
+# 18964 -rwxrwxr-x  1 db811 db811 19417552 Dec 11 14:13 openscad           <-----
+
+# Run from the build directory with:
+./openscad
+
+# For generating an AppImage you need to do:
+make install DESTDIR=../AppDir    # See Log_make_install_DESTDIR.txt
+cd ..
+
+#######################################
+# To make a Linux AppImage in the openscad directory:
+
+. ./scripts/establish_version.sh
+export OPENSCAD_VERSION=$(openscad_version)
+export OPENSCAD_COMMIT=$(openscad_commit)
+
+# You may need to update the dates 20251107 and 20250213 to get the latest version of:
+wget https://github.com/linuxdeploy/linuxdeploy/releases/download/1-alpha-20251107-1/linuxdeploy-x86_64.AppImage
+wget https://github.com/linuxdeploy/linuxdeploy-plugin-qt/releases/download/1-alpha-20250213-1/linuxdeploy-plugin-qt-x86_64.AppImage
+
+chmod +x linuxdeploy*
+
+export EXTRA_QT_PLUGINS=svg
+export PYTHON_VERSION=$(python3 -c "import sys; v=sys.version_info; print(f'{v.major}.{v.minor}.{v.micro}')")
+export LINUXDEPLOY_OUTPUT_VERSION="${OPENSCAD_VERSION}${SUFFIX}"
+
+# linuxdeploy-plugin-python.sh is not needed for openscad because it does not use Python although there are not used .py files present. 
+# Only pythonscad uses Python but then it uses your locally installed Python or venv instead of Python within the AppImage.
+# ./linuxdeploy-plugin-python.sh --appdir ./AppDir
+
+./linuxdeploy-x86_64.AppImage --list-plugins               # check if plugin qt is 'seen' if so continue.
+./linuxdeploy-x86_64.AppImage --plugin qt --output appimage --appdir AppDir
 
 ######################################################
 # To generate a Linux installer OpenSCAD.tar.gz in the directory where you cloned OpenSCAD (in the openscad directory)
@@ -147,7 +214,8 @@ sudo apt-get install \
     xz-utils
 
 # On Linux 
-# In addition on Ubuntu (could be more packages are needed) :
+# In addition on Ubuntu more packages maybe needed :
+sudo apt-get install ninja-build
 sudo apt-get install itstool nsis libssl-dev libtool    # On Debian install libtool-bin instead (is libtool)
 sudo ln -s /usr/bin/libtool /usr/bin/glibtool           # Check first if /usr/bin/libtool is present.
 
@@ -166,41 +234,7 @@ source ./scripts/setenv-mingw-xbuild.sh 64
                                           # Get the patches, kill the Xterm and start in a new Xterm with "source ./scripts/setenv-mingw-xbuild.sh 64"
                                           # On Debian it compiles with warnings. See Log files.
 
-####################################################
-# To build an AppDir for an Linux AppImage on Linux from within an empty directory (in the openscad directory):
-
-rm -rf build
-mkdir build
-
-# Get latest files from openscad master
-git pull
-
-# -DPYTHON_VERSION=3.12  ???
-
-cmake -B build \
-  -DCMAKE_INSTALL_PREFIX=/usr \
-  -DCMAKE_BUILD_TYPE=Release \    # This option causes compilation with warnings.
-#  -DUSE_BUILTIN_OPENCSG=ON \     # Not found
-  -DMANIFOLD_PYBIND=OFF \
-  -DMANIFOLD_TEST=OFF \
-  -DENABLE_PYTHON=ON \
-  -DPYTHON_VERSION=3.12 \
-#  -DENABLE_TESTS=OFF \           # Not found
-  -DEXPERIMENTAL=ON \
-  -DSNAPSHOT=ON
-
-cd build
-make -j8
-
-# Generates an executable which has not 66328336 but 19417552 bytes.
-# 18964 -rwxrwxr-x  1 db811 db811 19417552 Dec 11 14:13 openscad
-
-# Run from the build directory with:
-./openscad
-
-# For generating an AppImage you need to do:
-make install DESTDIR=../AppDir    # See Log_make_install_DESTDIR.txt
-cd ..
+# If all goes well there is a  Windows .exe in the current directory.
 
 ######################################################
 ######################################################
@@ -224,39 +258,3 @@ ls ./squashfs-root   # Directory created by the extract.
 # ./appimagetool-x86_64.AppImage ./squashfs-root
 
 ######################################################
-# Sources to make an AppImage:
-# linuxdeploy  https://github.com/linuxdeploy/linuxdeploy/releases/
-# Plugins      https://github.com/linuxdeploy/awesome-linuxdeploy    # Get linuxdeploy-plugin-qt and linuxdeploy-plugin-python
-# Fails with the python plugin
-#
-# export PATH=/appimage/usr/bin:"$PATH"
-# export EXTRA_QT_PLUGINS=svg
-# export PYTHON_VERSION=$(python3 -c "import sys; v=sys.version_info; print(f'{v.major}.{v.minor}.{v.micro}')")
-# export LINUXDEPLOY_OUTPUT_VERSION="${OPENSCAD_VERSION}${SUFFIX}"
-# ./linuxdeploy-x86_64.AppImage --plugin python --plugin qt --output appimage --appdir AppDir
-#
-###############################################
-# To make an AppImage in the openscad directory:
-
-. ./scripts/establish_version.sh
-export OPENSCAD_VERSION=$(openscad_version)
-export OPENSCAD_COMMIT=$(openscad_commit)
-
-# You may need to update the dates 20251107 and 20250213 to get the latest version of:
-wget https://github.com/linuxdeploy/linuxdeploy/releases/download/1-alpha-20251107-1/linuxdeploy-x86_64.AppImage
-wget https://github.com/linuxdeploy/linuxdeploy-plugin-qt/releases/download/1-alpha-20250213-1/linuxdeploy-plugin-qt-x86_64.AppImage
-
-chmod +x linuxdeploy*
-
-export EXTRA_QT_PLUGINS=svg
-export PYTHON_VERSION=$(python3 -c "import sys; v=sys.version_info; print(f'{v.major}.{v.minor}.{v.micro}')")
-export LINUXDEPLOY_OUTPUT_VERSION="${OPENSCAD_VERSION}${SUFFIX}"
-
-# linuxdeploy-plugin-python.sh is not needed for openscad because it does not use Python although there are not used .py files present. 
-# Only pythonscad uses Python but then it uses your locally installed Python or venv instead of Python within the AppImage.
-# ./linuxdeploy-plugin-python.sh --appdir ./AppDir
-
-./linuxdeploy-x86_64.AppImage --list-plugins               # check if plugin qt is 'seen' if so continue.
-./linuxdeploy-x86_64.AppImage --plugin qt --output appimage --appdir AppDir
-
-###################################
