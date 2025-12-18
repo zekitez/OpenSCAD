@@ -1,17 +1,21 @@
 ###########################################
 #
-# In this file I keep my notes on building PythonSCAD with some patches.
+# In this file I keep my notes on building PythonSCAD with some patches based on Debian (Ubuntu, Mint).
 # Building environment: Linux Ubuntu 24.04 Cinnamon (no problem), 
 #                       Linux Mint                  (builds but had a problem, see below),
 #                       Linux Debian 13.2 Cinnamon  (replacement for Linux Mint) and 
 #                       MinGW-w64 on Windows 11.
-# Since PythonSCAD is build on Debian, Mint is replace with Debian 13.2 unfortunatly Debian is not as easy as Ubuntu.
+# Since OpenScad and PythonSCAD are build on Debian, Mint is replace with Debian 13.2. Unfortunatly Debian is not as easy as Ubuntu.
 # You still will find build issues. Sometimes you have to kill an xTerm and start again with a fresh xTerm...
-# Cross compiling PythonSCAD on Ubuntu for Windows fails.
-# Only building on Linux for Linux works. After "sudo make install" check /usr for pythonscad file...
+# Cross compiling PythonSCAD on Linux for Windows currently fails (2025-12-16).
+# Only building on Linux for Linux works. 
+# During building you will be faced with missing Linux packages. Use Google to find out how to install them.
 # Building on a Windows machine using MinGW-w64 is not tried.
 #
 # Just copy line by line and paste each line in an xterm.
+#
+# Since 2025-12-12, Cross Compiling on Linux for Windows will fail !!!
+# The problem could be in the changed of OpenScad's MXE usage.
 #
 ###########################################
 # For pythodscad bsdtar is needed:
@@ -19,18 +23,18 @@
 
 sudo apt update
 sudo apt upgrade
-sudo apt install libarchive-tools  # This should do it.
+sudo apt install libarchive-tools git wget 
 
 $ bsdtar
-bsdtar: Must specify one of -c, -r, -t, -u, -x    # If you do not get that text continue with:
+bsdtar: Must specify one of -c, -r, -t, -u, -x    
 
+# If you do not get the previous text then continue with:
 wget https://github.com/libarchive/libarchive/releases/download/v3.8.4/libarchive-3.8.4.tar.gz
 
 gunzip libarchive-3.8.4.tar.gz      # --> libarchive-3.8.4.tar
 tar -xvf libarchive-3.8.4.tar       # --> libarchive-3.8.4
 
-./configure --prefix=/usr --disable-static &&
-make
+./configure --prefix=/usr --disable-static && make
 
 make check
 
@@ -93,7 +97,7 @@ git pull
 cmake --build build -t clean
 
 # Once only with a new build directory or to change options  do:
-cmake -B build -DEXPERIMENTAL=ON -DENABLE_PYTHON=ON -DSNAPSHOT=ON    # Google to install any missing packages.
+cmake -B build -DEXPERIMENTAL=ON -DENABLE_PYTHON=ON -DSNAPSHOT=ON 
 
 # Generates an executable, with make -j8, which has 70830144 bytes.
 # 64780 -rwxrwxr-x  1 db811 db811  70830144 Dec 11 14:04 pythonscad
@@ -113,6 +117,8 @@ cd ..
 # Or optional, install it on this computer with in /usr/bin : 
 # sudo cmake --install build
 
+#Check /usr for an installed pythonscad file...
+
 ######################################################
 # To generate a Linux installer PythonSCAD.tar.gz in the directory where you cloned PythonSCAD (in the pythonscad directory)
 # Installs in /usr/local .
@@ -127,14 +133,15 @@ export DEPLOYDIR=./build
 ./scripts/release-common.sh snapshot    # See LOG_release_common.txt . 
 
 ####################################################
+####################################################
 # See pythonscad issue: Cross compiling with MXE from Linux (Ubuntu) for Windows fails #6421
-# This works only after adding onetbb to scripts/mingw-x-build-dependencies.sh !!!
+# Currently this build seems to be broken..........
 # To build Cross-compile on Linux for Windows:
+# Kill all xTerms. Start with a fresh xTerm.
 
-# Ubuntu:
 # python --version
+# Ubuntu
 #   Python 3.12.3
-
 # Debian:
 #   Python 3.13.5
 
@@ -196,7 +203,8 @@ git pull                       # Get the latest code
 
 source ./scripts/setenv-mingw-xbuild.sh 64
 
-./scripts/mingw-x-build-dependencies.sh 64  # Install any reported "Missing requirement: ..." and repeat this step.
+./scripts/mingw-x-build-dependencies.sh 64  # Install on Linux any reported "Missing requirement: ..." and repeat this step.
+                                            # Creates ~/openscad_deps directory.
                                             # This takes time, enough for a large meal and a nap.
 
 ./scripts/release-common.sh mingw64       # If you have not installed my patches then here it fails on not found package "-  tbb".
@@ -245,6 +253,7 @@ make install DESTDIR=../AppDir    # See Log_make_install_DESTDIR.txt
 cd ..
 
 ######################################################
+######################################################
 # To UnPack an AppImgage with PythonSCAD-2025.12.06.ai29830-x86_64.AppImage in the pythonscad directory
 
 # Check the latest version with a browser on https://files.pythonscad.org/snapshots/
@@ -275,7 +284,7 @@ ls ./squashfs-root   # Directory created by the extract.
 # export PYTHON_VERSION=$(python3 -c "import sys; v=sys.version_info; print(f'{v.major}.{v.minor}.{v.micro}')")
 # export LINUXDEPLOY_OUTPUT_VERSION="${PYTHONSCAD_VERSION}${SUFFIX}"
 # ./linuxdeploy-x86_64.AppImage --plugin python --plugin qt --output appimage --appdir AppDir
-
+#
 ###############################################
 # To make an AppImage in the pythonscad directory:
 
