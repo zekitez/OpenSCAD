@@ -1,9 +1,11 @@
 # OpenSCAD
 This is where I keep my patches to [openscad/openscad](https://github.com/openscad/openscad/)
 The reason for the patches is described below.
+
 Building notes for OpenSCAD, with the patches, are kept in HowToBuild_OpenSCAD.txt .
 Building notes for PythonSCAD, with the patches, are kept in HowToBuild_PythonSCAD.txt .
 
+Warning: When cross compiling for windows a ~/openscad_deps directory is created by OpenSCAD and also by PythonSCAD. They differ !!!
 
 ## 3 Feature request: Collapse and expand tabs as combo box function and startup preference #6434  https://github.com/openscad/openscad/issues/6434
 I have scad file that builds a finger or thumb splint and has a lot of model parameters to tweak it into your personal finger/thumb shape, see https://www.thingiverse.com/thing:7145288 . The many parameters are divided into tabs. When a scad file is loaded all tabs are expanded on the initial preview and that scares off any user of the scad file when they see the many parameters. Opening all tabs collapsed removes the scarry part and gives a more easier access to the parameters. Its much more easier if you can collapse all tabs anf then just expand the tab where you want to change a parameter.
