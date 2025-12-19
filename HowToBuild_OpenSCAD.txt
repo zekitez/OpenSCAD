@@ -159,7 +159,6 @@ export DEPLOYDIR=./build
 ####################################################
 # See openscad issue: Cross compiling with MXE from Linux (Ubuntu) for Windows fails #6421
 # This worked only after adding onetbb to scripts/mingw-x-build-dependencies.sh !!! See patches.
-# Currently this build seems to be broken..........
 # To build Cross-compile on Linux for Windows:
 # Kill all xTerms. Start with a fresh xTerm.
 
