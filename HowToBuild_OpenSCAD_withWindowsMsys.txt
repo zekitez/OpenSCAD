@@ -1,0 +1,86 @@
+###########################################
+#
+# In this file I keep my notes on building OpenSCAD with some patches using Windows 11 and MinGW-w64.
+# Building on a Windows machine using MinGW-w64 works but building a windows installer on MinGW-w64 fails on dependencies (missing packages).
+# During building you will be faced with missing Linux packages. Use Google to find out how to install them.
+#
+# Just copy line by line and paste each line in an xterm.
+#
+#
+###########################################
+# Building on Windows , see  https://en.wikibooks.org/wiki/OpenSCAD_User_Manual/Building_on_Windows
+#        -->     https://en.wikibooks.org/wiki/OpenSCAD_User_Manual/Building_on_Microsoft_Windows
+#             https://en.wikibooks.org/wiki/OpenSCAD_User_Manual/Cross-compiling_for_Windows_on_Linux_or_Mac_OS_X
+
+# Get the openscad code:
+git clone https://github.com/openscad/openscad.git 
+
+cd openscad
+git submodule update --init --recursive
+
+sudo ./scripts/uni-get-dependencies.sh
+
+pacman -S cmake
+pacman -S mingw-w64-x86_64-cgal
+pacman -S mingw-w64-x86_64-boost
+pacman -S mingw-w64-x86_64-opencsg
+pacman -S glib2
+pacman -S mingw-w64-x86_64-double-conversion
+ 
+#install required packages and setting up to compile.
+curl -L https://github.com/openscad/openscad/raw/master/scripts/msys2-install-dependencies.sh | sh
+
+# The next check will have many NotOK's but OpenSCAD builds...
+./scripts/check-dependencies.sh
+
+mkdir build
+cmake -B build -G"MSYS Makefiles" -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release -DEXPERIMENTAL=ON -DSNAPSHOT=ON
+
+# Compile using 3 cores
+cd build
+make -j3
+
+# cmake --build . -j3
+
+# Warning: the OpenSCAD window may open in the back of the screen (under any open window).
+./openscad.exe
+
+cd ..
+
+#########################################
+# Adding collapsing/expanding customizer tabs to OpenSCAD.
+# Get the pached code and overwrite the openscad code.
+# Do this step after a 1st succesfull building step and then repeat the building step.
+
+wget https://github.com/zekitez/OpenSCAD/archive/refs/heads/main.zip
+unzip main.zip
+
+# Dangerous but...
+cp -rpP OpenSCAD-main/src/* ./src/.
+cp -rpP OpenSCAD-main/scripts/* ./scripts/
+cp -rpP OpenSCAD-main/locale/* ./locale/
+
+chmod +x ./scripts/*
+
+rm -rf build
+mkdir build
+cmake -B build -G"MSYS Makefiles" -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release -DEXPERIMENTAL=ON -DSNAPSHOT=ON
+
+# Compile using 3 cores
+cd build
+make -j3
+
+# Warning: the OpenSCAD window may open in the background of the screen (under any open window).
+./openscad.exe
+
+#########
+# Building a Windows installer or cross compiling on Windows. 
+# This does not work, to many missing...
+
+pacman -S  autoconf  automake  autopoint  bash  bison  bzip2  flex  g++  g++-multilib  gettext  git  gperf  intltool  libc6-dev-i386  libclang-dev  libgdk-pixbuf2.0-dev  libltdl-dev  libgl-dev  libpcre2-dev  libssl-dev  libtool-bin  libxml-parser-perl  lzip  make  openssl  p7zip-full  patch  perl  python3  python3-mako  python3-packaging  python3-pkg-resources  python3-setuptools  python-is-python3  ruby  sed  sqlite3  unzip  wget  xz-utils
+
+pacman -S autoconf automake  bash  bison  coreutils  flex  gcc  gettext  git  gperf  intltool  libtool  openssl  p7zip  patch  python3  ruby  unzip  wget
+
+pacman -S  ninja-build
+pacman -S  itstool nsis libssl-dev libtool    
+sudo ln -s /usr/bin/libtool /usr/bin/glibtool           # Check first if /usr/bin/libtool is present.
