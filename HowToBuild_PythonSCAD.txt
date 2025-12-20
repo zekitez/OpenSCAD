@@ -13,8 +13,10 @@
 #
 # Just copy line by line and paste each line in an xterm.
 #
-# Note: While cross compiling on Linux for Windows an ~/openscad_deps is created. The one for openscad differs from the one for pythonscad.
+# Note: While cross compiling on Linux for Windows an ~/openscad_deps is created. 
+# The one created for openscad differs from the one for pythonscad.
 # They don't mix.
+# Currently cross compiling PythonSCAD for Windows fails. Frist clipper2, then on tbb and now on "too many sections" with 'file too big'.
 #
 ###########################################
 # For pythodscad bsdtar is needed:
