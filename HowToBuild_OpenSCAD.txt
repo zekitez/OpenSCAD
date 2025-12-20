@@ -12,8 +12,9 @@
 #
 # Just copy line by line and paste each line in an xterm.
 #
-# Since 2025-12-12, Cross Compiling on Linux for Windows may fail !!!!
-# The problem could be that both OpenSCAD and PythonSCAD use openscad_deps...
+# Note: While cross compiling on Linux for Windows an ~/openscad_deps is created. 
+# The one created for openscad differs from the one for pythonscad.
+# They don't mix.
 #
 ###########################################
 # Get the openscad code:
