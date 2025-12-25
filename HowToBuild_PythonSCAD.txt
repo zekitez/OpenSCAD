@@ -88,7 +88,7 @@ make -j8
 #########################################
 #  Build step for a Linux executable and/or an AppDir for an Linux AppImage building on Linux in the cloned pythonscad directory:
 
-rm -rf build
+rm -rf build AppDir
 mkdir build
 
 # Get latest files from PythonSCAD master
@@ -138,7 +138,7 @@ cd ..
 ####################################################
 #  Build step for a Linux executable and/or an AppDir for an Linux AppImage building on Linux in the cloned pythonscad directory:
 
-rm -rf build
+rm -rf build AppDir
 mkdir build
 
 # Get latest files from pythonscad master
