@@ -8,7 +8,7 @@ Building notes for PythonSCAD, with the patches, are kept in HowToBuild_PythonSC
 Warning: When cross compiling for windows a ~/openscad_deps directory is created by OpenSCAD and also by PythonSCAD. They differ and do NOT mix !!!
 
 ## 4 The font size and font family of the preset selection changes when the preset selection becomes editable. #6457 https://github.com/openscad/openscad/issues/6457
-Only the "<design default>" of the preset selection, when selected, uses the font size and family as set for the "User Interface" via Menu Edit -> Preferences -> Tab Advanced -> User Interface.
+Only the "\<design default\>" of the preset selection, when selected, uses the font size and family as set for the "User Interface" via Menu Edit -> Preferences -> Tab Advanced -> User Interface.
 Any added preset, when selected, uses a different font family and size. Is this intentionally behavior ? I assume not. Whenever comboBoxPreset is set editable a new QLineEdit is created but that QLineEdit does not use the "User Interface" font size and family because it is not set for the new QLineEdit.
 It has to be set just after the comboBoxPreset is set editable in procedure ParameterWidget::updateSetEditability() in file src/gui/parameter/ParameterWidget.cc .
 
