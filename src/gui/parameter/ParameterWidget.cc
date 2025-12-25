@@ -313,13 +313,9 @@ void ParameterWidget::updateSetEditability()
         QString fontfamily = GlobalPreferences::inst()->getValue("advanced/applicationFontFamily").toString();
         uint fontsize = GlobalPreferences::inst()->getValue("advanced/applicationFontSize").toUInt();
 
-        QFont font;
-        font.setPointSize(fontsize);
-        font.setFamily(fontfamily);
-
-        QLineEdit *lineEdit = comboBoxPreset->lineEdit();
-        lineEdit->setFont(font);
-		// EndSolution
+	    QFont font(fontfamily, fontsize);
+        comboBoxPreset->lineEdit()->setFont(font);
+ 		// EndSolution
 		
       connect(comboBoxPreset->lineEdit(), &QLineEdit::textEdited, this,
               &ParameterWidget::onSetNameChanged);
