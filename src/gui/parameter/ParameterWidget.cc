@@ -308,6 +308,19 @@ void ParameterWidget::updateSetEditability()
   } else {
     if (!comboBoxPreset->isEditable()) {
       comboBoxPreset->setEditable(true);
+
+		// Solution: The font size and font family of the preset selection changes when the preset selection becomes editable.
+        QString fontfamily = GlobalPreferences::inst()->getValue("advanced/applicationFontFamily").toString();
+        uint fontsize = GlobalPreferences::inst()->getValue("advanced/applicationFontSize").toUInt();
+
+        QFont font;
+        font.setPointSize(fontsize);
+        font.setFamily(fontfamily);
+
+        QLineEdit *lineEdit = comboBoxPreset->lineEdit();
+        lineEdit->setFont(font);
+		// EndSolution
+		
       connect(comboBoxPreset->lineEdit(), &QLineEdit::textEdited, this,
               &ParameterWidget::onSetNameChanged);
     }
