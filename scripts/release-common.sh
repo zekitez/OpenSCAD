@@ -185,7 +185,7 @@ echo "${CMAKE} .. ${CMAKE_CONFIG}"
 "${CMAKE}" .. ${CMAKE_CONFIG}
 cd $OPENSCADDIR
 
-echo "Building Project..."
+echo "Building Project... for OS " $OS
 
 case $OS in
     UNIX_CROSS_WIN)
@@ -211,11 +211,14 @@ case $OS in
         cd $OPENSCADDIR
     ;;
     LINUX)
+        cd $DEPLOYDIR
         if [ $FAKEMAKE ]; then
             echo "notexe. debugging build process" > $TARGET/openscad
         else
+            echo "make ${TARGET} -j$NUMCPU"
             make $TARGET -j$NUMCPU
         fi
+        cd $OPENSCADDIR
     ;;
     *)
         cd $DEPLOYDIR
@@ -224,7 +227,7 @@ case $OS in
     ;;
 esac
 
-echo "Creating directory structure..."
+echo "Creating directory structure in " $OPENSCADDIR
 
 case $OS in
     MACOSX)
@@ -238,6 +241,7 @@ case $OS in
         mkdir $RESOURCEDIR
     ;;
     *)
+        cd $OPENSCADDIR
         RESOURCEDIR=openscad-$VERSION
         rm -rf $RESOURCEDIR
         mkdir $RESOURCEDIR
