@@ -48,7 +48,7 @@ chmod +x ./scripts/*
 #########################################
 #  Build step for a Linux executable and/or an AppDir for an Linux AppImage building on Linux in the cloned openscad directory:
 
-rm -rf build
+rm -rf build AppDir
 mkdir build
 
 # Get latest files from OpenSCAD master
@@ -86,7 +86,7 @@ cd ..
 ####################################################
 #  Build step for a Linux executable and/or an AppDir for an Linux AppImage building on Linux in the cloned openscad directory:
 
-rm -rf build
+rm -rf build AppDir
 mkdir build
 
 # Get latest files from openscad master
