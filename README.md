@@ -12,6 +12,13 @@ Only the "\<design default\>" of the preset selection, when selected, uses the f
 Any added preset, when selected, uses a different font family and size. Is this intentionally behavior ? I assume not. Whenever comboBoxPreset is set editable a new QLineEdit is created but that QLineEdit does not use the "User Interface" font size and family because it is not set for the new QLineEdit.
 It has to be set just after the comboBoxPreset is set editable in procedure ParameterWidget::updateSetEditability() in file src/gui/parameter/ParameterWidget.cc .
 
+<img width="600" alt="Image" src="Pictures/designDefault.png" />
+
+<img width="600" alt="Image" src="Pictures/designMyPreset.png" />
+
+<img width="600" alt="Image" src="Pictures/designMyPreset_OK.png" />
+
+
 ## 3 Feature request: Collapse and expand tabs as combo box function and startup preference #6434  https://github.com/openscad/openscad/issues/6434
 I have scad file that builds a finger or thumb splint and has a lot of model parameters to tweak it into your personal finger/thumb shape, see https://www.thingiverse.com/thing:7145288 . The many parameters are divided into tabs. When a scad file is loaded all tabs are expanded on the initial preview and that scares off any user of the scad file when they see the many parameters. Opening all tabs collapsed removes the scarry part and gives a more easier access to the parameters. Its much more easier if you can collapse all tabs anf then just expand the tab where you want to change a parameter.
 For me a user is somebody who uses the customizer and doesnot want to see or alter the scad code.
