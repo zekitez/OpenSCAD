@@ -19,6 +19,8 @@
 #
 # Currently cross compiling PythonSCAD for Windows fails. Frist clipper2, then on tbb and now on "too many sections" with 'file too big'.
 #
+# This file is probably behind the current pythonscad version.
+# Thus compiling or creating an AppImage or Cross Compiling for Windows may fail.
 # The build of PythonSCAD sometimes breaks after a "git pull". Save your changed code before pulling !!!
 # The solution is to delete the pythonscad directory and clone it again and start from there again.
 #
