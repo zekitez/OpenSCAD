@@ -6,7 +6,7 @@ Building notes for PythonSCAD, with the improvements, are kept in HowToBuild_Pyt
 
 NOTEs: 
 1. The improvements described here are probably not avaiable in the official cersions OpenSCAD or PythonSCAD.
-    Either download an unofficial version from this page, click "Releases", or compile your own versions using the building notes.
+    Either download an unofficial version from this page, click ["Releases"](https://github.com/zekitez/OpenSCAD/releases) , or compile your own versions using the building notes.
 2. When cross compiling for windows a ~/openscad_deps directory is created by OpenSCAD but also by PythonSCAD.
     They differ and do NOT mix !!!
 
