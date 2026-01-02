@@ -5,7 +5,25 @@ The reason for the patches is described below.
 Building notes for OpenSCAD, with the patches, are kept in HowToBuild_OpenSCAD.txt .
 Building notes for PythonSCAD, with the patches, are kept in HowToBuild_PythonSCAD.txt .
 
-Warning: When cross compiling for windows a ~/openscad_deps directory is created by OpenSCAD and also by PythonSCAD. They differ and do NOT mix !!!
+NOTEs: 
+1. The changes described are not avaiable in the official cersions OpenSCAD or PythonSCAD.
+    Either download an unofficial version from "Releases" or compile your own versions using the building notes.
+2. When cross compiling for windows a ~/openscad_deps directory is created by OpenSCAD but also by PythonSCAD.
+    They differ and do NOT mix !!!
+
+## 5 Added options for a multiple line text box and an Open FileDialog to the one line Text box for a string.
+OpneSCAD just allows a one line text box. It is possible to give it a maximum size in number of characters. This number can be used as an indicator for different behavior: a multiple line text box or an open file dialog. Its now possible with the following code:
+```
+//  1024 means use a multiple line text box instead of the single LineEdit.
+Note = "This...";         // 1024
+
+//  1025 triggers an Open File dialog when the text is removed.
+Example_FileName = "-";   // 1025
+```
+<img width="600" alt="Image" src="Pictures/TextEdit.png" />
+
+<img width="800" alt="Image" src="Pictures/FileDialog.png" />
+
 
 ## 4 The font size and font family of the preset selection changes when the preset selection becomes editable. #6457 https://github.com/openscad/openscad/issues/6457
 Only the "\<design default\>" of the preset selection, when selected, uses the font size and family as set for the "User Interface" via Menu Edit -> Preferences -> Tab Advanced -> User Interface.
