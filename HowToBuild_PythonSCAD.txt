@@ -185,7 +185,8 @@ cd ..
 ln -s ./build/pythonscad .
 
 # AppImage creation may fail on not finding pythonscad.png. Its because they are named pythonscad-nightly.png .
-# In that case do before  AppImage creation, the following:
+# In that case do before  AppImage creation create the following links:
+# could be    AppDir/usr/local/share/icons/hicolor/128x128/
 
 cd AppDir/usr/share/icons/hicolor/128x128/apps 
 ln -s pythonscad-nightly.png  pythonscad.png
