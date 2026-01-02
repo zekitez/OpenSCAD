@@ -40,6 +40,7 @@
 #include "gui/parameter/ParameterSlider.h"
 #include "gui/parameter/ParameterCheckBox.h"
 #include "gui/parameter/ParameterText.h"
+#include "gui/parameter/ParameterTextArea.h"
 #include "gui/parameter/ParameterVector.h"
 #include "gui/Preferences.h"
 
@@ -51,6 +52,9 @@
 #include <string>
 #include <utility>
 #include <vector>
+
+#include <stdio.h>
+#include <QDebug>
 
 ParameterWidget::ParameterWidget(QWidget *parent) : QWidget(parent)
 {
@@ -94,7 +98,9 @@ void ParameterWidget::readFile(const QString& scadFile)
     this->invalidJsonFile = jsonFile;
   }
 
+
   for (const auto& set : this->sets) {
+//  std::printf("readFile %s \n", set.name().data() );
     comboBoxPreset->addItem(QString::fromStdString(set.name()));
   }
 }
@@ -294,6 +300,8 @@ void ParameterWidget::loadSet(size_t index)
 
 void ParameterWidget::createSet(const QString& name)
 {
+  // printf("createSet %s \n", name.toStdString().data() );
+
   sets.push_back(parameters.exportValues(name.toStdString()));
   comboBoxPreset->addItem(name);
   comboBoxPreset->setCurrentIndex(comboBoxPreset->count() - 1);
@@ -309,14 +317,12 @@ void ParameterWidget::updateSetEditability()
     if (!comboBoxPreset->isEditable()) {
       comboBoxPreset->setEditable(true);
 
-		// Solution: The font size and font family of the preset selection changes when the preset selection becomes editable.
         QString fontFamily = GlobalPreferences::inst()->getValue("advanced/applicationFontFamily").toString();
         uint fontSize = GlobalPreferences::inst()->getValue("advanced/applicationFontSize").toUInt();
 
-	    QFont font(fontFamily, fontSize);
+        QFont font(fontFamily, fontSize);
         comboBoxPreset->lineEdit()->setFont(font);
- 		// EndSolution
-		
+
       connect(comboBoxPreset->lineEdit(), &QLineEdit::textEdited, this,
               &ParameterWidget::onSetNameChanged);
     }
@@ -420,8 +426,18 @@ ParameterVirtualWidget *ParameterWidget::createParameterWidget(ParameterObject *
 {
   if (parameter->type() == ParameterObject::ParameterType::Bool) {
     return new ParameterCheckBox(this, static_cast<BoolParameter *>(parameter), descriptionStyle);
+
   } else if (parameter->type() == ParameterObject::ParameterType::String) {
-    return new ParameterText(this, static_cast<StringParameter *>(parameter), descriptionStyle);
+    auto *stringParameter = static_cast<StringParameter *>(parameter);
+
+    if ( stringParameter->maximumSize && stringParameter->maximumSize == size_t(1024)) {
+      // Multiple line edit text when maximumSize == 1024
+      return new ParameterTextArea(this, static_cast<StringParameter *>(parameter), descriptionStyle);
+    } else {
+      // The old single LineEdit, with option when maximumSize == 1025 triggers an OpenFile dialog when LineEdit is editted.
+      return new ParameterText(this, static_cast<StringParameter *>(parameter), descriptionStyle);
+    }
+
   } else if (parameter->type() == ParameterObject::ParameterType::Number) {
     auto *numberParameter = static_cast<NumberParameter *>(parameter);
     if (numberParameter->minimum && numberParameter->maximum) {
@@ -429,10 +445,13 @@ ParameterVirtualWidget *ParameterWidget::createParameterWidget(ParameterObject *
     } else {
       return new ParameterSpinBox(this, numberParameter, descriptionStyle);
     }
+
   } else if (parameter->type() == ParameterObject::ParameterType::Vector) {
     return new ParameterVector(this, static_cast<VectorParameter *>(parameter), descriptionStyle);
+
   } else if (parameter->type() == ParameterObject::ParameterType::Enum) {
     return new ParameterComboBox(this, static_cast<EnumParameter *>(parameter), descriptionStyle);
+
   } else {
     assert(false);
     throw std::runtime_error("Unsupported parameter widget type");
@@ -442,6 +461,8 @@ ParameterVirtualWidget *ParameterWidget::createParameterWidget(ParameterObject *
 QString ParameterWidget::getJsonFile(const QString& scadFile)
 {
   std::filesystem::path p = scadFile.toStdString();
+  std::cout << p.parent_path().string() << std::endl;
+
   return QString::fromStdString(p.replace_extension(".json").string());
 }
 
@@ -471,8 +492,10 @@ void ParameterWidget::cleanSets()
 
 void ParameterWidget::setFontFamilySize(const QString& fontFamily, uint fontSize)
 {
+  
   scrollArea->setStyleSheet(
     QString("font-family: \"%1\"; font-size: %2pt;").arg(fontFamily).arg(fontSize));
+
 }
 
 void ParameterWidget::setCollapseTabs(bool state)
