@@ -19,7 +19,7 @@
 ###########################################
 # Get the openscad code:
 
-sudo apt install git wget                 # Needed
+sudo apt install git wget diffuse                # Needed
 
 git clone https://github.com/openscad/openscad.git
 cd openscad
@@ -42,6 +42,11 @@ unzip main.zip
 cp -rpP OpenSCAD-main/openscad/src/* ./src/.
 cp -rpP OpenSCAD-main/openscad/scripts/* ./scripts/
 cp -rpP OpenSCAD-main/openscad/locale/* ./locale/
+
+# Check the diff of CMakeLists.txt
+# Add to the left   ParameterTextArea.*, TextEdit.* 
+#
+diffuse CMakeLists.txt ./OpenSCAD-main/openscad/CMakeLists.txt &
 
 chmod +x ./scripts/*
 
@@ -88,6 +93,9 @@ cd ..
 
 rm -rf build AppDir
 mkdir build
+
+# If you did not delete the build then clean it before a new build.
+cmake --build build -t clean
 
 # Get latest files from openscad master
 git pull
@@ -152,16 +160,21 @@ export LINUXDEPLOY_OUTPUT_VERSION="${OPENSCAD_VERSION}${SUFFIX}"
 export OPENSCAD_VERSION=$(openscad_version)
 export OPENSCAD_COMMIT=$(openscad_commit)
 
+chmod +x ./scripts/*
+
 # Runs on Ubuntu but failed on Mint.
 export DEPLOYDIR=./build
 ./scripts/release-common.sh snapshot    # See LOG_release_common.txt . 
+
+# In case of the error: "cp: cannot stat 'openscad': No such file or directory"   do:
+ln -s /build/openscad .
+./scripts/release-common.sh snapshot
 
 ####################################################
 ####################################################
 # See openscad issue: Cross compiling with MXE from Linux (Ubuntu) for Windows fails #6421
 # This worked only after adding onetbb to scripts/mingw-x-build-dependencies.sh !!! See patches.
-# To build Cross-compile on Linux for Windows:
-# Kill all xTerms. Start with a fresh xTerm.
+# To build Cross-compile on Linux for Windows install these packages:
 
 # python --version
 # Ubuntu
@@ -222,7 +235,6 @@ sudo ln -s /usr/bin/libtool /usr/bin/glibtool           # Check first if /usr/bi
 # Kill the xTerm and start with a fresh one.
 
 git pull                       # Get the latest code
-# cmake --build build -t clean   # Not needed, builds in openscad/mingw64.static.posix directory.
 
 source ./scripts/setenv-mingw-xbuild.sh 64
 
