@@ -39,9 +39,9 @@ wget https://github.com/zekitez/OpenSCAD/archive/refs/heads/main.zip
 unzip main.zip
 
 # Dangerous but...
-cp -rpP OpenSCAD-main/src/* ./src/.
-cp -rpP OpenSCAD-main/scripts/* ./scripts/
-cp -rpP OpenSCAD-main/locale/* ./locale/
+cp -rpP OpenSCAD-main/openscad/src/* ./src/.
+cp -rpP OpenSCAD-main/openscad/scripts/* ./scripts/
+cp -rpP OpenSCAD-main/openscad/locale/* ./locale/
 
 chmod +x ./scripts/*
 
