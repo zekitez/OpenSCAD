@@ -127,6 +127,9 @@ make -j8
 make install DESTDIR=../AppDir    # See Log_make_install_DESTDIR.txt
 cd ..
 
+# Optional, install it on this computer with in /usr/bin : 
+# sudo cmake --install build
+
 #######################################
 # To make a Linux AppImage in the openscad directory:
 
