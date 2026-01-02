@@ -10,7 +10,7 @@ NOTEs:
 2. When cross compiling for windows a ~/openscad_deps directory is created by OpenSCAD but also by PythonSCAD.
     They differ and do NOT mix !!!
 
-## 5 Added options for a multiple line text box and an Open FileDialog to the one line Text box for a string.
+## 5 Added options, for a multiple line text box and an Open FileDialog, to the one line Text box for a string.
 OpenSCAD just allows a one line text box. It is possible to give it a maximum size in number of characters. This number can be used as a trigger for different behavior for a multiple line text box or an open file dialog. This is now added with the following code:
 ```
 //  1024 means use a multiple line text box instead of the single LineEdit.
