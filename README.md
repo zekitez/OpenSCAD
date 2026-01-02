@@ -13,7 +13,7 @@ NOTEs:
 ## 5 Added options, for a multiple line text box and an Open FileDialog, to the one line Text box for a string.
 OpenSCAD just allows a one line text box. It is possible to give it a maximum size in number of characters. This number can be used as a trigger for different behavior for a multiple line text box or an open file dialog. This is now added with the following code:
 ```
-//  1024 means use a multiple line text box instead of the single LineEdit.
+//  1024 means use a multiple line text edit instead of the single line edit.
 Note = "This...";         // 1024
 
 //  1025 triggers an Open File dialog when the text is removed.
