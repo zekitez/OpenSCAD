@@ -1,12 +1,11 @@
 # OpenSCAD
-This is where I keep my patches to [openscad/openscad](https://github.com/openscad/openscad/)
-The reason for the patches is described below.
+This is where I keep my improvements to [openscad/openscad](https://github.com/openscad/openscad/)
 
-Building notes for OpenSCAD, with the patches, are kept in HowToBuild_OpenSCAD.txt .
-Building notes for PythonSCAD, with the patches, are kept in HowToBuild_PythonSCAD.txt .
+Building notes for OpenSCAD, with the improvements, are kept in HowToBuild_OpenSCAD.txt .
+Building notes for PythonSCAD, with the improvements, are kept in HowToBuild_PythonSCAD.txt .
 
 NOTEs: 
-1. The changes described are not avaiable in the official cersions OpenSCAD or PythonSCAD.
+1. The improvements described here are probably not avaiable in the official cersions OpenSCAD or PythonSCAD.
     Either download an unofficial version from "Releases" or compile your own versions using the building notes.
 2. When cross compiling for windows a ~/openscad_deps directory is created by OpenSCAD but also by PythonSCAD.
     They differ and do NOT mix !!!
