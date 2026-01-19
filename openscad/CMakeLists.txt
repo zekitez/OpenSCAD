@@ -85,8 +85,8 @@ set(WASM_BUILD_TYPE "web" CACHE STRING
   "WebAssembly build type. Support web (builds an OpenSCAD module) or node (standalone .js executable)")
 
 if (USE_QT6)
-  # Minimum version required for Qt-6.5
-  set(DEPLOYMENT_TARGET "11.0")
+  # Minimum version required for Qt-6.8
+  set(DEPLOYMENT_TARGET "12.0")
 else()
   # Minimum version required for std::filesystem
   set(DEPLOYMENT_TARGET "10.15")
@@ -595,6 +595,14 @@ if(ENABLE_CGAL)
   #  set(CMAKE_MODULE_PATH ${OPENSCAD_ORIGINAL_CMAKE_MODULE_PATH})
   #endif()
   set(CMAKE_MODULE_PATH ${OPENSCAD_ORIGINAL_CMAKE_MODULE_PATH})
+else()
+  message(WARNING "\n"
+	  "*** Configuration with ENABLE_CGAL=OFF ***\n"
+          "This settings is currently only meant for developement purposes.\n"
+	  "Please do not disabled CGAL for any normal builds as this will "
+          "disable a couple of features that are normally expected to be "
+          "available even with the Manifold geometry engine is the default "
+	  "(e.g. Minkowski).")
 endif(ENABLE_CGAL)
 
 find_package(LibZip REQUIRED QUIET)
@@ -1019,6 +1027,7 @@ set(CORE_SOURCES
   src/core/RenderVariables.cc
   src/core/RotateExtrudeNode.cc
   src/core/ScopeContext.cc
+  src/core/Selection.cc
   src/core/Settings.cc
   src/core/SourceFile.cc
   src/core/SourceFileCache.cc
@@ -1277,7 +1286,7 @@ set(GUI_SOURCES
   src/gui/ExportPdfDialog.cc
   src/gui/ExportSvgDialog.cc
   src/gui/OctoPrintApiKeyDialog.cc
-  src/gui/FontListDialog.cc
+
   src/gui/FontListTableView.cc
   src/gui/InitConfigurator.cc
   src/gui/ImportUtils.cc
@@ -1287,6 +1296,9 @@ set(GUI_SOURCES
   src/gui/Measurement.cc
   src/gui/Animate.cc
   src/gui/FontList.cc
+  src/gui/ColorList.cc
+  src/gui/ColorLabel.cc
+  src/gui/ColorLayout.cc
   src/gui/MouseSelector.cc
   src/gui/OctoPrint.cc
   src/gui/OpenCSGWarningDialog.cc
@@ -1352,7 +1364,9 @@ set(GUI_HEADERS
     src/gui/ExportSvgDialog.h
     src/gui/OctoPrintApiKeyDialog.h
     src/gui/FontList.h
-    src/gui/FontListDialog.h
+    src/gui/ColorList.h
+    src/gui/ColorLabel.h
+    src/gui/ColorLayout.h
     src/gui/FontListTableView.h
     src/gui/IgnoreWheelWhenNotFocused.h
     src/gui/ImportUtils.h
@@ -1410,7 +1424,7 @@ set(GUI_UIS
     src/gui/ExportSvgDialog.ui
     src/gui/OctoPrintApiKeyDialog.ui
     src/gui/FontList.ui
-    src/gui/FontListDialog.ui
+    src/gui/ColorList.ui
     src/gui/LaunchingScreen.ui
     src/gui/LibraryInfoDialog.ui
     src/gui/MainWindow.ui
@@ -1536,7 +1550,10 @@ elseif(WIN32)
 endif()
 
 file(GLOB_RECURSE TEST_SOURCES
-  "src/*_test.cc"
+  "src/utils/*_test.cc"
+)
+file(GLOB_RECURSE GUI_TEST_SOURCES
+  "src/gui/*_test.cc"
 )
 list(FILTER Sources EXCLUDE REGEX ".*_test[.]cc")
 list(REMOVE_ITEM Sources "src/main_wrapper.cc")
@@ -1749,7 +1766,11 @@ if(ENABLE_TESTS)
     # You can ignore it. Something about incompatibility with POSITION_INDEPENDENT_CODE
     # and how the system Catch2 static library is compiled. It should be fine.
 
+    if(HEADLESS)
     add_executable(OpenSCADUnitTests ${TEST_SOURCES})
+    else()
+      add_executable(OpenSCADUnitTests ${TEST_SOURCES} ${GUI_TEST_SOURCES})
+    endif()
     target_link_libraries(OpenSCADUnitTests PRIVATE Catch2::Catch2WithMain OpenSCADLibInternal svg)
     include(CTest)
     include(Catch)
