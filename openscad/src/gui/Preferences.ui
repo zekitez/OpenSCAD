@@ -27,7 +27,7 @@
     <item row="0" column="0">
      <widget class="QStackedWidget" name="stackedWidget">
       <property name="currentIndex">
-       <number>5</number>
+       <number>7</number>
       </property>
       <widget class="QWidget" name="page3DView">
        <layout class="QVBoxLayout" name="verticalLayout_4">
@@ -136,8 +136,8 @@
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>831</width>
-             <height>901</height>
+             <width>668</width>
+             <height>953</height>
             </rect>
            </property>
            <layout class="QGridLayout" name="gridLayout_5">
@@ -1349,8 +1349,8 @@
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>590</width>
-             <height>676</height>
+             <width>701</width>
+             <height>710</height>
             </rect>
            </property>
            <layout class="QVBoxLayout" name="verticalLayout_9">
@@ -1949,9 +1949,9 @@
            <property name="geometry">
             <rect>
              <x>0</x>
-             <y>-382</y>
-             <width>831</width>
-             <height>1420</height>
+             <y>0</y>
+             <width>699</width>
+             <height>1471</height>
             </rect>
            </property>
            <layout class="QVBoxLayout" name="verticalLayout_12">
@@ -2738,8 +2738,8 @@
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>98</width>
-             <height>28</height>
+             <width>845</width>
+             <height>770</height>
             </rect>
            </property>
           </widget>
@@ -2772,7 +2772,7 @@
              <x>0</x>
              <y>0</y>
              <width>845</width>
-             <height>772</height>
+             <height>770</height>
             </rect>
            </property>
           </widget>
@@ -2808,7 +2808,7 @@
              <x>0</x>
              <y>0</y>
              <width>845</width>
-             <height>772</height>
+             <height>770</height>
             </rect>
            </property>
           </widget>
