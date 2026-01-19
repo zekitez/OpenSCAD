@@ -1929,7 +1929,7 @@ msgstr "Konsol"
 
 #: build/OpenSCAD_autogen/include/ui_Preferences.h:1964
 msgid "Clear console before Preview/Render"
-msgstr ""
+msgstr "Töm konsolen före Förhandsvisa/Rendera"
 
 #: build/OpenSCAD_autogen/include/ui_Preferences.h:2390
 msgid "Start with collapsed customizer tabs"
