@@ -430,13 +430,14 @@ ParameterVirtualWidget *ParameterWidget::createParameterWidget(ParameterObject *
   } else if (parameter->type() == ParameterObject::ParameterType::String) {
     auto *stringParameter = static_cast<StringParameter *>(parameter);
 
-    if ( stringParameter->maximumSize && stringParameter->maximumSize == size_t(1024)) {
-      // Multiple line edit text when maximumSize == 1024
+    if ( stringParameter->maximumSize && stringParameter->maximumSize == size_t(32768)) {
+      // Multiple line edit text when maximumSize == 32768
       return new ParameterTextArea(this, static_cast<StringParameter *>(parameter), descriptionStyle);
     } else {
-      // The old single LineEdit, with option when maximumSize == 1025 triggers an OpenFile dialog when LineEdit is editted.
+      // The old single LineEdit, with option when maximumSize == 32769 triggers an OpenFile dialog when LineEdit is editted.
       return new ParameterText(this, static_cast<StringParameter *>(parameter), descriptionStyle);
     }
+
 
   } else if (parameter->type() == ParameterObject::ParameterType::Number) {
     auto *numberParameter = static_cast<NumberParameter *>(parameter);
@@ -503,5 +504,6 @@ void ParameterWidget::setCollapseTabs(bool state)
 	// printf("setCollapseTabs %s \n", (state ? "true" : "false"));
 	this->collapseTabs = state;
 }
+
 
 
