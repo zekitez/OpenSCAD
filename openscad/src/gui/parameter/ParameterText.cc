@@ -40,6 +40,10 @@ void ParameterText::onEdit(const QString& text)
   if (*parameter->maximumSize == 1025 && value.length() < 2 ){
       QString fileName = QFileDialog::getOpenFileName(this, tr("Open File"), ".", tr("3D (*.stl *.off *.obj *.3mf) ;; 2D (*.dxf *.pdf *.svg)") );
       qDebug() << "ParameterTextArea::onEdit fileName: " << fileName;
+      value = fileName.toStdString();
+      if (value.length() < 3) {
+          fileName = QString("-");
+      }
       lineEdit->setText(fileName);
       lastSent = parameter->value = lineEdit->text().toStdString();
       emit changed(true);
@@ -62,3 +66,4 @@ void ParameterText::setValue()
   lastApplied = lastSent = parameter->value;
   lineEdit->setText(QString::fromStdString(parameter->value));
 }
+
