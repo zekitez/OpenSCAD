@@ -37,6 +37,78 @@ sudo ./scripts/uni-get-dependencies.sh
 
 wget https://github.com/zekitez/OpenSCAD/archive/refs/heads/main.zip
 unzip main.zip
+# or
+git clone https://github.com/zekitez/OpenSCAD.git
+
+tree OpenSCAD
+OpenSCAD
+├── HowToBuild_OpenSCAD.txt
+├── HowToBuild_OpenSCAD_withWindowsMsys.txt
+├── HowToBuild_PythonSCAD.txt
+├── LICENSE
+├── Logs
+│   ├── Debian_XcompileWindows_fails.txt
+│   ├── Debian_XcompileWindows_success.txt
+│   ├── Log_appimagetool.txt
+│   ├── Log_cmake_-B_build_-D.txt
+│   ├── Log_CompileMingwOnWindows.txt
+│   ├── Log_make_install_DESTDIR.txt
+│   ├── Log_make_-j8.txt
+│   └── Log_release_common.txt
+├── openscad
+│   ├── CMakeLists.txt                     # Merged
+│   ├── locale
+│   │   ├── cs.po
+│   │   ├── de.po
+│   │   ├── es.po
+│   │   ├── fr.po
+│   │   ├── hy.po
+│   │   ├── it.po
+│   │   ├── ka.po
+│   │   ├── openscad.pot
+│   │   ├── pl.po
+│   │   ├── pt_BR.po
+│   │   ├── ru.po
+│   │   ├── sv.po
+│   │   ├── tr.po
+│   │   ├── uk.po
+│   │   ├── zh_CN.po
+│   │   └── zh_TW.po
+│   ├── scripts
+│   │   ├── installer-linux.sh
+│   │   ├── mingw-x-build-dependencies.sh
+│   │   └── release-common.sh
+│   └── src
+│       └── gui
+│           ├── parameter
+│           │   ├── ParameterTextArea.cc
+│           │   ├── ParameterTextArea.h
+│           │   ├── ParameterTextArea.ui
+│           │   ├── ParameterText.cc
+│           │   ├── ParameterVirtualWidget.h
+│           │   ├── ParameterWidget.cc
+│           │   ├── ParameterWidget.h
+│           │   ├── ParameterWidget.ui
+│           │   ├── TextEdit.cc
+│           │   └── TextEdit.h
+│           ├── Preferences.cc
+│           ├── Preferences.h
+│           └── Preferences.ui
+├── Pictures
+│   ├── combobox_details.png
+│   ├── designDefault.png
+│   ├── designMyPreset_OK.png
+│   ├── designMyPreset.png
+│   ├── FileDialog.png
+│   ├── preferences_curtomizer.png
+│   └── TextEdit.png
+├── pythonscad
+│   └── src
+│       └── gui
+│           ├── Preferences.cc
+│           ├── Preferences.h
+│           └── Preferences.ui
+└── README.md
 
 # Dangerous but...
 cp -rpP OpenSCAD-main/openscad/src/* ./src/.
@@ -45,7 +117,7 @@ cp -rpP OpenSCAD-main/openscad/locale/* ./locale/
 
 # Check the diff of CMakeLists.txt
 # Add to the left   ParameterTextArea.*, TextEdit.* 
-#
+# WinMerge or diffuse for differences !!!
 diffuse CMakeLists.txt ./OpenSCAD-main/openscad/CMakeLists.txt &
 
 chmod +x ./scripts/*
