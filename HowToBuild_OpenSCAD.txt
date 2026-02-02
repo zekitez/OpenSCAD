@@ -32,7 +32,7 @@ sudo ./scripts/uni-get-dependencies.sh
 # In case of missing packages: install them. Use Google to find the correct package name.
 
 #########################################
-# Do this step after a 1st succesfull building step and then repeat the building step.
+# Do this step after a 1st succesfull building step.
 # Get the pached code and overwrite the openscad code.
 
 wget https://github.com/zekitez/OpenSCAD/archive/refs/heads/main.zip
@@ -144,8 +144,7 @@ cmake -B build \
 # 64780 -rwxrwxr-x  1 db811 db811  66328336 Dec 11 14:04 openscad           <-----
 # For a smaller version see below.
 
-# Use 8 cores to make, depends on the CPU cores, 
-# Use without the -jn option (slow), or with n = 4 or 6 or ..(faster). See my Log_make_-j8.txt.
+# Use 8 cores (-j8) to make, if your computer has them, otherwise decrease to 6, 4 or 2. 
 cd build
 make -j8
 
@@ -186,7 +185,7 @@ cmake -B build \
   -DSNAPSHOT=ON
 
 cd build
-make -j8                        # When your computer has more then 8 cores, otherwise decrease it.
+make -j8           # Use 8 cores (-j8) to make if your computer has them, otherwise decrease to 6, 4 or 2. 
 
 # Generates an executable which has not 66328336 but 19417552 bytes.
 # 18964 -rwxrwxr-x  1 db811 db811 19417552 Dec 11 14:13 openscad           <-----
@@ -249,10 +248,10 @@ ln -s /build/openscad .
 
 ####################################################
 ####################################################
+# To build Cross-compile on Linux for Windows.
 # See openscad issue: Cross compiling with MXE from Linux (Ubuntu) for Windows fails #6421
 # This worked only after adding onetbb to scripts/mingw-x-build-dependencies.sh !!! See patches.
-# To build Cross-compile on Linux for Windows install these packages:
-
+# #nstall these packages:
 # python --version
 # Ubuntu
 #   Python 3.12.3
@@ -322,8 +321,8 @@ source ./scripts/setenv-mingw-xbuild.sh 64
 ./scripts/release-common.sh mingw64       # If you have not installed my patches then here it fails on not found package "-  tbb".
                                           # Get the patches, kill the Xterm and start in a new Xterm with "source ./scripts/setenv-mingw-xbuild.sh 64"
                                           # On Debian it compiles with warnings. See Log files.
-
-# If all goes well there is a  Windows execuatble OpenSCAD*Installer.exe   in the mingw64.static.posix directory.
+ 
+# If all goes well there is a  Windows execuatble   OpenSCAD*Installer.exe   in the mingw64.static.posix directory.
 
 ######################################################
 ######################################################
@@ -334,7 +333,7 @@ wget -cq https://files.openscad.org/snapshots/OpenSCAD-2025.12.06.ai29830-x86_64
 chmod u+x OpenSCAD-2025.12.06.ai29830-x86_64.AppImage
 
 # Get the latest AppImage tool to (un)pack an AppImage. 
-# WARNING: keep an old working version of the AppImage tool because you may get a buggy continous developped version.
+# WARNING: keep a version that works of the AppImage tool because at some point you may get a buggy version due to the 'continous development'.
 wget -cq https://github.com/AppImage/appimagetool/releases/tag/continuous/appimagetool-x86_64.AppImage
 chmod u+x appimagetool-x86_64.AppImage
 
