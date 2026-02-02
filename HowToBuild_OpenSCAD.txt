@@ -5,16 +5,16 @@
 #                       Linux Mint                  (builds but has a problem, see below),
 #                       Linux Debian 13.2 Cinnamon  (replacement for Linux Mint) and 
 #                       MinGW-w64 on Windows 11.
-# Since OpenSCAD is build on Debian, Mint is replace with Debian 13.2 .
+# Since OpenSCAD is build on Debian, Mint is replaced with Debian 13.2 Cinnamon.
 # Cross compiling on Ubuntu for Windows and generating a Windows installer works with some adjustments.
-# Building on a Windows machine using MinGW-w64 works but building a windows installer on MinGW-w64 is not tried.
+# Building on a Windows machine using MinGW-w64 works. Building a windows installer on MinGW-w64 is not tried.
 # During building you will be faced with missing Linux packages. Use Google to find out how to install them.
 #
 # Just copy line by line and paste each line in an xterm.
 #
 # Note: While cross compiling on Linux for Windows an ~/openscad_deps is created. 
 # The one created for openscad differs from the one for pythonscad.
-# They don't mix.
+# They don't mix !!!
 #
 ###########################################
 # Get the openscad code:
@@ -29,11 +29,11 @@ git submodule update --init --recursive
 sudo ./scripts/uni-get-dependencies.sh
 ./scripts/check-dependencies.sh
 
-# In case of missing packages: install them.
+# In case of missing packages: install them. Use Google to find the correct package name.
 
 #########################################
-# Get the pached code and overwrite the openscad code.
 # Do this step after a 1st succesfull building step and then repeat the building step.
+# Get the pached code and overwrite the openscad code.
 
 wget https://github.com/zekitez/OpenSCAD/archive/refs/heads/main.zip
 unzip main.zip
@@ -56,7 +56,7 @@ OpenSCAD
 │   ├── Log_make_-j8.txt
 │   └── Log_release_common.txt
 ├── openscad
-│   ├── CMakeLists.txt                     # Merged
+│   ├── CMakeLists.txt                     # Merge !!
 │   ├── locale
 │   │   ├── cs.po
 │   │   ├── de.po
@@ -152,13 +152,12 @@ make -j8
 # Run from the build directory with:
 ./openscad
 
-cd ..
-# Optional, install it on this computer with in /usr/bin : 
-# sudo cmake --install build
-
 # For generating an AppImage you need to do:
 make install DESTDIR=../AppDir    # See Log_make_install_DESTDIR.txt
 cd ..
+
+# Optional, install it on this computer with in /usr/bin : 
+# sudo cmake --install build
 
 ####################################################
 #  Build step for a Linux executable and/or an AppDir for an Linux AppImage building on Linux in the cloned openscad directory:
@@ -187,7 +186,7 @@ cmake -B build \
   -DSNAPSHOT=ON
 
 cd build
-make -j8
+make -j8                        # When your computer has more then 8 cores, otherwise decrease it.
 
 # Generates an executable which has not 66328336 but 19417552 bytes.
 # 18964 -rwxrwxr-x  1 db811 db811 19417552 Dec 11 14:13 openscad           <-----
@@ -223,7 +222,10 @@ export LINUXDEPLOY_OUTPUT_VERSION="${OPENSCAD_VERSION}${SUFFIX}"
 # Only pythonscad uses Python but then it uses your locally installed Python or venv instead of Python within the AppImage.
 # ./linuxdeploy-plugin-python.sh --appdir ./AppDir
 
-./linuxdeploy-x86_64.AppImage --list-plugins               # check if plugin qt is 'seen' if so continue.
+# Check if plugin qt is 'seen', if so continue.
+./linuxdeploy-x86_64.AppImage --list-plugins
+
+# Generate the appimage with:
 ./linuxdeploy-x86_64.AppImage --plugin qt --output appimage --appdir AppDir
 
 ######################################################
@@ -321,7 +323,7 @@ source ./scripts/setenv-mingw-xbuild.sh 64
                                           # Get the patches, kill the Xterm and start in a new Xterm with "source ./scripts/setenv-mingw-xbuild.sh 64"
                                           # On Debian it compiles with warnings. See Log files.
 
-# If all goes well there is a  Windows .exe in the current directory.
+# If all goes well there is a  Windows execuatble OpenSCAD*Installer.exe   in the mingw64.static.posix directory.
 
 ######################################################
 ######################################################
