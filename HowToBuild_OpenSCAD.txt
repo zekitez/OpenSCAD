@@ -32,6 +32,33 @@ sudo ./scripts/uni-get-dependencies.sh
 # In case of missing packages: install them. Use Google to find the correct package name.
 
 #########################################
+# Qt6... tbs
+#Current ERROR:
+CMake Error at CMakeLists.txt:818 (find_package):
+  By not providing "FindQt6.cmake" in CMAKE_MODULE_PATH this project has
+  asked CMake to find a package configuration file provided by "Qt6", but
+  CMake did not find one.
+
+  Could not find a package configuration file provided by "Qt6" with any of
+  the following names:
+
+    Qt6Config.cmake
+    qt6-config.cmake
+
+  Add the installation prefix of "Qt6" to CMAKE_PREFIX_PATH or set "Qt6_DIR"
+  to a directory containing one of the above files.  If "Qt6" provides a
+  separate development package or SDK, be sure it has been installed.
+
+# Solution:
+sudo apt install libxcb-cursor0 libxcb-cursor-dev
+
+# Then install your Linux version (they prompt for an account during installation) from:
+https://www.qt.io/development/download-qt-installer-oss
+
+# installs in ~/Qt/6.10.2 
+# ToDo: extend some path
+
+#########################################
 # Do this step after a 1st succesfull building step.
 # Get the pached code and overwrite the openscad code.
 
@@ -170,17 +197,17 @@ cmake --build build -t clean
 # Get latest files from openscad master
 git pull
 
-# -DPYTHON_VERSION=3.12  ???
+#  -DPYTHON_VERSION=3.12  ???
+#  -DUSE_BUILTIN_OPENCSG=ON \     # Not found
+#  -DENABLE_TESTS=OFF \           # Not found
 
 cmake -B build \
   -DCMAKE_INSTALL_PREFIX=/usr \
   -DCMAKE_BUILD_TYPE=Release \    # This option causes compilation with warnings.
-#  -DUSE_BUILTIN_OPENCSG=ON \     # Not found
   -DMANIFOLD_PYBIND=OFF \
   -DMANIFOLD_TEST=OFF \
   -DENABLE_PYTHON=ON \
   -DPYTHON_VERSION=3.12 \
-#  -DENABLE_TESTS=OFF \           # Not found
   -DEXPERIMENTAL=ON \
   -DSNAPSHOT=ON
 
