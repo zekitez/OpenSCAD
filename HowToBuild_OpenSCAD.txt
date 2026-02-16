@@ -17,19 +17,39 @@
 # They don't mix !!!
 #
 ###########################################
+> [!IMPORTANT]
+> CURRENTLY, febrari 2026, all building attempts following the https://github.com/openscad/openscad/README.md instructions will fail, including cross compiling for Windows, on Ubuntu and Debian.
+
 # Get the openscad code:
 
 sudo apt install git wget diffuse                # Needed
 
+###########################################
+# Short route.
+#  In case of problems with QT6 go for the QT5 steps
+#   - on Ubuntu building fails on missing "Qt6::moc" /usr/lib/qt6/libexec/moc
+#   - on Debian it compiles but segmentation fault on qt6/plugins/multimedia/libffmpegmediaplugin.so
+
+# Required steps:
 git clone https://github.com/openscad/openscad.git
 cd openscad
 git submodule update --init --recursive
 
-# Install some required packages and check them.
-sudo ./scripts/uni-get-dependencies.sh
+# Building for Linux with QT6:
+sudo ./scripts/uni-get-dependencies.sh qt6
 ./scripts/check-dependencies.sh
 
-# In case of missing packages: install them. Use Google to find the correct package name.
+# Building for Linux with QT5 (with QT6 problems, older or missing dependencies)
+source ./scripts/setenv-unibuild.sh
+./scripts/uni-build-dependencies.sh
+./scripts/check-dependencies.sh
+
+# Compilation (QT5 and QT6):
+cmake -B build -DEXPERIMENTAL=1
+cmake --build build
+
+# Verify first that openscad runs with ./build/openscad then install
+sudo cmake --install build
 
 #########################################
 # Qt6... tbs
