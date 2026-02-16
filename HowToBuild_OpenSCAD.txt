@@ -17,10 +17,9 @@
 # They don't mix !!!
 #
 ###########################################
-> [!IMPORTANT]
-> CURRENTLY, febrari 2026, all building attempts following the https://github.com/openscad/openscad/README.md instructions will fail, including cross compiling for Windows, on Ubuntu and Debian.
-
-# Get the openscad code:
+# [!IMPORTANT]
+# CURRENTLY, febrari 2026, all building attempts following the https://github.com/openscad/openscad/blob/master/README.md 
+# instructions will fail, including cross compiling for Windows, on Ubuntu and Debian.
 
 sudo apt install git wget diffuse                # Needed
 
@@ -31,6 +30,7 @@ sudo apt install git wget diffuse                # Needed
 #   - on Debian it compiles but segmentation fault on qt6/plugins/multimedia/libffmpegmediaplugin.so
 
 # Required steps:
+# Get the openscad code:
 git clone https://github.com/openscad/openscad.git
 cd openscad
 git submodule update --init --recursive
@@ -54,28 +54,6 @@ sudo cmake --install build
 #########################################
 # Qt6... tbs
 #Current ERROR:
-CMake Error at CMakeLists.txt:818 (find_package):
-  By not providing "FindQt6.cmake" in CMAKE_MODULE_PATH this project has
-  asked CMake to find a package configuration file provided by "Qt6", but
-  CMake did not find one.
-
-  Could not find a package configuration file provided by "Qt6" with any of
-  the following names:
-
-    Qt6Config.cmake
-    qt6-config.cmake
-
-  Add the installation prefix of "Qt6" to CMAKE_PREFIX_PATH or set "Qt6_DIR"
-  to a directory containing one of the above files.  If "Qt6" provides a
-  separate development package or SDK, be sure it has been installed.
-
-# Solution:
-sudo apt install libxcb-cursor0 libxcb-cursor-dev
-
-# Then install your Linux version (they prompt for an account during installation) from:
-https://www.qt.io/development/download-qt-installer-oss
-
-# installs in ~/Qt/6.10.2 
 # ToDo: extend some path
 
 #########################################
