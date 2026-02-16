@@ -1,5 +1,5 @@
 > [!IMPORTANT]
-> CURRENTLY, febrari 2026, all building attempts following the https://github.com/openscad/openscad/README.md instructions will fail on Ubuntu and Debian.
+> CURRENTLY, febrari 2026, all building attempts following the https://github.com/openscad/openscad/blob/master/README.md instructions will fail on Ubuntu and Debian.
 > Even cross compiling for Windows now fails on Ubuntu and Debian..
 
 # OpenSCAD
