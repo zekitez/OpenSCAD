@@ -1,7 +1,9 @@
 > [!IMPORTANT]
 > CURRENTLY, starting from februari 2026 (OpenSCAD moved to Qt6), all of building attempts, from scratch, for Linux following the offical https://github.com/openscad/openscad/blob/master/README.md instructions FAIL, including cross-compiling for windows, on Ubuntu 24.04, for Qt5 or Qt6, or with 'older or missing dependencies'.
+> 
 > Building on Debian is OK.
-> Upgrade Ubuntu from 24.04 to 25.10. After the upgrade start with a new clone and it build just fine.
+> 
+> Upgrade Ubuntu from 24.04 to 25.10. After the upgrade start with a fresh clone and it builds just fine. End of april 2026 Ubuntu 26.0 will be available.
 # OpenSCAD
 This is where I keep my improvements to [openscad/openscad](https://github.com/openscad/openscad/)
 
