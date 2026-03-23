@@ -1,5 +1,6 @@
 > [!IMPORTANT]
-> CURRENTLY, starting from februari 2026 (OpenSCAD moved to Qt6), all of building attempts, from scratch, for Linux following the offical https://github.com/openscad/openscad/blob/master/README.md instructions FAIL, including cross-compiling for windows, on Ubuntu or Debian, for Qt5 or Qt6, or with 'older or missing dependencies'.
+> CURRENTLY, starting from februari 2026 (OpenSCAD moved to Qt6), all of building attempts, from scratch, for Linux following the offical https://github.com/openscad/openscad/blob/master/README.md instructions FAIL, including cross-compiling for windows, on Ubuntu, for Qt5 or Qt6, or with 'older or missing dependencies'.
+Building on Debian is OK.
 # OpenSCAD
 This is where I keep my improvements to [openscad/openscad](https://github.com/openscad/openscad/)
 
