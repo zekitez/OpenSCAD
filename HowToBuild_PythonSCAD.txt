@@ -1,9 +1,9 @@
 ###########################################
 #
 # In this file I keep my notes on building PythonSCAD with some patches based on Debian (Ubuntu, Mint).
-# Building environment: Linux Ubuntu 24.04 Cinnamon (no problem), 
-#                       Linux Debian 13.2 Cinnamon  (replacement for Linux Mint) and 
-#                       MinGW-w64 on Windows 11.
+# Building environment: Linux Ubuntu 24.04 Cinnamon does NOT BUILD since the move to QT6, 
+#                       Linux Ubuntu 25.10 Cinnamon builds OK,
+#                       Linux Debian 13.2  Cinnamon builds OK.
 #
 # You still will find build issues. Sometimes you have to kill an xTerm and start again with a fresh xTerm...
 # Cross compiling PythonSCAD on Linux for Windows currently fails (2025-12-19).
