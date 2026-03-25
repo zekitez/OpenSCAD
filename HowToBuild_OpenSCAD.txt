@@ -1,10 +1,10 @@
 ###########################################
 #
 # In this file I keep my notes on building OpenSCAD with some patches based on Debian (Ubuntu, Mint).
-# Building environment: Linux Ubuntu 24.04 Cinnamon does NOT BUILD, 
+# Building environment: Linux Ubuntu 24.04 Cinnamon does NOT BUILD since the move to QT6, 
 #                       Linux Ubuntu 25.10 Cinnamon builds OK,
-#                       Linux Debian 13.2  Cinnamon builds OK (replacement for Linux Mint).
-# Since OpenSCAD is build on Debian, Mint is replaced with Debian 13.2 Cinnamon.
+#                       Linux Debian 13.2  Cinnamon builds OK.
+# OpenSCAD is officialy build on Debian.
 # Cross compiling on Ubuntu for Windows and generating a Windows installer works with some adjustments.
 # Building on a Windows machine using MinGW-w64 works. Building a windows installer on MinGW-w64 is not tried.
 # During building you will be faced with missing Linux packages. Use Google to find out how to install them.
