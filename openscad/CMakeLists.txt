@@ -40,15 +40,13 @@ option(ENABLE_TESTS "Run testsuite after building." ON)
 option(ENABLE_GUI_TESTS "Compile a special version of the openscad gui with feature for testing." OFF)
 option(EXPERIMENTAL "Enable Experimental Features" OFF)
 option(USE_MANIFOLD_TRIANGULATOR "Use Manifold's triangulator instead of CGAL's" ON)
+option(USE_MANIFOLD_MINKOWSKI "Use Manifold's Minkowski instead of CGAL's" OFF)
 option(USE_BUILTIN_MANIFOLD "Use manifold from submodule" ON)
 option(USE_BUILTIN_CLIPPER2 "Use Clipper2 from submodule" ON)
+option(USE_POLYSET_FOR_CGAL "Force CGAL backend to use PolySetRenderer instead of CGALRenderer." OFF)
 option(SNAPSHOT "Create dev snapshot, uses nightly icons" OFF)
 option(HEADLESS "Build without GUI frontend" OFF)
-if(APPLE)
-  option(USE_QT6 "Build the GUI with Qt6" ON)
-else()
-option(USE_QT6 "Build the GUI with Qt6" OFF)
-endif()
+option(USE_QT6 "Build the GUI with Qt6" ON)
 option(ENABLE_EGL "Enable EGL support if available" ON)
 option(ENABLE_GLX "Enable GLX support if available" ON)
 # For now, we'll default to whatever OpenCSG uses (>=1.6 -> GLAD, <1.6 -> GLEW)
@@ -81,7 +79,7 @@ cmake_dependent_option(APPLE_UNIX "Build OpenSCAD in Unix mode in MacOS X instea
 cmake_dependent_option(ENABLE_QTDBUS "Enable DBus input driver for Qt." ON "NOT HEADLESS" OFF)
 set(ENABLE_GAMEPAD "AUTO" CACHE STRING "Enable Qt5Gamepad input driver")
 set_property(CACHE ENABLE_GAMEPAD PROPERTY STRINGS "AUTO" "ON" "OFF")
-set(WASM_BUILD_TYPE "web" CACHE STRING 
+set(WASM_BUILD_TYPE "web" CACHE STRING
   "WebAssembly build type. Support web (builds an OpenSCAD module) or node (standalone .js executable)")
 
 if (USE_QT6)
@@ -299,7 +297,7 @@ if (CMAKE_SYSTEM_NAME STREQUAL Emscripten)
   set(ENV{PKG_CONFIG_PATH} "/emsdk/upstream/emscripten/cache/sysroot/lib/pkgconfig")
   target_compile_definitions(OpenSCADLibInternal PUBLIC CGAL_DISABLE_ROUNDING_MATH_CHECK)
   target_link_libraries(OpenSCADLibInternal PUBLIC /emsdk/upstream/emscripten/cache/sysroot/lib/libz.a)
-  
+
   # https://emscripten.org/docs/tools_reference/emcc.html
   # https://emscripten.org/docs/tools_reference/settings_reference.html
   target_compile_options(OpenSCADLibInternal PUBLIC -fexceptions)
@@ -311,7 +309,7 @@ if (CMAKE_SYSTEM_NAME STREQUAL Emscripten)
     -sEXIT_RUNTIME=1
     -sEXPORTED_RUNTIME_METHODS=['ENV','ERRNO_CODES','FS','PATH','callMain']
     -sMAXIMUM_MEMORY=4GB
-    
+
     # -g produces DWARF debug info, which is quite large and may need debugger extensions.
     # Alternatively, can pass -gsource-map -sLOAD_SOURCE_MAP but then variable debugging isn't possible
     $<$<CONFIG:Debug>:-g -O0>
@@ -330,8 +328,8 @@ if (CMAKE_SYSTEM_NAME STREQUAL Emscripten)
       -sNODERAWFS
 
       # Single .js (more elegant for CLI release) is larger than separate .js & .wasm (preferred for web)
-      $<$<CONFIG:Release>:-sSINGLE_FILE> 
-      
+      $<$<CONFIG:Release>:-sSINGLE_FILE>
+
       # Alternatively to single-file mode, code caching could make repeated runs faster:
       # -sNODE_CODE_CACHING -sWASM_ASYNC_COMPILATION=0
     )
@@ -610,11 +608,6 @@ message(STATUS "libzip: ${LIBZIP_VERSION}")
 target_include_directories(OpenSCADLibInternal SYSTEM PUBLIC ${LIBZIP_INCLUDE_DIR_ZIP} ${LIBZIP_INCLUDE_DIR_ZIPCONF})
 target_link_libraries(OpenSCADLibInternal PUBLIC ${LIBZIP_LIBRARY})
 target_compile_definitions(OpenSCADLibInternal PUBLIC ENABLE_LIBZIP)
-
-find_package(Freetype 2.4.9 REQUIRED QUIET)
-message(STATUS "Freetype: ${FREETYPE_VERSION_STRING}")
-target_include_directories(OpenSCADLibInternal SYSTEM PUBLIC ${FREETYPE_INCLUDE_DIRS})
-target_link_libraries(OpenSCADLibInternal PUBLIC ${FREETYPE_LIBRARIES})
 
 find_package(LibXml2 2.9 REQUIRED QUIET)
 message(STATUS "LibXml2: ${LIBXML2_VERSION_STRING}")
@@ -904,6 +897,12 @@ if(NOT HEADLESS)
   endif()
 endif()
 
+# Find after Qt which otherwise gets confused when building on MXE
+find_package(Freetype 2.4.9 REQUIRED QUIET)
+message(STATUS "Freetype: ${FREETYPE_VERSION_STRING}")
+target_include_directories(OpenSCADLibInternal SYSTEM PUBLIC ${FREETYPE_INCLUDE_DIRS})
+target_link_libraries(OpenSCADLibInternal PUBLIC ${FREETYPE_LIBRARIES})
+
 # Setup ccache (if available) to speed up recompiles. It's especially useful
 # when switching back and forth between branches where large numbers of files
 # would otherwise need to be re-compiled each time.
@@ -1117,7 +1116,7 @@ set(CORE_SOURCES
 if(ENABLE_PYTHON)
 	list(APPEND CORE_SOURCES
 		    src/python/pymod.cc
-		    src/python/pyopenscad.cc 
+		    src/python/pyopenscad.cc
 		    src/python/pyfunctions.cc )
 	target_compile_definitions(OpenSCADLibInternal PUBLIC ENABLE_PYTHON)
 endif()
@@ -1223,6 +1222,12 @@ if(ENABLE_MANIFOLD)
   if (USE_MANIFOLD_TRIANGULATOR)
     target_compile_definitions(OpenSCADLibInternal PUBLIC USE_MANIFOLD_TRIANGULATOR)
   endif()
+  if (USE_MANIFOLD_MINKOWSKI)
+    target_compile_definitions(OpenSCADLibInternal PUBLIC USE_MANIFOLD_MINKOWSKI)
+  endif()
+  if (USE_POLYSET_FOR_CGAL)
+    target_compile_definitions(OpenSCADLibInternal PUBLIC USE_POLYSET_FOR_CGAL)
+  endif()
 endif()
 
 #
@@ -1250,13 +1255,16 @@ else()
     src/glview/GLView.cc
     src/glview/hershey.cc
     src/glview/OffscreenView.cc
-    src/glview/cgal/CGALRenderer.cc
     src/glview/PolySetRenderer.cc
     src/glview/preview/OpenCSGRenderer.cc
     src/glview/preview/ThrownTogetherRenderer.cc
     src/io/export_png.cc
     src/io/imageutils.cc
     ${GLEW_SOURCES})
+  if(NOT USE_POLYSET_FOR_CGAL)
+    list(APPEND OFFSCREEN_SOURCES
+      src/glview/cgal/CGALRenderer.cc)
+  endif()
 endif()
 
 
@@ -1286,7 +1294,6 @@ set(GUI_SOURCES
   src/gui/ExportPdfDialog.cc
   src/gui/ExportSvgDialog.cc
   src/gui/OctoPrintApiKeyDialog.cc
-
   src/gui/FontListTableView.cc
   src/gui/InitConfigurator.cc
   src/gui/ImportUtils.cc
@@ -1299,6 +1306,7 @@ set(GUI_SOURCES
   src/gui/ColorList.cc
   src/gui/ColorLabel.cc
   src/gui/ColorLayout.cc
+  src/gui/EditorColorMap.cc
   src/gui/MouseSelector.cc
   src/gui/OctoPrint.cc
   src/gui/OpenCSGWarningDialog.cc
@@ -1592,7 +1600,7 @@ if(APPLE AND NOT APPLE_UNIX)
   file(COPY ${CMAKE_SOURCE_DIR}/templates DESTINATION ${BUNDLE_RESOURCES_DIR})
 
   if(ENABLE_GUI_TESTS)
-    file(COPY 
+    file(COPY
          ${CMAKE_SOURCE_DIR}/tests/data/basic-ux
          ${CMAKE_SOURCE_DIR}/tests/data/modulecache-tests
          DESTINATION ${BUNDLE_RESOURCES_DIR}/tests)
@@ -1767,7 +1775,7 @@ if(ENABLE_TESTS)
     # and how the system Catch2 static library is compiled. It should be fine.
 
     if(HEADLESS)
-    add_executable(OpenSCADUnitTests ${TEST_SOURCES})
+      add_executable(OpenSCADUnitTests ${TEST_SOURCES})
     else()
       add_executable(OpenSCADUnitTests ${TEST_SOURCES} ${GUI_TEST_SOURCES})
     endif()
