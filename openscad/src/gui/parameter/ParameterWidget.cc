@@ -25,36 +25,36 @@
  */
 #include "gui/parameter/ParameterWidget.h"
 
-#include <QLayoutItem>
-#include <QString>
-#include <stdexcept>
-#include <cassert>
-#include <map>
-#include <set>
-#include <memory>
-#include <QWidget>
-
-#include "gui/parameter/GroupWidget.h"
-#include "gui/parameter/ParameterSpinBox.h"
-#include "gui/parameter/ParameterComboBox.h"
-#include "gui/parameter/ParameterSlider.h"
-#include "gui/parameter/ParameterCheckBox.h"
-#include "gui/parameter/ParameterText.h"
-#include "gui/parameter/ParameterTextArea.h"
-#include "gui/parameter/ParameterVector.h"
-#include "gui/Preferences.h"
-
-#include <filesystem>
-
+#include <QAction>
 #include <QInputDialog>
+#include <QLayoutItem>
+#include <QMenu>
 #include <QMessageBox>
+#include <QString>
+#include <QToolButton>
+#include <QWidget>
+#include <cassert>
 #include <cstddef>
+#include <filesystem>
+#include <map>
+#include <memory>
+#include <set>
+#include <stdexcept>
 #include <string>
 #include <utility>
 #include <vector>
 
-#include <stdio.h>
-#include <QDebug>
+#include "core/customizer/ParameterObject.h"
+#include "gui/Preferences.h"
+#include "gui/parameter/GroupWidget.h"
+#include "gui/parameter/ParameterCheckBox.h"
+#include "gui/parameter/ParameterComboBox.h"
+#include "gui/parameter/ParameterSlider.h"
+#include "gui/parameter/ParameterSpinBox.h"
+#include "gui/parameter/ParameterText.h"
+#include "gui/parameter/ParameterVector.h"
+#include "gui/parameter/ParameterVirtualWidget.h"
+#include "gui/parameter/ParameterTextArea.h"
 
 ParameterWidget::ParameterWidget(QWidget *parent) : QWidget(parent)
 {
@@ -65,23 +65,23 @@ ParameterWidget::ParameterWidget(QWidget *parent) : QWidget(parent)
   autoPreviewTimer.setSingleShot(true);
 
   connect(&autoPreviewTimer, &QTimer::timeout, this, &ParameterWidget::emitParametersChanged);
-  connect(checkBoxAutoPreview, &QCheckBox::toggled, [this]() { this->autoPreview(true); });
-  connect(comboBoxDetails, QOverload<int>::of(&QComboBox::currentIndexChanged), this, &ParameterWidget::rebuildWidgets);
-  connect(comboBoxPreset, QOverload<int>::of(&QComboBox::activated), this, &ParameterWidget::onSetChanged);
   // connect(comboBoxPreset, &QComboBox::editTextChanged, this, &ParameterWidget::onSetNameChanged);
-  connect(addButton, &QPushButton::clicked, this, &ParameterWidget::onSetAdd);
-  connect(deleteButton, &QPushButton::clicked, this, &ParameterWidget::onSetDelete);
+
+  auto *customizer_menu = new QMenu(this);
+  parameterMenuButton->setMenu(customizer_menu);
+
+  QAction *collapseAction = customizer_menu->addAction(_("Collapse All"));
+  connect(collapseAction, &QAction::triggered, this, &ParameterWidget::onCollapseAll);
+
+  QAction *expandAction = customizer_menu->addAction(_("Expand All"));
+  connect(expandAction, &QAction::triggered, this, &ParameterWidget::onExpandAll);
 
   QString fontfamily = GlobalPreferences::inst()->getValue("advanced/customizerFontFamily").toString();
   uint fontsize = GlobalPreferences::inst()->getValue("advanced/customizerFontSize").toUInt();
   setFontFamilySize(fontfamily, fontsize);
-  
-  bool collapseCustomizerTabs = GlobalPreferences::inst()->getValue("advanced/customizerCollapseTabs").toBool();
-  setCollapseTabs(collapseCustomizerTabs);
 
-  connect(GlobalPreferences::inst(), &Preferences::collapseTabsChanged, this, &ParameterWidget::setCollapseTabs);
-
-  connect(GlobalPreferences::inst(), &Preferences::customizerFontChanged, this, &ParameterWidget::setFontFamilySize);
+  connect(GlobalPreferences::inst(), &Preferences::customizerFontChanged, this,
+          &ParameterWidget::setFontFamilySize);
 }
 
 // Can only be called before the initial setParameters().
@@ -98,9 +98,7 @@ void ParameterWidget::readFile(const QString& scadFile)
     this->invalidJsonFile = jsonFile;
   }
 
-
   for (const auto& set : this->sets) {
-//  std::printf("readFile %s \n", set.name().data() );
     comboBoxPreset->addItem(QString::fromStdString(set.name()));
   }
 }
@@ -151,7 +149,10 @@ void ParameterWidget::setParameters(const SourceFile *sourceFile, const std::str
   loadSet(comboBoxPreset->currentIndex());
 }
 
-void ParameterWidget::applyParameters(SourceFile *sourceFile) { this->parameters.apply(sourceFile); }
+void ParameterWidget::applyParameters(SourceFile *sourceFile)
+{
+  this->parameters.apply(sourceFile);
+}
 
 bool ParameterWidget::childHasFocus()
 {
@@ -197,7 +198,17 @@ void ParameterWidget::autoPreview(bool immediate)
   }
 }
 
-void ParameterWidget::onSetChanged(int index)
+void ParameterWidget::on_checkBoxAutoPreview_toggled(bool)
+{
+  autoPreview(true);
+}
+
+void ParameterWidget::on_comboBoxDetails_currentIndexChanged(int)
+{
+  rebuildWidgets();
+}
+
+void ParameterWidget::on_comboBoxPreset_activated(int index)
 {
   loadSet(index);
   autoPreview(true);
@@ -211,7 +222,7 @@ void ParameterWidget::onSetNameChanged()
   setModified();
 }
 
-void ParameterWidget::onSetAdd()
+void ParameterWidget::on_addButton_clicked()
 {
   bool ok = true;
   QString result =
@@ -224,7 +235,7 @@ void ParameterWidget::onSetAdd()
   setModified();
 }
 
-void ParameterWidget::onSetDelete()
+void ParameterWidget::on_deleteButton_clicked()
 {
   int index = comboBoxPreset->currentIndex();
   assert(index > 0);
@@ -241,6 +252,20 @@ void ParameterWidget::onSetDelete()
   sets.erase(sets.begin() + (index - 1));
   setModified();
   autoPreview(true);
+}
+
+void ParameterWidget::onCollapseAll()
+{
+  for (GroupWidget *groupWidget : this->findChildren<GroupWidget *>()) {
+    groupWidget->setExpanded(false);
+  }
+}
+
+void ParameterWidget::onExpandAll()
+{
+  for (GroupWidget *groupWidget : this->findChildren<GroupWidget *>()) {
+    groupWidget->setExpanded(true);
+  }
 }
 
 void ParameterWidget::parameterModified(bool immediate)
@@ -300,8 +325,6 @@ void ParameterWidget::loadSet(size_t index)
 
 void ParameterWidget::createSet(const QString& name)
 {
-  // printf("createSet %s \n", name.toStdString().data() );
-
   sets.push_back(parameters.exportValues(name.toStdString()));
   comboBoxPreset->addItem(name);
   comboBoxPreset->setCurrentIndex(comboBoxPreset->count() - 1);
@@ -316,7 +339,7 @@ void ParameterWidget::updateSetEditability()
   } else {
     if (!comboBoxPreset->isEditable()) {
       comboBoxPreset->setEditable(true);
-
+        // Solution :
         QString fontFamily = GlobalPreferences::inst()->getValue("advanced/applicationFontFamily").toString();
         uint fontSize = GlobalPreferences::inst()->getValue("advanced/applicationFontSize").toUInt();
 
@@ -345,19 +368,7 @@ void ParameterWidget::rebuildWidgets()
     delete child;
   }
 
-  bool expandAll = false;
-  bool collapseAll = false;
   auto descriptionStyle = static_cast<DescriptionStyle>(comboBoxDetails->currentIndex());
-  if (descriptionStyle == DescriptionStyle::CollapseAllTabs ){
-	  collapseAll = true;
-      descriptionStyle = prevDescriptionStyle;
-  } else if (descriptionStyle == DescriptionStyle::ExpandAllTabs) {
-      expandAll =  true;
-      descriptionStyle = prevDescriptionStyle;
-  } else {
-      prevDescriptionStyle = descriptionStyle;
-  }
-  
   std::vector<ParameterGroup> parameterGroups = getParameterGroups();
   for (const auto& group : parameterGroups) {
     auto *groupWidget = new GroupWidget(group.name);
@@ -372,16 +383,7 @@ void ParameterWidget::rebuildWidgets()
       groupWidget->addWidget(parameterWidget);
     }
     auto it = expandedGroups.find(group.name);
-//    groupWidget->setExpanded(it == expandedGroups.end() || it->second);
-    if (expandAll){
-        groupWidget->setExpanded(true);
-    } else if (collapseAll) {
-        groupWidget->setExpanded(false);
-    } else if (this->collapseTabs){
-        groupWidget->setExpanded(it == expandedGroups.end() ? !(expandedGroups.size() == 0) : it->second);
-	} else {
-        groupWidget->setExpanded(it == expandedGroups.end() || it->second);
-    }
+    groupWidget->setExpanded(it == expandedGroups.end() || it->second);
     layout->addWidget(groupWidget);
   }
 }
@@ -428,6 +430,7 @@ ParameterVirtualWidget *ParameterWidget::createParameterWidget(ParameterObject *
     return new ParameterCheckBox(this, static_cast<BoolParameter *>(parameter), descriptionStyle);
 
   } else if (parameter->type() == ParameterObject::ParameterType::String) {
+    //return new ParameterText(this, static_cast<StringParameter *>(parameter), descriptionStyle);
     auto *stringParameter = static_cast<StringParameter *>(parameter);
 
     if ( stringParameter->maximumSize && stringParameter->maximumSize == size_t(32768)) {
@@ -462,8 +465,6 @@ ParameterVirtualWidget *ParameterWidget::createParameterWidget(ParameterObject *
 QString ParameterWidget::getJsonFile(const QString& scadFile)
 {
   std::filesystem::path p = scadFile.toStdString();
-  std::cout << p.parent_path().string() << std::endl;
-
   return QString::fromStdString(p.replace_extension(".json").string());
 }
 
@@ -493,17 +494,6 @@ void ParameterWidget::cleanSets()
 
 void ParameterWidget::setFontFamilySize(const QString& fontFamily, uint fontSize)
 {
-  
   scrollArea->setStyleSheet(
     QString("font-family: \"%1\"; font-size: %2pt;").arg(fontFamily).arg(fontSize));
-
 }
-
-void ParameterWidget::setCollapseTabs(bool state)
-{
-	// printf("setCollapseTabs %s \n", (state ? "true" : "false"));
-	this->collapseTabs = state;
-}
-
-
-
