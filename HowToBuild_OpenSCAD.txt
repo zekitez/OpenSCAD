@@ -2,15 +2,16 @@
 #
 # OpenSCAD is officialy build on Debian.
 # In this file I keep my notes on building OpenSCAD with some patches based on Debian and Ubuntu.
-# Building environment: Linux Ubuntu 24.04 Cinnamon, does NOT BUILD since the move to QT6 in Jan 2026, 
+# Building environment: Linux Ubuntu 24.04 Cinnamon, does NOT BUILD anymore since the move to QT6 in Jan 2026, 
 #                       Linux Ubuntu 25.10 Cinnamon, builds OK,
 #                       Linux Debian 13.2  Cinnamon, builds OK.
 #
-# Cross compiling on Ubuntu for Windows and generating a Windows installer works with some adjustments.
-# Building on a Windows machine using MinGW-w64 works. Building a windows installer on MinGW-w64 is not tried.
+# Building for Linux    OK: executable, installing on Linux, AppImage.
+# Building for Windows NOK: Cross compiling on Ubuntu for Windows.
+# Not tested              : building on Windows.
+#
 # During building you will be faced with missing Linux packages. Use Google to find out how to install them.
 #
-# Just copy line by line and paste each line in an xterm.
 #
 # Note: While cross compiling on Linux for Windows an ~/openscad_deps is created. 
 # The one created for openscad differs from the one for pythonscad. They don't mix !!!
@@ -29,23 +30,21 @@ git submodule update --init --recursive
 sudo ./scripts/uni-get-dependencies.sh qt6
 ./scripts/check-dependencies.sh
 
-# Compilation:
+# Compilation, method 1:
 rm -rf build
 cmake -B build -DEXPERIMENTAL=1
 cmake --build build
-
-# OR, faster: 
-cmake -B build -DEXPERIMENTAL=1
-cd build
-make -j6
-
 # Verify first that openscad runs with 
 ./build/openscad
 
-# Then install
-cd ..
-sudo cmake --install build
+# Compilation, method 2, faster the using multi-cores of your CPU : 
+cmake -B build -DEXPERIMENTAL=1
+cd build
+make -j6
+# Verify first that openscad runs with 
+./openscad
 
+# For a faster OpenSCAD version read below !!!
 
 #########################################
 # Do this step after a 1st succesfull building step.
@@ -89,15 +88,14 @@ OpenSCAD
 │   ├── designDefault.png
 │   ├── designMyPreset_OK.png
 │   ├── designMyPreset.png
+│   ├── expandCollapse.png
 │   ├── FileDialog.png
 │   ├── preferences_curtomizer.png
 │   └── TextEdit.png
 └── README.md
 
 # Check the diff of CMakeLists.txt
-# Add to the left   ParameterTextArea.*, TextEdit.* 
-# WinMerge or diffuse for differences !!!
-diffuse CMakeLists.txt ./OpenSCAD-main/openscad/CMakeLists.txt &
+diffuse CMakeLists.txt ./OpenSCAD/openscad/CMakeLists.txt &
 
 # Dangerous but...
 cp -rpP OpenSCAD-main/openscad/src/* ./src/.
@@ -124,7 +122,7 @@ cmake -B build \
       -DSNAPSHOT=ON           # See my Log_cmake_-B_build_-D.txt
 
 # Generates an executable which has 66328336 bytes.
-# 64780 -rwxrwxr-x  1 db811 db811  66328336 Dec 11 14:04 openscad           <-----
+# 64780 -rwxrwxr-x  1 db811 db811  66328336 Dec 11 14:04 openscad           <----- SLOW
 # For a smaller version see below.
 
 # Use 8 cores (-j8) to make, if your computer has them, otherwise decrease to 6, 4 or 2. 
@@ -138,11 +136,12 @@ make -j8
 make install DESTDIR=../AppDir    # See Log_make_install_DESTDIR.txt
 cd ..
 
-# Optional, install it on this computer with in /usr/bin : 
+# Optional, install it on this computer with in /usr/local : 
 # sudo cmake --install build
 
 ####################################################
-#  Build step for a Linux executable and/or an AppDir for an Linux AppImage building on Linux in the cloned openscad directory:
+# FAST VERSION !!!!
+# Build step for a Linux executable and/or an AppDir for an Linux AppImage building on Linux in the cloned openscad directory:
 
 rm -rf build AppDir
 mkdir build
@@ -153,17 +152,18 @@ cmake --build build -t clean
 # Get latest files from openscad master
 git pull
 
-#  -DPYTHON_VERSION=3.12  ???
 #  -DUSE_BUILTIN_OPENCSG=ON \     # Not found
 #  -DENABLE_TESTS=OFF \           # Not found
+#  -DPYTHON_VERSION=3.12 \        # Warning, not used by project
+#  -DCMAKE_BUILD_TYPE=Release \   # This option causes compilation with warnings.
 
+cmake --build build -t clean
 cmake -B build \
   -DCMAKE_INSTALL_PREFIX=/usr \
-  -DCMAKE_BUILD_TYPE=Release \    # This option causes compilation with warnings.
+  -DCMAKE_BUILD_TYPE=Release \
   -DMANIFOLD_PYBIND=OFF \
   -DMANIFOLD_TEST=OFF \
   -DENABLE_PYTHON=ON \
-  -DPYTHON_VERSION=3.12 \
   -DEXPERIMENTAL=ON \
   -DSNAPSHOT=ON
 
@@ -171,7 +171,7 @@ cd build
 make -j8           # Use 8 cores (-j8) to make if your computer has them, otherwise decrease to 6, 4 or 2. 
 
 # Generates an executable which has not 66328336 but 19417552 bytes.
-# 18964 -rwxrwxr-x  1 db811 db811 19417552 Dec 11 14:13 openscad           <-----
+# 22628 -rwxrwxr-x 1 zekitez zekitez 23167192 Mar 26 11:47 ./openscad           <----- FAST
 
 # Run from the build directory with:
 ./openscad
@@ -181,24 +181,29 @@ make install DESTDIR=../AppDir    # See Log_make_install_DESTDIR.txt
 cd ..
 
 # Optional, install it on this computer with in /usr/bin : 
-# sudo cmake --install build
+sudo cmake --install build
 
 #######################################
+# In case of problems check pythonscad script: create_appimage.sh
 # To make a Linux AppImage in the openscad directory:
+
+export ld_arch=x86_64
+wget -q https://github.com/linuxdeploy/linuxdeploy/releases/download/continuous/linuxdeploy-${ld_arch}.AppImage
+wget -q https://github.com/linuxdeploy/linuxdeploy-plugin-qt/releases/download/continuous/linuxdeploy-plugin-qt-${ld_arch}.AppImage
+
+chmod +x linuxdeploy*
 
 . ./scripts/establish_version.sh
 export OPENSCAD_VERSION=$(openscad_version)
 export OPENSCAD_COMMIT=$(openscad_commit)
 
-# You may need to update the dates 20251107 and 20250213 to get the latest version of:
-wget https://github.com/linuxdeploy/linuxdeploy/releases/download/1-alpha-20251107-1/linuxdeploy-x86_64.AppImage
-wget https://github.com/linuxdeploy/linuxdeploy-plugin-qt/releases/download/1-alpha-20250213-1/linuxdeploy-plugin-qt-x86_64.AppImage
-
-chmod +x linuxdeploy*
-
 export EXTRA_QT_PLUGINS=svg
 export PYTHON_VERSION=$(python3 -c "import sys; v=sys.version_info; print(f'{v.major}.{v.minor}.{v.micro}')")
 export LINUXDEPLOY_OUTPUT_VERSION="${OPENSCAD_VERSION}${SUFFIX}"
+
+# Needed for QT6 !!!!!!
+export QMAKE=$(command -v qmake6)
+export QT_PLUGIN_PATH=$(qmake6 -query QT_INSTALL_PLUGINS)
 
 # linuxdeploy-plugin-python.sh is not needed for openscad because it does not use Python although there are not used .py files present. 
 # Only pythonscad uses Python but then it uses your locally installed Python or venv instead of Python within the AppImage.
@@ -210,9 +215,12 @@ export LINUXDEPLOY_OUTPUT_VERSION="${OPENSCAD_VERSION}${SUFFIX}"
 # Generate the appimage with:
 ./linuxdeploy-x86_64.AppImage --plugin qt --output appimage --appdir AppDir
 
+#
+# in case of ERROR:    qt.qpa.plugin: Could not find the Qt platform plugin "xcb" in ""
+# sudo apt install '^libxcb.*-dev' libx11-xcb-dev libglu1-mesa-dev libxrender-dev libxi-dev libxkbcommon-dev libxkbcommon-x11-dev
+
 ######################################################
 # To generate a Linux installer OpenSCAD.tar.gz in the directory where you cloned OpenSCAD (in the openscad directory)
-# Installs in /usr/local .
 
 # The used release-common.sh is a patched version of the original script, see "Building an installer for linux-gnu fails #6424" on GitHub !!
 . ./scripts/establish_version.sh
@@ -225,8 +233,8 @@ chmod +x ./scripts/*
 export DEPLOYDIR=./build
 ./scripts/release-common.sh snapshot    # See LOG_release_common.txt . 
 
-# In case of the error: "cp: cannot stat 'openscad': No such file or directory"   do:
-ln -s /build/openscad .
+# In case of the ERROR: "cp: cannot stat 'openscad': No such file or directory"   do:
+ln -s ./build/openscad .
 ./scripts/release-common.sh snapshot
 
 ####################################################
@@ -306,6 +314,9 @@ source ./scripts/setenv-mingw-xbuild.sh 64
                                           # On Debian it compiles with warnings. See Log files.
  
 # If all goes well there is a  Windows execuatble   OpenSCAD*Installer.exe   in the mingw64.static.posix directory.
+
+# if you get the ERROR: /bin/sh: 0: Illegal option -
+# dos2unix ./scripts/*
 
 ######################################################
 ######################################################
