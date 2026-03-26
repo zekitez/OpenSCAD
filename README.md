@@ -1,18 +1,16 @@
 > [!IMPORTANT]
-> OpenSCAD has moved to Qt6.
+> OpenSCAD has moved to Qt6 in Jan. 2026.
 > 
 > Building on Debian is OK.
 > 
-> Building on Ubuntu 24.04 FAILS.
+> Building on Ubuntu 24.04 FAILS due to limited QT6 support.
 > 
 > Building on Ubuntu 25.10 is OK.
 > 
-> End of april 2026 Ubuntu 26.0 will be available.
 # OpenSCAD
 This is where I keep my improvements to [openscad/openscad](https://github.com/openscad/openscad/)
 
 Building notes for OpenSCAD, with the improvements, are kept in HowToBuild_OpenSCAD.txt .
-Building notes for PythonSCAD, with the improvements, are kept in HowToBuild_PythonSCAD.txt .
 
 NOTEs: 
 1. The improvements described here are probably not avaiable in the official cersions OpenSCAD or PythonSCAD.
@@ -57,17 +55,17 @@ Suggested change:
 - maintain the current behavior of expanding and collapsing tabs in the customizer.
 - any newly added tab to the scad file is expanded when previewed.
 
-The changed locale language files and changed code files are available in this repository.
+```diff
++ Status: available in the latest official Development Snapshots of OpenSCAD.
+```
 
-Alternatives:
-- Keeping the current unfriendly behavior. Not really...
-- Providing users with a version of OpenSCAD (Windows and Linux) which includes the suggested change.
+Screenshots Suggested change:
 
-Screenshots:
+<img width="400" height="250" alt="Image" src="Pictures/preferences_curtomizer.png" />   <img width="400" height="250" alt="Image" src="Pictures/combobox_details.png" />
 
-<img width="871" height="557" alt="Image" src="Pictures/preferences_curtomizer.png" />
+Screenshot official implementation:
 
-<img width="871" height="557" alt="Image" src="Pictures/combobox_details.png" />
+<img width="871" height="557" alt="Image" src="Pictures/expandCollapse.png" />
 
 ## 2 Building an installer for linux-gnu fails #6424 https://github.com/openscad/openscad/issues/6424
 Describe the bug:
