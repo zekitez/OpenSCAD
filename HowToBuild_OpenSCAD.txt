@@ -1,10 +1,11 @@
 ###########################################
 #
-# In this file I keep my notes on building OpenSCAD with some patches based on Debian (Ubuntu, Mint).
-# Building environment: Linux Ubuntu 24.04 Cinnamon does NOT BUILD since the move to QT6, 
-#                       Linux Ubuntu 25.10 Cinnamon builds OK,
-#                       Linux Debian 13.2  Cinnamon builds OK.
 # OpenSCAD is officialy build on Debian.
+# In this file I keep my notes on building OpenSCAD with some patches based on Debian and Ubuntu.
+# Building environment: Linux Ubuntu 24.04 Cinnamon, does NOT BUILD since the move to QT6 in Jan 2026, 
+#                       Linux Ubuntu 25.10 Cinnamon, builds OK,
+#                       Linux Debian 13.2  Cinnamon, builds OK.
+#
 # Cross compiling on Ubuntu for Windows and generating a Windows installer works with some adjustments.
 # Building on a Windows machine using MinGW-w64 works. Building a windows installer on MinGW-w64 is not tried.
 # During building you will be faced with missing Linux packages. Use Google to find out how to install them.
@@ -12,23 +13,13 @@
 # Just copy line by line and paste each line in an xterm.
 #
 # Note: While cross compiling on Linux for Windows an ~/openscad_deps is created. 
-# The one created for openscad differs from the one for pythonscad.
-# They don't mix !!!
+# The one created for openscad differs from the one for pythonscad. They don't mix !!!
 #
 ###########################################
-# [!IMPORTANT]
-# CURRENTLY, febrari 2026, all building attempts following the https://github.com/openscad/openscad/blob/master/README.md 
-# instructions will fail, including cross compiling for Windows, on Ubuntu and Debian.
 
-sudo apt install git wget diffuse                # Needed
+sudo apt install git wget diffuse                # Needed to compare files.
 
 ###########################################
-# Short route.
-#  In case of problems with QT6 go for the QT5 steps
-#   - on Ubuntu building fails on missing "Qt6::moc" /usr/lib/qt6/libexec/moc
-#   - on Debian it compiles but segmentation fault on qt6/plugins/multimedia/libffmpegmediaplugin.so
-
-# Required steps:
 # Get the openscad code:
 git clone https://github.com/openscad/openscad.git
 cd openscad
@@ -38,30 +29,28 @@ git submodule update --init --recursive
 sudo ./scripts/uni-get-dependencies.sh qt6
 ./scripts/check-dependencies.sh
 
-# Building for Linux with QT5 (with QT6 problems, older or missing dependencies)
-source ./scripts/setenv-unibuild.sh
-./scripts/uni-build-dependencies.sh
-./scripts/check-dependencies.sh
-
-# Compilation (QT5 and QT6):
+# Compilation:
+rm -rf build
 cmake -B build -DEXPERIMENTAL=1
 cmake --build build
 
-# Verify first that openscad runs with ./build/openscad then install
+# OR, faster: 
+cmake -B build -DEXPERIMENTAL=1
+cd build
+make -j6
+
+# Verify first that openscad runs with 
+./build/openscad
+
+# Then install
+cd ..
 sudo cmake --install build
 
-#########################################
-# Qt6... tbs
-#Current ERROR:
-# ToDo: extend some path
 
 #########################################
 # Do this step after a 1st succesfull building step.
 # Get the pached code and overwrite the openscad code.
 
-wget https://github.com/zekitez/OpenSCAD/archive/refs/heads/main.zip
-unzip main.zip
-# or
 git clone https://github.com/zekitez/OpenSCAD.git
 
 tree OpenSCAD
@@ -80,44 +69,21 @@ OpenSCAD
 │   ├── Log_make_-j8.txt
 │   └── Log_release_common.txt
 ├── openscad
-│   ├── CMakeLists.txt                     # Merge !!
-│   ├── locale
-│   │   ├── cs.po
-│   │   ├── de.po
-│   │   ├── es.po
-│   │   ├── fr.po
-│   │   ├── hy.po
-│   │   ├── it.po
-│   │   ├── ka.po
-│   │   ├── openscad.pot
-│   │   ├── pl.po
-│   │   ├── pt_BR.po
-│   │   ├── ru.po
-│   │   ├── sv.po
-│   │   ├── tr.po
-│   │   ├── uk.po
-│   │   ├── zh_CN.po
-│   │   └── zh_TW.po
+│   ├── CMakeLists.txt                           <== Adjusted !!
 │   ├── scripts
 │   │   ├── installer-linux.sh
 │   │   ├── mingw-x-build-dependencies.sh
 │   │   └── release-common.sh
 │   └── src
 │       └── gui
-│           ├── parameter
-│           │   ├── ParameterTextArea.cc
-│           │   ├── ParameterTextArea.h
-│           │   ├── ParameterTextArea.ui
-│           │   ├── ParameterText.cc
-│           │   ├── ParameterVirtualWidget.h
-│           │   ├── ParameterWidget.cc
-│           │   ├── ParameterWidget.h
-│           │   ├── ParameterWidget.ui
-│           │   ├── TextEdit.cc
-│           │   └── TextEdit.h
-│           ├── Preferences.cc
-│           ├── Preferences.h
-│           └── Preferences.ui
+│           └── parameter
+│               ├── ParameterTextArea.cc         <== New
+│               ├── ParameterTextArea.h          <== New
+│               ├── ParameterTextArea.ui         <== New
+│               ├── ParameterText.cc             <== Adjusted
+│               ├── ParameterWidget.cc           <== Adjusted
+│               ├── TextEdit.cc                  <== New
+│               └── TextEdit.h                   <== New
 ├── Pictures
 │   ├── combobox_details.png
 │   ├── designDefault.png
@@ -126,23 +92,16 @@ OpenSCAD
 │   ├── FileDialog.png
 │   ├── preferences_curtomizer.png
 │   └── TextEdit.png
-├── pythonscad
-│   └── src
-│       └── gui
-│           ├── Preferences.cc
-│           ├── Preferences.h
-│           └── Preferences.ui
 └── README.md
-
-# Dangerous but...
-cp -rpP OpenSCAD-main/openscad/src/* ./src/.
-cp -rpP OpenSCAD-main/openscad/scripts/* ./scripts/
-cp -rpP OpenSCAD-main/openscad/locale/* ./locale/
 
 # Check the diff of CMakeLists.txt
 # Add to the left   ParameterTextArea.*, TextEdit.* 
 # WinMerge or diffuse for differences !!!
 diffuse CMakeLists.txt ./OpenSCAD-main/openscad/CMakeLists.txt &
+
+# Dangerous but...
+cp -rpP OpenSCAD-main/openscad/src/* ./src/.
+cp -rpP OpenSCAD-main/openscad/scripts/* ./scripts/
 
 chmod +x ./scripts/*
 
