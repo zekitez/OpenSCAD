@@ -352,14 +352,14 @@ case $OS in
 
         strip openscad-$VERSION/lib/openscad/*
 
-        QTLIBDIR=$(dirname $(ldd openscad | grep Qt5Gui | head -n 1 | awk '{print $3;}'))
-        ( ldd openscad ; ldd "$QTLIBDIR"/qt5/plugins/platforms/libqxcb.so ) \
+        QTLIBDIR=$(dirname $(ldd openscad | grep Qt6Gui | head -n 1 | awk '{print $3;}'))
+        ( ldd openscad ; ldd "$QTLIBDIR"/qt6/plugins/platforms/libqxcb.so ) \
           | sed -re 's,.* => ,,; s,[\t ].*,,;' -e '/^$/d' -e '/libc\.so|libm\.so|libdl\.so|libgcc_|libpthread\.so/d' \
           | sort -u \
           | xargs cp -vt "openscad-$VERSION/lib/openscad/"
         PLATFORMDIR="openscad-$VERSION/lib/openscad/platforms/"
         mkdir -p "$PLATFORMDIR"
-        cp -av "$QTLIBDIR"/qt5/plugins/platforms/libqxcb.so "$PLATFORMDIR"
+        cp -av "$QTLIBDIR"/qt6/plugins/platforms/libqxcb.so "$PLATFORMDIR"
         DRIDRIVERDIR=$(find /usr/lib -xdev -type d -name dri)
         if [ -d "$DRIDRIVERDIR" ]
         then
