@@ -1,5 +1,5 @@
 > [!IMPORTANT]
-> OpenSCAD has moved to Qt6 in Jan. 2026.
+> OpenSCAD has moved to Qt6 in Jan. 2026.<br>
 > Using the build instructions from OpenSCAD give the following results (2026-03-27).
 > 
 > | Build executable for           | Ubuntu 24.04 | Ubuntu 25.10 | Debian 13  |
@@ -15,6 +15,8 @@
 > BUILDS  means compilation successful but running fails (segmentation fault).
 > "-"     means have not tried it.
 > </pre>
+> Ubuntu 24.04 fails due to limited Qt6 support.
+> 
 # OpenSCAD
 This is where I keep my improvements to [openscad/openscad](https://github.com/openscad/openscad/)
 
