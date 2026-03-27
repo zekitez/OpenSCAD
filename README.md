@@ -1,12 +1,13 @@
 > [!IMPORTANT]
 > OpenSCAD has moved to Qt6 in Jan. 2026.
+> Using the build instructions from OpenSCAD give the following results (2026-03-27).
 > 
 > | Build executable for           | Ubuntu 24.04 | Ubuntu 25.10 | Debian 13  |
 > |--------------------------------|--------------|--------------|------------|
 > | Linux   openscad               |    FAILS     |   SUCCESS    |   BUILDS   |
 > | Linux   OpenSCAD.AppImage      |    -         |   SUCCESS    |   -        |
 > | Linux   OpenSCAD.tar.gz        |    -         |   SUCCESS    |   -        |
-> | Windows OpenSCAD-Installer.exe |    -         |   FAILS      |   -        |
+> | Windows OpenSCAD-Installer.exe |    -         |   FAILS      |   FAILS    |
 >
 > <pre>
 > FAILS   means compilation fails.
