@@ -1,11 +1,17 @@
 > [!IMPORTANT]
 > OpenSCAD has moved to Qt6 in Jan. 2026.
 > 
-> Building on Debian is OK.
+> | Build executable for           | Ubuntu 24.04 | Ubuntu 25.10 | Debian 13  |
+> |--------------------------------|--------------|--------------|------------|
+> | Linux   openscad               |    FAILS     |   SUCCESS    |   BUILDS   |
+> | Linux   OpenSCAD.AppImage      |    -         |   SUCCESS    |   -        |
+> | Linux   OpenSCAD.tar.gz        |    -         |   SUCCESS    |   -        |
+> | Windows OpenSCAD-Installer.exe |    -         |   FAILS      |   -        |
 > 
-> Building on Ubuntu 24.04 FAILS due to limited QT6 support.
-> 
-> Building on Ubuntu 25.10 is OK.
+> FAILS   means compilation fails.<br>
+> SUCCESS means compilation successful and runs correctly.<br>
+> BUILDS  means compilation successful but running fails (segmentation failt).<br>
+> "-"     means have not tried it.<br>
 > 
 # OpenSCAD
 This is where I keep my improvements to [openscad/openscad](https://github.com/openscad/openscad/)
