@@ -7,12 +7,13 @@
 > | Linux   OpenSCAD.AppImage      |    -         |   SUCCESS    |   -        |
 > | Linux   OpenSCAD.tar.gz        |    -         |   SUCCESS    |   -        |
 > | Windows OpenSCAD-Installer.exe |    -         |   FAILS      |   -        |
-> 
-> FAILS   means compilation fails.<br>
-> SUCCESS means compilation successful and runs correctly.<br>
-> BUILDS  means compilation successful but running fails (segmentation failt).<br>
-> "-"     means have not tried it.<br>
-> 
+>
+> <pre>
+> FAILS   means compilation fails.
+> SUCCESS means compilation successful and runs correctly.
+> BUILDS  means compilation successful but running fails (segmentation fault).
+> "-"     means have not tried it.
+> </pre>
 # OpenSCAD
 This is where I keep my improvements to [openscad/openscad](https://github.com/openscad/openscad/)
 
