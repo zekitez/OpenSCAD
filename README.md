@@ -1,6 +1,6 @@
 > [!IMPORTANT]
-> OpenSCAD has moved to Qt6 in Jan. 2026.<br>
-> Using the build instructions from OpenSCAD give the following results (2026-03-27).
+> OpenSCAD has moved from Qt5 to Qt6 in Jan. 2026. Since then... problems.<br>
+> Using the build instructions from OpenSCAD the following results (2026-03-27) appear.
 > 
 > | Build executable for           | Ubuntu 24.04 | Ubuntu 25.10 | Debian 13  |
 > |--------------------------------|--------------|--------------|------------|
