@@ -2,16 +2,7 @@
 #
 # OpenSCAD is officialy build on Debian.
 # In this file I keep my notes on building OpenSCAD with some patches based on Debian and Ubuntu.
-# Building environment: Linux Ubuntu 24.04 Cinnamon, does NOT BUILD anymore since the move to QT6 in Jan 2026, 
-#                       Linux Ubuntu 25.10 Cinnamon, builds OK,
-#                       Linux Debian 13.2  Cinnamon, builds OK.
-#
-# Building for Linux    OK: executable, installing on Linux, AppImage.
-# Building for Windows NOK: Cross compiling on Ubuntu for Windows.
-# Not tested              : building on Windows.
-#
 # During building you will be faced with missing Linux packages. Use Google to find out how to install them.
-#
 #
 # Note: While cross compiling on Linux for Windows an ~/openscad_deps is created. 
 # The one created for openscad differs from the one for pythonscad. They don't mix !!!
@@ -249,6 +240,9 @@ ln -s ./build/openscad .
 # Debian:
 #   Python 3.13.5
 
+#    libgdk-pixbuf2.0-dev \    # Problem on Debian
+#    libgdk-pixbuf-2.0-dev \   # Problem on Ubuntu
+
 # Environment requirements from https://mxe.cc/#requirements
 sudo apt-get install \
     autoconf \
@@ -266,8 +260,6 @@ sudo apt-get install \
     intltool \
     libc6-dev-i386 \
     libclang-dev \
-#    libgdk-pixbuf2.0-dev \   # Problem on Debian
-    libgdk-pixbuf-2.0-dev \   # Problem on Ubuntu
     libltdl-dev \
     libgl-dev \
     libpcre2-dev \
@@ -295,7 +287,12 @@ sudo apt-get install \
 
 # On Linux 
 # In addition on Ubuntu more packages maybe needed :
-sudo apt-get install ninja-build
+sudo apt install build-essential libssl-dev libgdbm-dev libdb-dev libexpat-dev libncurses5-dev libbz2-dev zlib1g-dev gawk bison
+sudo apt install software-properties-common
+sudo apt install gcc-11 g++-11
+
+sudo apt-get install ninja-build  libgdk-pixbuf-xlib-2.0-dev
+#
 sudo apt-get install itstool nsis libssl-dev libtool    # On Debian install libtool-bin instead (is libtool)
 sudo ln -s /usr/bin/libtool /usr/bin/glibtool           # Check first if /usr/bin/libtool is present.
 
@@ -315,8 +312,16 @@ source ./scripts/setenv-mingw-xbuild.sh 64
  
 # If all goes well there is a  Windows execuatble   OpenSCAD*Installer.exe   in the mingw64.static.posix directory.
 
-# if you get the ERROR: /bin/sh: 0: Illegal option -
-# dos2unix ./scripts/*
+# Incase of an ERROR set "export NUMCPU=1" and try again for a clearer error message.
+#
+# If you get the ERROR: /bin/sh: 0: Illegal option -
+dos2unix ./scripts/*
+
+# If you get the ERROR: Missing requirement: openssl
+sudo apt install openssl
+# Check which openssl is used and its file type. I had an ARM 
+which openssl              # file_path
+file <file_path>/openssl   # should be x86-64 (or 32) type on Intel or AMD
 
 ######################################################
 ######################################################
